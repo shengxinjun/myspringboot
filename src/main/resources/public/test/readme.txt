@@ -1,0 +1,2 @@
+此文件夹存放的是json测试数据。
+对应模块的测试数据存放按照page资源文件目录结构存放，比如page/index/index.vm,则test文件夹下存放一个page/index/index.json

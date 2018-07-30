@@ -1,0 +1,35 @@
+#extends("page/layout/mainNofooter.vm")
+#block("content")
+	<!-- 内容 -->
+    <div class="mainHome-des-content">
+        <div class="down-bg"></div>
+        <div class="wraper1200">
+            <div class="down-bg-b"></div>
+            <div class="down-btn-area">
+                <a class="down-1" href="javascript:;"></a>
+                <a class="down-2" href="javascript:;"></a>
+                <a class="down-3" href="javascript:;"></a>
+            </div>
+        </div>
+    </div>
+    <!-- 弹框 -->
+    <div id="_pop" style="display:none">
+        <div class="pop-mask"></div>
+        <div class="alert-party-client">
+            <a class="alert-party-close" href="javascript:;"></a>
+            <div class="qr-code206">
+                <!-- 二维码区域 -->
+            </div>
+        </div>
+    </div>
+
+#end
+#script()
+    require(['page/downCenter/downCenter'], function(downCenter) {
+        new downCenter();
+    });
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/downCenter/downCenter.vm")
+#end

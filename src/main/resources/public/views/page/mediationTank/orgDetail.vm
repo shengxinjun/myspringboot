@@ -1,0 +1,106 @@
+#extends("page/layout/mainDesHome.vm")
+#block("content")
+	<!-- 内容 -->
+    <div class="mainHome-des-content">
+    	<div class="wraper1200">
+			<div class="location">当前位置：<span class="col333">调解智库<i></i>调解组织详情</span></div>
+			<div class="content-padd102 content-padd-b50">
+			    <input type="hidden" value="$!organization.id" id="_organId">
+				<div class="mediator-head">
+					<span><img src="$!organization.picture"></span>
+				</div>
+				<p class="tit-name"><span>$!organization.name</span></p>
+				<div class="mediate-num">
+					<div class="total">
+						<span class="total-name">累计调解</span>
+						<span class="num"><em>$!organization.mediatedCount</em>件</span>
+					</div>
+					<span class="line"></span>
+					<div class="total">
+						<span class="total-name">正在调解</span>
+						<span class="num"><em>$!organization.mediatingCount</em>件</span>
+					</div>
+					<span class="line"></span>
+					<div class="total">
+						<span class="total-name">已结案</span>
+						<span class="num"><em>$!organization.endCount</em>件</span>
+					</div>
+				</div>
+				<div class="des-details">
+					<div class="half50">
+						<div class="state">
+							<span class="name">组织类型：</span>
+							<span class="text">#if($!organization.orgTypeName) $!organization.orgTypeName #else 暂无 #end</span>
+						</div>
+						<div class="state">
+							<span class="name">所属地区：</span>
+							<span class="text">#if($!organization.area) $!organization.area #else 暂无 #end</span>
+						</div>
+					</div>
+					<div class="half50" style="padding-left: 100px;">
+						<div class="state">
+							<span class="name">联系电话：</span>
+							<span class="text">#if($!organization.telephone) $!organization.telephone #else 暂无 #end</span>
+						</div>
+						<div class="state">
+							<span class="name">联系地址：</span>
+							<span class="text">#if($!organization.address) $!organization.address #else 暂无 #end</span>
+						</div>
+					</div>
+					<div class="info-intro">
+						<span>机构简介：</span>
+						<div class="intro-text">#if($!organization.profile) $!organization.profile #else 暂无 #end</div>
+					</div>
+				</div>
+				<div class="org-mediator-name"><span>组织调解员</span></div>
+	            <!-- 选择调解员 -->
+	            <div class="mediator-list mediator-org-list">
+	                <div class="transcribe-area">
+	                    <div class="mediator-area" id="_mediatorBox">
+						#foreach($data in $paging.list)
+	                        <div class="mediator-bor">
+	                            <span class="choosed-icon"></span>
+	                            <div class="head">
+	                                <img src="$!data.picture">
+	                            </div>
+	                            <h2>$!data.name</h2>
+	                            <div class="place"><i></i>#if($!data.localName) $!data.address #else 暂无 #end</div>
+	                            <div class="mediation-num">
+	                                <div class="half">
+	                                    <p>累计调解</p>
+	                                    <p class="num">$!data.mediatedCount</p>
+	                                </div>
+	                                <span class="line"></span>
+	                                <div class="half">
+	                                    <p>正在调解</p>
+	                                    <p class="num">$!data.mediatingCount</p>
+	                                </div>
+	                            </div>
+	                        </div>
+						#end
+	                    </div>
+	                    <!-- 分页 -->
+	                    #if($!paging.list && $!paging.list.size() > 0)
+							<div class="pages">
+								<input type="hidden" value="$!paging.totalPage" id="totalPage"/>
+								<input type="hidden" value="$!paging.pageNumber" id="pageNumber"/>
+							</div>
+						#else
+							<div class="no-data">暂无数据</div>
+						#end
+	                </div>
+	            </div>
+			</div>
+    	</div>
+    </div>
+
+#end
+#script()
+    require(['page/mediationTank/orgDetail'], function(orgDetail) {
+        new orgDetail();
+    });
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/mediationTank/orgDetail.vm")
+#end

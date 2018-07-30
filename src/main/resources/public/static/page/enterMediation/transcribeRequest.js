@@ -1,0 +1,1 @@
+define("page/enterMediation/transcribeRequest",["require","exports","module","components/jquery/jquery"],function(e,n,t){var o=e("components/jquery/jquery"),i=function(){var e=this;e.init()};i.prototype.init=function(){},o(document).on("click",".skip-btn",function(){o("#orderForm").submit()}),t.exports=i});

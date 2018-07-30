@@ -1,0 +1,38 @@
+#extends("page/layout/mainDesHome.vm")
+#block("content")
+	<!-- 内容 -->
+    <div class="mainHome-des-content bg-white">
+    	<div class="wraper1200">
+			<div class="prime-cost">
+				<div class="title"><i></i>成本分析</div>
+				<div class="prime-cost-bg">
+					<div class="title-bg">
+						<span class="mediate fl"><i></i>调解</span>
+						<span class="litigation fr"><i></i>诉讼</span>
+					</div>
+				</div>
+				<div class="reference-case">
+					<div class="headline">类案参考</div>
+					#foreach($data in $!list)
+					<div class="case-type">
+						<div class="case-title"><span>[$!data.procedure]</span>$!data.title</div>
+						<div class="case-des">
+							<span class="court"><span>法院：</span>$!data.courtName</span>
+							<span class="court"><span>案号：</span>$!data.caseNo</span>
+							<span class="court"><span>时间：</span>$!date.format("yyyy-MM-dd", $!data.caseTime)</span>
+						</div>
+						<div class="case-text">
+							<span>裁判理由：</span>
+							#if($!data.judgeReason) $!data.judgeReason #else 暂无 #end
+						</div>
+					</div>
+					#end
+				</div>
+			</div>
+    	</div>
+    </div>
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/guideDispute/analysis.vm")
+#end

@@ -1,0 +1,19 @@
+## 首页布局
+#extends("page/layout/frame.vm")
+
+#block("body")
+	#block("header")
+		#widget("page/header/headerDes.vm")
+	#end
+
+	#block("content")
+	#end
+	
+	#block("footer")
+		#widget("page/footer/footer.vm")
+	#end
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/layout/mainDesHome.vm")
+#end

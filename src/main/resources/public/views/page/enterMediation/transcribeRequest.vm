@@ -1,0 +1,69 @@
+#extends("page/layout/mainDesHome.vm")
+#block("content")
+	<!-- 内容 -->
+    <div class="mainHome-des-content">
+    	<div class="wraper1200 wraper1000">
+    		<div class="info-form">
+    			<div class="steps">
+    				<ul class="">
+    					<li>1.填写纠纷信息</li>
+    					<li class="on"><span></span>2.录制调解请求</li>
+    					<li>3.选择调解员</li>
+    					<li>4.完成调解申请</li>
+    				</ul>
+    			</div>
+	    		<div class="transcribe-area">
+					<form id="orderForm" method="post" action="/applyMediation/saveVideoAndToChoose">
+						<input type="hidden" name="fileName" id="_fileName" value="$!fileName"/>
+						<input type="hidden" name="disputeType" id="_hDisputeType" value="$!disputeType"/>
+						<input type="hidden" name="videoPath" id="_videoPath" value=""/>
+						<div class="transcribe-bg">
+							<img src="/static/img/transcribe-bg.png">
+							<div class="transcribe-bg-bor"></div>
+							<div class="transcribe-logo"></div>
+							<a class="skip-btn" href="javascript:void(0);">跳过</a>
+						</div>
+						<div class="transcribe-bg-black">
+							<div class="videotape-btn">
+								<a class="on" href="javascript:;">
+									<div class="videotape-down">
+										<i></i>
+										<div>完成录制</div>
+									</div>
+								</a>
+								<a class="" href="javascript:;">
+									<div class="videotape-start">
+										<i></i>
+										<div>开始录制</div>
+									</div>
+								</a>
+								<a class="" href="javascript:;">
+									<div class="re-transcribe">
+										<i></i>
+										<div>重录</div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="step-des">
+							<div class="one"><em>1</em>在上传完相关材料后，可补充录制调解请求</div>
+							<div class="one"><em>2</em>您可以录制<i>60秒</i>的视频，向调解员说明您的案件情况及相关请求</div>
+							<div class="one"><em>3</em>点击按钮<i>“回看”</i>回放录制的视频</div>
+							<div class="one"><em>4</em>如果对录制的内容不满意，您可以点击按钮<i>“重录”</i>进行重新录制</div>
+						</div>
+					</form>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+
+#end
+#script()
+    require(['page/enterMediation/transcribeRequest'], function(transcribeRequest) {
+        new transcribeRequest();
+    });
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/enterMediation/transcribeRequest.vm")
+#end

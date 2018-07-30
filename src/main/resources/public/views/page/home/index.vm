@@ -1,0 +1,8 @@
+#extends("page/layout/main.vm")
+#block("content")
+    这是首页
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/home/index.vm")
+#end

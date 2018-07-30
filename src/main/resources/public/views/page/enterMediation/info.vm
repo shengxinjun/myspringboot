@@ -1,0 +1,343 @@
+#extends("page/layout/mainDesHome.vm")
+#block("content")
+	<!-- 内容 -->
+    <div class="mainHome-des-content">
+    	<div class="wraper1200 wraper1000">
+    		<div class="info-form">
+    			<div class="steps">
+    				<ul class="">
+    					<li class="on"><span></span>1.填写纠纷信息</li>
+    					<li>2.录制调解请求</li>
+    					<li>3.选择调解员</li>
+    					<li>4.完成调解申请</li>
+    				</ul>
+    			</div>
+				<form id="orderForm" method="post" action="/applyMediation/submitForm">
+				    <input type="hidden" name="fileName" id="_fileName"/>
+					<input type="hidden" name="disputeType" id="_hDisputeType"/>
+					<!-- 纠纷描述 -->
+					<div class="dispute-area">
+						<div class="title"><span>纠纷描述</span></div>
+						<div class="bg-white padd-t30">
+							<div class="type-dispute">
+								<span class="name"><em>*</em>纠纷类型：</span>
+								<select class="select300" id="_disputeType">
+									<option value="">请选择</option>
+									<option value="1301">道交事故</option>
+									<option value="1001">婚姻家庭</option>
+									<option value="1202">民间借贷</option>
+									<option value="1401">劳动争议</option>
+									<option value="1205">物业服务合同</option>
+									<option value="1999">其他民事</option>
+								</select>
+							</div>
+							<div class="type-dispute">
+								<span class="name"><em>*</em>纠纷概况：</span>
+								<textarea class="textarea750" maxlength="500" id="_dispute"  placeholder="请简要描述您的调解请求，比如：我与丈夫刘某2012年3月23日与人介绍并与2015年2月2日结婚，由于婚前了解甚少，婚后发现双方性格不合，工作生活严重到影响，想解除婚姻关系。"></textarea>
+								##<span class="num">0/500</span>
+							</div>
+							<div class="type-dispute">
+								<span class="name"><em>*</em>申请事项：</span>
+								<textarea class="textarea750" maxlength="500" id="_applyMatter" placeholder="请简要描述您的调解诉求，比如：我希望解除与刘某的婚姻关系，女儿归我抚养刘某归我抚养，刘某每月支出抚养费600元，直到女儿成人为止。"></textarea>
+								##<span class="num">0/500</span>
+							</div>
+						</div>
+					</div>
+					<!-- 当事人信息 -->
+					<div class="dispute-area party-area">
+						<div class="title"><span>当事人信息</span></div>
+						<div class="bg-white padd-t30">
+							<!-- 申请人信息 -->
+							<h3>申请人信息</h3>
+							<div id="_applicant-box">
+								<div class="_applicant">
+									<div class="apply-person">申请人<em>1</em></div>
+									<div class="type-dispute">
+										<span class="name"><em>*</em>当事人类型：</span>
+										<select class="select300 _applicantType">
+											<option value="1" selected>自然人</option>
+											<option value="2">法人</option>
+											<option value="3">其他组织</option>
+										</select>
+									</div>
+									<div class="type-dispute">
+										<span class="name"><em>*</em>姓名：</span>
+										<input class="input300 _applicantName" maxlength="50" type="text" name="" placeholder="请输入姓名">
+									</div>
+									<div class="type-dispute">
+										<span class="name"><em>*</em>性别：</span>
+										<select class="select300 _applicantSex">
+											<option value="00003-1">男性</option>
+											<option value="00003-2">女性</option>
+											<option value="00003-255">其他</option>
+										</select>
+									</div>
+									<div class="type-dispute">
+										<span class="name">出生日期：</span>
+										<input class="input300 calendar _applicantBirthday" type="text" name="" placeholder="请输入出生日期">
+									</div>
+									<div class="type-dispute">
+										<span class="name">民族：</span>
+										<select class="select300 _applicantNation">
+											
+										</select>
+									</div>
+									<div class="type-dispute">
+										<span class="name"><em>*</em>手机号码：</span>
+										<input class="input300 _applicantTel" maxlength="11" type="text" name="" placeholder="请输入手机号码">
+									</div>
+									<div class="type-dispute dis-block">
+										<span class="name"><em>*</em>证件类型：</span>
+										<select class="select300 _applicantIdType">
+											<option value="ZJ-01">居民身份证</option>
+											<option value="ZJ-02">中国公民护照</option>
+											<option value="ZJ-03">台湾居民来往大陆通行证</option>
+											<option value="ZJ-04">港澳居民来往内地通行证</option>
+											<option value="ZJ-05">外国公民护照</option>
+											<option value="ZJ-06">户口薄</option>
+											<option value="ZJ-07">社会统一信用代码证</option>
+											<option value="ZJ-08">其他</option>
+										</select>
+									</div>
+									<div class="type-dispute dis-block type-idc">
+										<span class="name"><em>*</em>证件名称：</span>
+										<input class="input300 _applicantIdName"  maxlength="50" type="text" name="" placeholder="请输入证件名称">
+									</div>
+									<div class="type-dispute dis-block">
+                                        <span class="name"><em>*</em>证件号码：</span>
+                                        <input class="input300 _applicantId" maxlength="30" type="text" name="" placeholder="请输入证件号码">
+                                    </div>
+									<div class="type-dispute dis-block">
+										<span class="name">居住地址：</span>
+										<input class="input300 _applicantAddress" maxlength="200" type="text" name="" style="width: 750px;" placeholder="请输入居住地址">
+									</div>
+									<div class="type-dispute dis-block">
+										<span class="name">委托代理人：</span>
+										<a class="add-agent" href="javascript:;">添加委托代理人</a>
+										<input type="hidden" class="_deputeName" value="">
+										<input type="hidden" class="_deputeTel" value="">
+										<input type="hidden" class="_deputeRelation" value="">
+									</div>
+								</div>
+							</div>
+							<div class="type-dispute dis-block">
+								<span class="name"></span>
+								<a class="add-apply _applicantAdd" data-num="1" href="javascript:;"><i></i>添加申请人</a>
+							</div>
+							<!-- 被申请人信息 -->
+							<h3>被申请人信息</h3>
+							<div id="_respondent-box">
+								<div class="_respondent">
+									<div class="apply-person">被申请人<em>1</em></div>
+									<div class="type-dispute">
+										<span class="name"><em>*</em>当事人类型：</span>
+										<select class="select300 _respondentType">
+											<option value="1" selected>自然人</option>
+											<option value="2">法人</option>
+											<option value="3">其他组织</option>
+										</select>
+									</div>
+									<div class="type-dispute">
+										<span class="name"><em>*</em>姓名：</span>
+										<input class="input300 _respondentName" maxlength="50" type="text" name="" placeholder="请输入姓名" maxlength="30">
+									</div>
+									<div class="type-dispute">
+										<span class="name"><em>*</em>性别：</span>
+										<select class="select300 _respondentSex">
+											<option value="00003-1">男性</option>
+											<option value="00003-2">女性</option>
+											<option value="00003-255">其他</option>
+										</select>
+									</div>
+									<div class="type-dispute">
+										<span class="name">出生日期：</span>
+										<input class="input300 calendar _respondentBirthday" type="text" name="" placeholder="请输入出生日期">
+									</div>
+									<div class="type-dispute">
+										<span class="name">民族：</span>
+										<select class="select300 _respondentNation">
+											
+										</select>
+									</div>
+									<div class="type-dispute">
+										<span class="name"><em>*</em>手机号码：</span>
+										<input class="input300 _respondentTel" maxlength="11" type="text" name="" placeholder="请输入手机号码">
+									</div>
+									<div class="type-dispute dis-block">
+										<span class="name">证件类型：</span>
+										<select class="select300 _respondentIdType">
+											<option value="ZJ-01">居民身份证</option>
+											<option value="ZJ-02">中国公民护照</option>
+											<option value="ZJ-03">台湾居民来往大陆通行证</option>
+											<option value="ZJ-04">港澳居民来往内地通行证</option>
+											<option value="ZJ-05">外国公民护照</option>
+											<option value="ZJ-06">户口薄</option>
+											<option value="ZJ-07">社会统一信用代码证</option>
+											<option value="ZJ-08">其他</option>
+										</select>
+									</div>
+									<div class="type-dispute dis-block type-idc">
+										<span class="name">证件名称：</span>
+										<input class="input300 _respondentIdName" maxlength="50" type="text" name="" placeholder="请输入证件名称">
+									</div>
+									<div class="type-dispute dis-block">
+                                        <span class="name">证件号码：</span>
+                                        <input class="input300 _respondentId" maxlength="30" type="text" name="" placeholder="请输入证件号码">
+                                    </div>
+									<div class="type-dispute dis-block">
+										<span class="name">居住地址：</span>
+										<input class="input300 _respondentAddress" maxlength="200" type="text" name="" style="width: 750px;" placeholder="请输入居住地址">
+									</div>
+								</div>
+							</div>
+							<div class="type-dispute dis-block">
+								<span class="name"></span>
+								<a class="add-apply _respondentAdd" data-num="1" href="javascript:;"><i></i>添加被申请人</a>
+							</div>
+
+						</div>
+					</div>
+					<!-- 证据材料 -->
+					<div class="dispute-area evidence-area">
+						<div class="title"><span>证据材料</span></div>
+						<div class="bg-white padd-t30">
+							<a class="upload-btn" href="javascript:;">上传证据
+								<input type="file" name="file" id="newEditPUpload">
+							</a>
+							<div class="put-evidence" id="_evidenceBox">
+							</div>
+						</div>
+					</div>
+					<!-- 告知事项 -->
+					<div class="dispute-area matter-area">
+						<div class="title"><span>告知事项</span></div>
+						<div class="bg-white padd-t30">
+							<div class="matter">
+								<label>
+									<input type="checkbox" name="" id="_notice1">
+									<em>*</em> 我已阅读并确认<a href="javascript:;" id="e-book">《“和合智解”e调解平台调解告知书》</a>中的相关事项
+								</label>
+							</div>
+							<div class="matter">
+								<label>
+									<input type="checkbox" name="" id="_notice2">
+									<em>*</em> 我已阅读并确认<a href="javascript:;" id="e-book-two">《当事人送达地址确认书》</a>中的相关事项
+								</label>
+							</div>
+							<div class="complete-btn">
+								<a class="complete" href="javascript:;" id="_submit">填写完成</a>
+							</div>
+						</div>
+					</div>
+				</form>
+    		</div>
+    	</div>
+    </div>
+	<!-- 弹框 添加委托代理人 -->
+<div class= "">
+  	<div class="popbox depute" style="margin-top: -155px; display: none;" data-num="0">
+    <div class="pop-head">
+        <h3 class="talign-cen">委托代理人</h3>
+        <a id="eviCloseBtn" href="javascript:;" class="close"></a>
+    </div>
+    <div class="pop-body">
+        <div class="loadevidence-con">
+            <div class="form-area">
+                <span class="input-title"><b class="font-red">*</b>姓名：</span>
+                <input id="_deputeName" type="text" maxlength="20" class="input-txt-small" placeholder="请输入姓名">
+            </div>
+            <div class="form-area">
+                <span class="input-title"><b class="font-red">*</b>手机号码：</span>
+                <input id="_deputeTel" type="text" maxlength="11" class="input-txt-small" placeholder="请输入手机号码">
+            </div>
+            <div class="form-area">
+                <span class="input-title"><b class="font-red">*</b>与当事人关系：</span>
+                <select class="input-select" id="_parentSel"> 	
+                </select>
+                <select class="input-select" id="_childSel">
+                </select>
+            </div>
+            <div class="talign-cen padding-top20 mar20">
+                <a id="submitAgent" href="javascript:;" class="u-btn btn-redbg">确定</a>
+                <a id="cancelAgent" href="javascript:;" class="u-btn btn-greybg cancel">取消</a>
+            </div>
+        </div>
+    </div>
+	</div>
+</div>
+
+<div class= "">
+  	<div class="popbox word-text" id="word-text-one">
+	    <div class="pop-head">
+	        <h3 class="talign-cen"></h3>
+	        <a id="e-book-close" href="javascript:;" class="close"></a>
+	    </div>
+	   	<div class="word-text-content">
+	   		<p class="tet-name">“和合智解”e调解平台</p>
+	   		<p class="tet-name tet-name-mar">调解事项告知书</p>
+	   		<p>在我们每个人的生活中，纠纷总是难以避免，选择最恰当的方式化解纠纷，既是美好生活所需，也是生活的艺术所在。</p>
+	   		<p>纠纷有千百种形态，解决纠纷的方式当然也就并非只有诉讼一种。纵览古今中外，对簿公堂既耗时又耗费、既劳力又劳行，绝非化解纠纷的最佳之选。而调解，既具有与诉讼同等的法律效力，又具有省时省力、便捷高效的优势，不失为化解纠纷的首要之选。</p>
+	   		<p>成都市中级人民法院运用“互联网+”，联合人民调解、行政调解、行业调解、商事调解等优势资源，打造了集聚咨询辅导、案例学习、视频调解、诉调对接功能的“和合智解”e调解平台，实现了纠纷全程网上规范、高效、透明调解，同步进行司法确认，确保您的权益及时有效得以保障。和合智解”e调解您不妨了解一下。</p>
+	   		<p class="tet-tit">一、调解基本原则</p>
+	   		<p>调解遵循合法、自愿、平等原则，即调解应当尊重当事人意愿，依照法律规定进行。若您同意将纠纷交由“和合智解”e调解平台进行调解，应当严格遵守法律法规规定，不得串通对方当事人规避法律规定。</p>
+	   		<p class="tet-tit">二、受理纠纷类型</p>
+	   		<p>本平台主要受理事实清楚、争议不大的民商事纠纷，具体包括家事纠纷、相邻关系纠纷、劳动争议纠纷、交通事故赔偿纠纷、医疗纠纷、物业纠纷、消费者权益纠纷、小额债务纠纷、申请撤销劳动争议仲裁裁决纠纷，以及其他适宜调解的纠纷。特别程序、督促程序、公示催告程序、破产还债程序的案件，婚姻关系、身份关系效力确认案件，以及其他依案件性质不能进行调解的案件不属于平台受理范围。</p>
+	   		<p class="tet-tit">三、调解主要方式</p>
+	   		<p>调解分为线上和线下两种方式。“和合智解”e调解平台覆盖互联网PC、手机APP及Web端，只要连通网络，可随时随地申请调解，调解全程在线操作。同时，全市两级法院还建立了线下“实体店”——“和合智解”e调解空间，您也可以在线上提交调解申请，预约调解员在线下空间开展调解。</p>
+	   		<p class="tet-tit">四、确认电子送达</p>
+	   		<p>选择通过“和合智解”e调解平台调解视为同意平台以电子送达的方式接收调解协议及相关文书，当事人应当如实提供并在线确认自己准确的送达地址。</p>
+	   		<p class="tet-tit">五、调解诉讼对接</p>
+	   		<p>经调解达成调解协议，当事人可以自动履行；或者依照法律规定在线向有管辖权的基层人民法院申请确认调解协议效力；以金钱或者有价证券为给付内容的和解协议、调解协议，债权人可以向有管辖权的基层法院申请支付令。</p>
+	   		<p>一方不履行调解协议，另一方可直接就调解协议的履行在线向有管辖权的人民法院提起诉讼。不履行经人民法院司法确认的调解协议，或者不在法律规定期间提出异议又不履行支付令的，债权人可直接向人民法院申请强制执行。</p>
+	   		<p>如调解不成，您可直接通过平台上传该纠纷相应的诉讼材料向有管辖权的人民法院起诉，人民法院将依法予以登记立案。</p>
+	   		<p>特此告知。</p>
+	   		<p class="tet-r">成都市中级人民法院</p>
+	   	</div>
+	</div>
+</div>
+
+<div class= "">
+  	<div class="popbox word-text" id="word-text-two">
+	    <div class="pop-head">
+	        <h3 class="talign-cen"></h3>
+	        <a id="e-sure-close" href="javascript:;" class="close"></a>
+	    </div>
+	   	<div class="word-text-content">
+	   		<p class="tet-name">“和合智解”e调解平台</p>
+	   		<p class="tet-name tet-name-mar">当事人送达地址及送达方式确认书</p>
+	   		<p class="tet-name tet-name-mar0">（调解、诉讼通用）</p>
+	   		<div class="tet-pic"><img src="/static/img/word-pic.png"></div>
+	   		<p class="tet-name">“和合智解”e调解平台</p>
+	   		<p class="tet-name tet-name-mar">送达地址确认重要事项告知书</p>
+
+	   		<p>根据《中华人民共和国民事诉讼法》、《最高人民法院关于适用<中华人民共和国民事诉讼法>的解释》、《最高人民法院关于以法院专递方式邮寄送达民事诉讼文书的若干规定》等规定，现将送达地址、送达方式确认的有关重要事项告知如下：</p>
+	   		<p>一、为了充分保障当事人的调解、诉讼权利，提高送达的效率，受送达人应当如实提供或者确认自己准确的送达地址。经受送达人同意，可以通过“和合智解”e调解平台客户端、短信、电子邮件、成都法院阳光司法APP等能够确认其收悉的方式送达调解或诉讼文书，但人民法院作出的判决书、裁定书、调解书除外。</p>
+
+	   		<p>二、受送达人拒绝确认送达地址的，自然人以户籍登记中的住所地、居民身份证信息中载明的住址或者经常居住地为送达地址、法人或者其他组织以工商登记或者其他依法登记、备案中住所地为送达地址。</p>
+	   		<p>三、因受送达人拒不提供送达地址、提供或者确认的送达地址不准确、送达地址变更未书面告知人民法院、受送达人本案、同住成年家属或者指定代收人拒绝签收，导致诉讼文书未能被受送达人实际接收的，直接送达时，适用留置送达，以文书留在该地址之日为送达之日；邮寄送达时，文书退回之日视为送达之日，文书退回之日以邮局“改退批条”中的邮戳日期为依据。</p>
+	   		<p>四、若纠纷进入诉讼，受送达人在“和合智解”e调解中确认的送达地址（包括电子送达地址）可以作为其在诉讼第一审程序、第二审程序、执行程序及其作为再审申请人的审判监督程序中的送达地址及送达方式，但受送达人向人民法院书面变更了送达地址及送达方式的除外。</p>
+	   		<p>当事人在人民法院正在审理的案件中确认的送达地址、送达方式，可以作为其参与的其他审判、执行案件的送达地址及送达方式。但当事人在其他审判、执行案件中另行确认了送达地址、送达方式的除外。</p>
+	   		<p>五、电子送达方式默认为受送达人的“和合智解”e调解平台客户端后台，受送达人也可自愿选择是否同意适用短信、微信、电子邮件、成都法院阳光司法APP、成都法院网上诉讼服务中心（网址：http://119.6.84.165:8085/ssfw）等电子送达方式。</p>
+	   		<p>六、受送达人需要变更送达地址或送达方式的，应及时向调解员或案件承办法官书面告知。未书面告知，将按照原送达地址及送达方式送达调解或诉讼文书，并产生送达的法律效果。</p>
+	   		<p>七、选择成都法院阳光司法APP送达，请扫描二维码下载安装，在注册登录后进入“我的案件”模块，点击“案件列表”，选择“案件绑定”，输入随案账号和密码进行绑定后，即可在“文书领取”页面签收送达文书。选择通过成都法院阳光司法APP接受送达，应自行注册登录。受送达人选择接受成都法院阳光司法APP送文书的，人民法院发送在该APP的文书时间视为送达之日，并产生送达的法律效果。</p>
+	   		<p class="tet-tit">成都法院阳光司法APP二维码：</p>
+	   		<div class="code-cd">
+	   			<span class="code-one fl"></span>
+	   			<span class="code-two fr"></span>
+	   		</div>
+	   	</div>
+	</div>
+</div>
+<div class="pop-mask"></div>
+
+#end
+#script()
+    require(['page/enterMediation/info'], function(info) {
+        new info();
+    });
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/enterMediation/info.vm")
+#end
+

@@ -1,0 +1,71 @@
+#extends("page/layout/mainDesHome.vm")
+#block("content")
+	<!-- 内容 -->
+    <div class="mainHome-des-content">
+    	<div class="wraper1200 wraper1000">
+    		<div class="info-form">
+    			<div class="steps">
+    				<ul class="">
+    					<li>1.填写纠纷信息</li>
+    					<li>2.录制调解请求</li>
+    					<li class="on"><span></span>3.选择调解员</li>
+    					<li>4.完成调解申请</li>
+    				</ul>
+    			</div>
+    			<!-- 选择调解员 -->
+	    		<div class="transcribe-area transcribe-area-padd">
+				    <input type="hidden" value="$!medJson.fileName" id="_fileName">
+					<input type="hidden" value="$!medJson.scopeId" id="_disputeType">
+					<input type="hidden" value="$!videoPath" id="_videoPath">
+	    			<div class="mediator-area chooseMed">
+					#foreach($data in $!medJson.paging.list)
+	    				<div class="mediator-bor chooseBtn" data-id="$!data.id">
+	    					<span class="no-choose" data-flag="0"></span>
+	    					<div class="head">
+	    						<img src="$!data.picture">
+	    					</div>
+	    					<h1>#if($!data.name) $!data.name #else 暂无 #end</h1>
+	    					<div class="place"><i></i>#if($!data.localName) $!data.localName #else 暂无 #end</div>
+	    					<div class="mediation-num">
+	    						<div class="half">
+	    							<p>累计调解</p>
+	    							<p class="num">$!data.mediatedCount</p>
+	    						</div>
+	    						<span class="line"></span>
+	    						<div class="half">
+	    							<p>正在调解</p>
+	    							<p class="num">$!data.mediatingCount</p>
+	    						</div>
+	    					</div>
+	    				</div>
+					#end
+	    				<div class="mediator-bor fr">
+	    					<div class="head">
+	    						<img src="/static/img/resource-library.png">
+	    					</div>
+	    					<h1>资源库</h1>
+	    					<div class="place">我想自己挑选调解员</div>
+	    					<div class="mediation-num">
+	    						<div class="more"><a href="/applyMediation/more?fileName=$!medJson.fileName&videoPath=$!videoPath">更多调解员<i></i></a></div>
+	    					</div>
+	    				</div>
+	    			</div>
+	    			<!-- 分页 -->
+    				<div class="choose-btn">
+    					<input class="" id="_chooseMed" type="button" value="选择TA" disabled>
+    				</div>
+	    		</div>
+    		</div>
+    	</div>
+    </div>
+
+#end
+#script()
+    require(['page/enterMediation/chooseMediator'], function(chooseMediator) {
+        new chooseMediator();
+    });
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/enterMediation/chooseMediator.vm")
+#end

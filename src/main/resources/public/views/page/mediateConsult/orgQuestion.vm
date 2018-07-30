@@ -1,0 +1,87 @@
+#extends("page/layout/mainDesHome.vm")
+#block("content")
+	<!-- 内容 -->
+    <div class="mainHome-des-content">
+   		<div class="wraper1200">
+            <div class="location">当前位置：<span class="col333">调解咨询<i></i>对应调解组织
+                <div class="kindly-tip fr"><i></i><strong>温馨提示：</strong>
+                    <span>非工作日及工作日的下班时间，电话可能无人接听，建议您查看下面的<a href="#_question">常见问题</a></span>
+                </div>
+            </div>
+    		<!-- 调解组织 -->
+    		<div class="transcribe-org-area">
+                <div class="org-tit">对应调解组织</div>
+    			<div class="org-area" id="_orgList">
+				#if($!list.list && $!list.list.size() > 0)
+					#foreach($data in $!list.list)
+						<div class="org-bor">
+							<div class="title">$!data.orgTypeName</div>
+							<div class="head">
+								<img src="$!data.picture">
+							</div>
+							<h1>$!data.name</h1>
+							<div class="des"><i class="tel"></i>联系电话：$!data.telephone</div>
+							<div class="des"><i class="place"></i>联系地址：#if($!data.address) $!data.address #else 暂无 #end</div>
+						</div>
+					#end
+				#else
+				    <div class="no-data">暂无数据</div>
+				#end
+    			</div>
+				#if($!list.totalCount > 6)<div class="check-more-btn"><a href="javascript:;" id="_seeMore" data-num="1">查看更多</a></div>#end
+                <div class="ques-tit" id="_question"><span>常见问题</span></div>
+                <div class="ques-list">
+                    <ul>
+                        <li>
+                            <i class="fl"></i>
+                            <span class="fl">[调解指引]</span>
+                            <a class="fl" href="/Q1#one">什么是调解？</a>
+                            <em class="fr">2018-04-10</em>
+                        </li>
+                        <li>
+                            <i class="fl"></i>
+                            <span class="fl">[调解指引]</span>
+                            <a class="fl" href="/Q1#two">哪些案件的民事诉讼必须经过调解？</a>
+                            <em class="fr">2018-04-10</em>
+                        </li>
+                        <li>
+                            <i class="fl"></i>
+                            <span class="fl">[调解指引]</span>
+                            <a class="fl" href="/Q1#three">人们可以到哪些地方进行人民调解？</a>
+                            <em class="fr">2018-04-10</em>
+                        </li>
+                        <li>
+                            <i class="fl"></i>
+                            <span class="fl">[法律法规]</span>
+                            <a class="fl" href="/Q2">中华人民共和国人民调解法</a>
+                            <em class="fr">2018-04-10</em>
+                        </li>
+                        <li>
+                            <i class="fl"></i>
+                            <span class="fl">[法律法规]</span>
+                            <a class="fl" href="/Q3">最高人民法院关于人民法院特邀调解的规定</a>
+                            <em class="fr">2018-04-10</em>
+                        </li>
+                        <li>
+                            <i class="fl"></i>
+                            <span class="fl">[法律法规]</span>
+                            <a class="fl" href="/Q4">最高人民法院关于人民调解协议司法确认程序的若干规定</a>
+                            <em class="fr">2018-04-10</em>
+                        </li>
+                    </ul>
+                </div>
+    		</div>
+   		</div>
+    </div>
+
+
+#end
+#script()
+    require(['page/mediateConsult/orgQuestion'], function(orgQuestion) {
+        new orgQuestion();
+    });
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/mediateConsult/orgQuestion.vm")
+#end

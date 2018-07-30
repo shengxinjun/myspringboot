@@ -1,0 +1,8 @@
+{
+  "dependencies": [
+    "github:fis-components/jquery@1.9.1",
+    "github:fis-components/jquery-cookie@v1.4.1",
+    "github:fis-components/jquery-placeholder@v2.0.8",
+    "github:fis-components/moment@2.12.0"
+  ]
+}

@@ -1,0 +1,231 @@
+#extends("page/layout/mainHome.vm")
+#block("content")
+	<!-- 头部 -->
+    <div class="mainHome-header">
+    	<div class="wraper1200">
+			<div class="logo"></div>
+			<div class="fr">
+				<div class="client">
+					<a class="party-client" href="javascript:;"><i></i>当事人手机客户端</a>
+					<a class="mediator-client" href="javascript:;"><i></i>调解员手机客户端</a>
+				</div>
+				<div class="roles">
+					<ul class="">
+						<li><a href="javascript:;">当事人登录</a></li>
+						<li><a href="javascript:;">调解组织登录</a></li>
+						<li><a href="javascript:;">调解员登录</a></li>
+						<li class="last-li"><a href="javascript:;">法院登录</a></li>
+					</ul>
+				</div>
+			</div>
+    	</div>
+    </div>
+	<!-- 导航 -->
+    <div class="mainHome-nav">
+    	<div class="nav-bg">
+	    	<div class="wraper1200">
+	    		<ul class="nav-ul">
+	    			<li>
+	    				<a class="home-icon" href="/">
+	    					<i></i>
+	    					<span>首页</span>
+	    				</a>
+	    			</li>
+	    			<li>
+	    				<a class="home-icon guide-icon" href="/disputionGuide">
+	    					<i></i>
+	    					<span>解纷指引</span>
+	    				</a>
+	    			</li>
+	    			<li>
+	    				<a class="home-icon enter-mediation-icon" href="/applyMediation/loadForm">
+	    					<i></i>
+	    					<span>走进调解</span>
+	    				</a>
+	    			</li>
+	    			<li>
+	    				<a class="home-icon mediation-tank-icon" href="/mediator/list">
+	    					<i></i>
+	    					<span>调解智库</span>
+	    				</a>
+	    			</li>
+	    			<li>
+	    				<a class="home-icon mediation-consult-icon" href="/consult/index">
+	    					<i></i>
+	    					<span>调解咨询</span>
+	    				</a>
+	    			</li>
+	    			<li>
+	    				<a class="home-icon down-icon" href="/download">
+	    					<i></i>
+	    					<span>下载中心</span>
+	    				</a>
+	    			</li>
+	    		</ul> 
+	    	</div>
+    	</div>
+    </div>
+	<!-- 内容 -->
+    <div class="mainHome-content clearfix">
+	    <div class="wraper1200">
+	    	<div class="left-content fl">
+	    		<div class="title-name">典型案例</div>
+	    		<div class="img-padd"><img src="/static/img/typical-case.png"></div>
+	    		<div class="case-type">
+	    			<ul>
+					#foreach($data in $!list)
+	    				<li>
+							<a href="/typicalDeatil?id=$!data.id">
+								<h3 class="title">$!data.title</h3>
+								<p class="p-text">
+									#if($!data.summary && $!data.summary != "") 
+										$!data.summary 
+									#else 
+										$!data.content 
+									#end
+								</p>
+								<div class="des-div font12">
+									<span class="name"><i></i>$!data.mediatorName</span>
+									<span  class="fr">历时$!{data.duration}天</span>
+								</div>
+							</a>
+	    				</li>
+					#end
+	    			</ul>
+	    		</div>
+	    	</div>
+	    	<div class="right-content fr">
+	    		<div class="org-stock">
+	    			<div class="title-area">
+	    				<span class="title">调解组织智库</span>
+		    			<span class="font14 col666">5大类、$!{orgCount}个调解组织</span>
+		    			<a class="more-a fr" href="/organ/list">查看调解组织<i></i></a>
+	    			</div>
+	    			<div class="more-stock">
+	    				<ul class="clearfix">
+	    					<li>
+	    						<a class="" href="/organ/list?orgType=JGLX_001">
+	    							<i class="people-mediation-i"></i>
+	    							<span>人民调解</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/organ/list?orgType=JGLX_002">
+	    							<i class="administer-mediation-i"></i>
+	    							<span>行政调解</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/organ/list?orgType=JGLX_003">
+	    							<i class="industry-mediation-i"></i>
+	    							<span>行业调解</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/organ/list?orgType=JGLX_004">
+	    							<i class="commercial-mediation-i"></i>
+	    							<span>商事调解</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/organ/list?orgType=JGLX_005">
+	    							<i class="other-mediation-i"></i>
+	    							<span>其他调解</span>
+	    						</a>
+	    					</li>
+	    				</ul>
+	    			</div>
+	    		</div>
+	    		<div class="meidiator-stock">
+	    			<div class="title-area">
+	    				<span class="title">调解员智库</span>
+		    			<span class="font14 col666">12大类、$!{medCount}位调解员</span>
+		    			<a class="more-a fr" href="/mediator/list">查看调解员<i></i></a>
+	    			</div>
+	    			<div class="more-stock">
+	    				<ul class="clearfix">
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_001">
+	    							<i class="people-mediator"></i>
+	    							<span>人民调解员</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_008">
+	    							<i class="judge"></i>
+	    							<span>法官</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_006">
+	    							<i class="legal-worker"></i>
+	    							<span>法律工作者</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_004">
+	    							<i class="lawyer"></i>
+	    							<span>律师</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_010">
+	    							<i class="volunteer"></i>
+	    							<span>志愿者</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_005">
+	    							<i class="social-worker"></i>
+	    							<span>社区工作者</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_009">
+	    							<i class="expert-scholar"></i>
+	    							<span>专家学者</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_007">
+	    							<i class="enthusiast"></i>
+	    							<span>热心人士</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_002">
+	    							<i class="commercial-mediator"></i>
+	    							<span>行政调解员</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_003">
+	    							<i class="industry-mediator"></i>
+	    							<span>行业专家</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_011">
+	    							<i class="five-mediator"></i>
+	    							<span>五老调解员</span>
+	    						</a>
+	    					</li>
+	    					<li>
+	    						<a class="" href="/mediator/list?identity=TJYSF_255">
+	    							<i class="other-mediator"></i>
+	    							<span>其他社会调解员</span>
+	    						</a>
+	    					</li>
+	    				</ul>
+	    			</div>	    			
+	    		</div>
+	    	</div>
+    	</div>
+    </div>
+	<!-- 底部 -->
+	#widget("page/footer/footer.vm")
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/home/indexHome.vm")
+#end

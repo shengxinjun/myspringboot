@@ -1,0 +1,20 @@
+#extends("page/layout/mainDesHome.vm")
+#block("content")
+	<!-- 内容 -->
+    <div class="mainHome-des-content">
+    	<div class="wraper1200">
+			<div class="location">当前位置：<span class="col333">调解咨询<i></i>对应调解组织<i></i>常见问题</span></div>
+			<div class="content-padd102">
+				<h1>什么是调解？</h1>
+				<p class="text-p">
+					调解，是指双方当事人以外的第三者，以国家法律、法规和政策以及社会公德为依据，对纠纷双方进行疏导、劝说，促使他们相互谅解，进行协商，自愿达成协议，解决纠纷的活动。我国调解方式主要是人民调解，行政调解，司法调解，行业调解以及专业机构调解。 
+				</p>
+			</div>
+    	</div>
+    </div>
+
+#end
+
+  ## auto inject by fis3-preprocess-extlang
+  #require("page/mediateConsult/question.vm")
+#end

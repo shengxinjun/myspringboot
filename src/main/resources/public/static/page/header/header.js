@@ -1,0 +1,1 @@
+define("page/header/header",["require","exports","module","components/jquery/jquery"],function(e,n,r){var o=(e("components/jquery/jquery"),function(){var e=this;e.menuClass()});o.prototype.menuClass=function(){},r.exports=o});

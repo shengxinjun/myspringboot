@@ -1,0 +1,50 @@
+<div class="mainHome-des-header">
+	<div class="wraper1200">
+		<div class="logo"></div>
+		<div class="fr">
+			<div class="nav-des">
+			    #set($temp = $!request.requestUri)
+				#set($index = $!temp.indexOf("/", 1))
+				#if($index < 0)
+					#set($path = $!temp)
+				#else
+					#set($path = $!temp.substring(0, $index))
+				#end
+				<ul class="">
+					<li><a #if($path == "/typicalDeatil") class="on" #end href="/">首页</a></li>
+					<li><a #if($path == "/disputionGuide" || $path == "/analyze") class="on" #end href="/disputionGuide">解纷指引</a></li>
+					<li><a #if($path == "/applyMediation") class="on" #end href="/applyMediation/loadForm">走进调解</a></li>
+					<li><a #if($path == "/mediator" || $path == "/organ") class="on" #end href="/mediator/list">调解智库</a></li>
+					<li><a #if($path == "/consult") class="on" #end href="/consult/index">调解咨询</a></li>
+					<li><a #if($path == "/download") class="on" #end href="/download">下载中心</a></li>
+					<li>
+						<a class="no-li" href="javascript:;" id="_loginBtn" data-flag='0'><i class="user-icon"></i>登录<i class="arrow-down"></i></a>
+						<div class="login-user-bg" style="display:none;">
+							<a class="user-party" href="javascript:;">
+								<i></i>
+								<div>当事人</div>
+							</a>
+							<a class="user-org" href="javascript:;">
+								<i></i>
+								<div>调解组织</div>
+							</a>
+							<a class="user-mediator" href="javascript:;">
+								<i></i>
+								<div>调解员</div>
+							</a>
+							<a class="user-court" href="javascript:;">
+								<i></i>
+								<div>法院</div>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+#script()
+    require(['page/header/base'], function(base) {
+        base.init();
+    });
+#end

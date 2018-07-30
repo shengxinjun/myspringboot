@@ -1,0 +1,38 @@
+    <div class="mainHome-footer">
+    	<div class="wraper1200">
+    		<div class="site-map fl">
+    			<h3>站点地图</h3>
+    			<a href="/disputionGuide">解纷指引</a>
+    			<a href="/applyMediation/loadForm">走进调解</a>
+    			<a href="/mediator/list">调解智库</a>
+    			<a href="/consult/index">调解咨询</a>
+    			<a href="/download">下载中心</a>
+    		</div>
+    		<div class="site-map site-link fl">
+    			<h3>友情链接</h3>
+    			<a href="http://www.court.gov.cn/" target="_blank">最高人民法院</a>
+    			<a href="http://www.sccourt.gov.cn/" target="_blank">四川省高级人民法院</a>
+    			<a href="http://tingshen.court.gov.cn/" target="_blank">中国庭审公开网</a>
+    			<a href="http://cdfy.chinacourt.org/index.shtml" target="_blank">成都市中级人民法院</a>
+    			<a href="https://www.chinacourt.org/index.shtml" target="_blank">中国法院网</a>
+    			<a href="http://wenshu.court.gov.cn/" target="_blank">中国裁判文书网</a>
+    		</div>
+    		<div class="qr-code-area fl">
+    			<div class="qr-code-bg fl">
+    				<div class="qr-code"></div>
+    				<p class="party-p">当事人</p>
+    				<p>手机客户端</p>
+    			</div>
+    			<div class="qr-code-bg fl">
+    				<div class="qr-code"></div>
+    				<p class="party-p">调解员</p>
+    				<p>手机客户端</p>
+    			</div>
+    		</div>
+    		<div class="clear"></div>
+    		<div class="footnote">
+    			<span>Copyright 2018-2019 江苏新视云 苏ICP备12067732号-4</span>
+				<span>技术支持：江苏新视云科技股份有限公司</span>
+    		</div>
+    	</div>
+    </div>
