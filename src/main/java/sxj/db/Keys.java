@@ -10,8 +10,10 @@ import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 
+import sxj.db.tables.CodeMessage;
 import sxj.db.tables.Order;
 import sxj.db.tables.Product;
+import sxj.db.tables.records.CodeMessageRecord;
 import sxj.db.tables.records.OrderRecord;
 import sxj.db.tables.records.ProductRecord;
 
@@ -41,6 +43,7 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<CodeMessageRecord> KEY_CODE_MESSAGE_PRIMARY = UniqueKeys0.KEY_CODE_MESSAGE_PRIMARY;
     public static final UniqueKey<OrderRecord> KEY_ORDER_PRIMARY = UniqueKeys0.KEY_ORDER_PRIMARY;
     public static final UniqueKey<ProductRecord> KEY_PRODUCT_PRIMARY = UniqueKeys0.KEY_PRODUCT_PRIMARY;
 
@@ -59,6 +62,7 @@ public class Keys {
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
+        public static final UniqueKey<CodeMessageRecord> KEY_CODE_MESSAGE_PRIMARY = createUniqueKey(CodeMessage.CODE_MESSAGE, "KEY_code_message_PRIMARY", CodeMessage.CODE_MESSAGE.CODE);
         public static final UniqueKey<OrderRecord> KEY_ORDER_PRIMARY = createUniqueKey(Order.ORDER, "KEY_order_PRIMARY", Order.ORDER.ID);
         public static final UniqueKey<ProductRecord> KEY_PRODUCT_PRIMARY = createUniqueKey(Product.PRODUCT, "KEY_product_PRIMARY", Product.PRODUCT.ID);
     }

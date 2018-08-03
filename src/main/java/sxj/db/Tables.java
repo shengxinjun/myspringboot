@@ -6,6 +6,7 @@ package sxj.db;
 
 import javax.annotation.Generated;
 
+import sxj.db.tables.CodeMessage;
 import sxj.db.tables.Order;
 import sxj.db.tables.Product;
 
@@ -22,6 +23,11 @@ import sxj.db.tables.Product;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>test.code_message</code>.
+     */
+    public static final CodeMessage CODE_MESSAGE = sxj.db.tables.CodeMessage.CODE_MESSAGE;
 
     /**
      * The table <code>test.order</code>.
