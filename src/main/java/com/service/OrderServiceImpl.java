@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.dao.OrderDao;
 import com.domain.Order;
+import com.util.Paging;
 
 
 @Service
@@ -19,4 +20,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.findOrderById(id);
 	}
 
+	@Override
+	public Paging<Order> orderList(Paging paging) {
+		return orderDao.orderList(paging);
+	}
+	
+	
 }
