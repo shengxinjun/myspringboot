@@ -39,10 +39,12 @@ public class OrderDao extends DAOImpl<OrderRecord, Order, Integer> {
 	/****************************************************
 	 * 下面是自定义方法
 	 ***************************************************************/
-
+	
 	public Order findOrderById(Integer id) {
-		return dslContext.select().from(ORDER).fetchOneInto(Order.class);
+		Condition condition = ORDER.ID.equal(id);
+		return dslContext.select().from(ORDER).where(condition).fetchOneInto(Order.class);
 	}
+	
 	/**
 	 * 查询订单集合
 	 * @param paging

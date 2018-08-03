@@ -6,9 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ORDER</title>
+<title>detail</title>
 </head>
 <body>
-	<a href = "/order/list">订单列表</a>
+name:${order.name}<br>
+price:${order.totalPrice}<br>
+date:${order.date}
 </body>
 </html>
