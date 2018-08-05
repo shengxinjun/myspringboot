@@ -6,9 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ORDER</title>
+<title>index</title>
 </head>
 <body>
+	${message }
 	<a href = "/order/list">订单列表</a>
+	<a href = "/order/getValue">redisTest</a>
 </body>
 </html>
