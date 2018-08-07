@@ -14,4 +14,10 @@ public interface Constants {
 		
 		int LARGE_SIZE = 20;
 	}
+	
+	interface result{
+		int ok = 1;
+		
+		int err = 0;
+	}
 }

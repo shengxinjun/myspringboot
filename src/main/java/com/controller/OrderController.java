@@ -4,12 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.constrants.Constants;
 import com.domain.Order;
+import com.google.gson.Gson;
+import com.model.OrderForm;
+import com.model.Result;
 import com.mysql.cj.util.StringUtils;
 import com.service.OrderService;
 import com.util.Paging;
@@ -66,4 +70,13 @@ public class OrderController {
 		return "orderList";
 	}
 	
+	@ResponseBody
+	@PostMapping("/doadd")
+	Result doAdd(@RequestParam(required=false) String obj) {
+		//将json转化为object
+		Gson gson = new Gson();
+		OrderForm orderForm = gson.fromJson(obj, OrderForm.class);
+		System.out.println(orderForm);
+		return Result.ok();
+	}
 }

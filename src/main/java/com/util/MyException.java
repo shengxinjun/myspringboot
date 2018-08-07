@@ -1,6 +1,6 @@
 package com.util;
 
-import com.domain.CodeMessage;
+import com.model.CodeMessage;
 /**
  * 自定义异常类
  * @author sheng

@@ -13,7 +13,7 @@ import org.jooq.impl.DAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.domain.CodeMessage;
+import com.model.CodeMessage;
 import sxj.db.tables.records.CodeMessageRecord;
 import static sxj.db.Tables.CODE_MESSAGE;
 
