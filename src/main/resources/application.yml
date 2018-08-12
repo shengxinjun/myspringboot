@@ -15,7 +15,7 @@ spring:
     sql-dialect: MYSQL
   mvc:
     view:
-      prefix: /WEB-INF/jsp/
+      prefix: /WEB-INF/
       suffix: .jsp
 
   

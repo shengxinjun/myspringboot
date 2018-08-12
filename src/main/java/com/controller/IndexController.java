@@ -18,6 +18,11 @@ public class IndexController {
 	@RequestMapping("")
 	String index() {
 		
-		return "index";
+		return "jsp/index";
+	}
+	@RequestMapping("/model")
+	String turnToModel(){
+		
+		return "jsp/model";
 	}
 }

@@ -39,7 +39,6 @@ public class OrderController {
 			String message = "1分钟内不可重复访问";
 			System.out.println(message);
 			model.addAttribute("message", message);
-			return "index";
 		}else{
 			jedis.set(username, "用redis设置1分钟内不可重复访问");
 			jedis.expire(username, 60);
@@ -50,7 +49,7 @@ public class OrderController {
 		paging.setPageSize(Constants.pageSize.SMALL_SIZE);
 		paging = orderService.orderList(paging);
 		model.addAttribute("paging", paging);
-		return "orderList";
+		return "jsp/orderList";
 	}
 	
 	@RequestMapping("/findOrderById/{id}")
@@ -58,7 +57,7 @@ public class OrderController {
 		
 		Order order = orderService.findOrderById(id); 
 		model.addAttribute("order", order);
-		return "orderDetail";
+		return "jsp/orderDetail";
 	}
 	
 	@RequestMapping("/getValue")
@@ -67,7 +66,7 @@ public class OrderController {
 		Jedis jedis = redisUtil.getJedis();
 		String name = jedis.get("name");
 		model.addAttribute("name", name);
-		return "orderList";
+		return "jsp/orderList";
 	}
 	
 	@ResponseBody

@@ -1,5 +1,0 @@
-#script()
-    require(['page/header/base'], function(base) {
-        base.init();
-    });
-#end
