@@ -7,8 +7,12 @@ $(function() {
 		order.desc = $("#desc").val();
 		order.date = $("#date").val();
 		var str = JSON.stringify(order);
+		var urls = "/order/doAdd";
+		if($("#id").val() != ""){
+			urls = "/order/doUpdate";
+		}
 		$.ajax({
-			url : '/order/doUpdate',
+			url : urls,
 			type : 'POST',
 			dataType : 'json',
 			data : {

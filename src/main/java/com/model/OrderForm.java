@@ -1,13 +1,12 @@
 package com.model;
 
-import java.sql.Date;
 
 public class OrderForm {
 	private Integer id;
     private String  name;
     private String  totalPrice;
     private String  desc;
-    private String    date;
+    private String  date;
 	public Integer getId() {
 		return id;
 	}
@@ -20,6 +19,7 @@ public class OrderForm {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getTotalPrice() {
 		return totalPrice;
 	}

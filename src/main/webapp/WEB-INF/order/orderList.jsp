@@ -418,6 +418,10 @@
 			
 						</tbody>
 					</table>
+					<div class="ui-pg-div">
+					<a href='/order/turnToAdd'><i class="ace-icon fa fa-plus-circle bigger-120 green"></i></a>
+						
+					</div>
 				</div>
 			</div>
 		</div>

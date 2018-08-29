@@ -44,6 +44,12 @@ public class OrderServiceImpl implements OrderService {
 		orderDao.update(order);
 		
 	}
+
+	@Override
+	public void insert(Order order) {
+		orderDao.insert(order);
+		
+	}
 	
 	
 }

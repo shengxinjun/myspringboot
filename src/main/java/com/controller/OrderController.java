@@ -80,13 +80,35 @@ public class OrderController {
 		return "order/orderList";
 	}
 	
+	@RequestMapping("/turnToAdd")
+	String turnToAdd(){
+		
+		return "order/orderDetail";
+	}
+	
 	@ResponseBody
-	@PostMapping("/doadd")
+	@PostMapping("/doAdd")
 	Result doAdd(@RequestParam(required=false) String obj) {
 		//将json转化为object
 		Gson gson = new Gson();
 		OrderForm orderForm = gson.fromJson(obj, OrderForm.class);
-		System.out.println(orderForm);
+		Order order = new Order();
+		order.setName(orderForm.getName());
+		order.setDesc(orderForm.getDesc());
+		if(!StringUtils.isEmpty(orderForm.getTotalPrice())){
+			order.setTotalPrice(Double.parseDouble(orderForm.getTotalPrice()));
+		}
+		if (!StringUtils.isEmpty(orderForm.getDate())) {
+			Date date = null;
+			try {
+				date = DateUtil.date(orderForm.getDate());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			order.setDate(date);
+		}
+		orderService.insert(order);
 		return Result.ok();
 	}
 	
@@ -98,6 +120,10 @@ public class OrderController {
 		OrderForm orderForm = gson.fromJson(obj, OrderForm.class);
 		Order order = orderService.findOrderById(orderForm.getId());
 		order.setName(orderForm.getName());
+		order.setDesc(orderForm.getDesc());
+		if(!StringUtils.isEmpty(orderForm.getTotalPrice())){
+			order.setTotalPrice(Double.parseDouble(orderForm.getTotalPrice()));
+		}
 		if (!StringUtils.isEmpty(orderForm.getDate())) {
 			Date date = null;
 			try {

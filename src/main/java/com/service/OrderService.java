@@ -17,4 +17,6 @@ public interface OrderService {
 	
 	void updateOrder(Order order);
 	
+	void insert(Order order);
+	
 }
