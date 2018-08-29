@@ -1,8 +1,12 @@
 package com.controller;
 
+import java.text.ParseException;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +18,8 @@ import com.domain.Order;
 import com.google.gson.Gson;
 import com.model.OrderForm;
 import com.model.Result;
-import com.mysql.cj.util.StringUtils;
 import com.service.OrderService;
+import com.util.DateUtil;
 import com.util.Paging;
 import com.util.RedisUtil;
 
@@ -49,7 +53,7 @@ public class OrderController {
 		paging.setPageSize(Constants.pageSize.SMALL_SIZE);
 		paging = orderService.orderList(paging);
 		model.addAttribute("paging", paging);
-		return "jsp/orderList";
+		return "order/orderList";
 	}
 	
 	@RequestMapping("/findOrderById/{id}")
@@ -57,7 +61,7 @@ public class OrderController {
 		
 		Order order = orderService.findOrderById(id); 
 		model.addAttribute("order", order);
-		return "jsp/orderDetail";
+		return "order/orderDetail";
 	}
 	
 	@RequestMapping("/deleteOrderById/{id}")
@@ -73,7 +77,7 @@ public class OrderController {
 		Jedis jedis = redisUtil.getJedis();
 		String name = jedis.get("name");
 		model.addAttribute("name", name);
-		return "jsp/orderList";
+		return "order/orderList";
 	}
 	
 	@ResponseBody
@@ -83,6 +87,28 @@ public class OrderController {
 		Gson gson = new Gson();
 		OrderForm orderForm = gson.fromJson(obj, OrderForm.class);
 		System.out.println(orderForm);
+		return Result.ok();
+	}
+	
+	@ResponseBody
+	@PostMapping("/doUpdate")
+	Result doUpdate(@RequestParam(required=false) String obj) {
+		//将json转化为object
+		Gson gson = new Gson();
+		OrderForm orderForm = gson.fromJson(obj, OrderForm.class);
+		Order order = orderService.findOrderById(orderForm.getId());
+		order.setName(orderForm.getName());
+		if (!StringUtils.isEmpty(orderForm.getDate())) {
+			Date date = null;
+			try {
+				date = DateUtil.date(orderForm.getDate());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			order.setDate(date);
+		}
+		orderService.updateOrder(order);
 		return Result.ok();
 	}
 }

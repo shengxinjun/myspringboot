@@ -38,6 +38,12 @@ public class OrderServiceImpl implements OrderService {
 		orderDao.deleteById(id);
 		
 	}
+
+	@Override
+	public void updateOrder(Order order) {
+		orderDao.update(order);
+		
+	}
 	
 	
 }
