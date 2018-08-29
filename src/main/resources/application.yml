@@ -18,6 +18,6 @@ spring:
       prefix: /WEB-INF/
       suffix: .jsp
 
-  
+quartzTask: false  
     
 

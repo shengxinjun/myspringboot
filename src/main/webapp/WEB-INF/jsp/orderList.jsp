@@ -383,73 +383,46 @@
 		</div>
 
 		<!-- 中部内容 -->
-
-
 		<div class="main-content">
 			<div class="main-content-inner">
 				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
-						</li>
-						<li class="active">list</li>
-					</ul>
-					<!-- /.breadcrumb -->
-
-					<div class="nav-search" id="nav-search">
-						<form class="form-search">
-							<span class="input-icon"> <input type="text"
-								placeholder="Search ..." class="nav-search-input"
-								id="nav-search-input" autocomplete="off" /> <i
-								class="ace-icon fa fa-search nav-search-icon"></i>
-							</span>
-						</form>
-					</div>
-					<!-- /.nav-search -->
+					<table class="table">
+						<caption>订单列表</caption>
+						<thead>
+							<tr>
+								<td>名称</td>
+								<td>总价</td>
+								<td>价格浮动</td>
+								<td>日期</td>
+								<td>操作</td>
+							</tr>
+						</thead>
+						<tbody>
+							
+							<c:forEach items="${paging.list}" var="item" varStatus="status">
+								<tr>
+									<td>${item.name}</td>
+									<td>${item.totalPrice}</td>
+									<td>${item.desc}</td>
+									<td>${item.date}</td>
+									<td>
+										<button class = "btn btn-xs btn-info"  onclick="location.href='/order/findOrderById/${item.id}'">
+											<i class="ace-icon fa fa-pencil bigger-120"></i>
+										</button>
+										<button class = "btn btn-xs btn-danger" onclick="location.href='/order/deleteOrderById/${item.id}'">
+											<i class="ace-icon fa fa-trash-o bigger-120"></i>
+										</button>
+									</td>
+								</tr>
+							</c:forEach>
+			
+						</tbody>
+					</table>
 				</div>
-				<div class="page-content">
-					<div class="col-xs-12" id="ace-settings-container">
-						<div class="ui-jqgrid-view" role="grid">
-							<!-- 蓝色标签 -->
-							<div
-								class="ui-jqgrid-titlebar ui-jqgrid-caption ui-widget-header ui-corner-top ui-helper-clearfix">
-								<span class="ui-jqgrid-title"><table>
-										<thead>
-											<tr>
-												<th style="width: 135px;heigth:24px;font-size: 24px;font-family: '微软雅黑'">name</th>
-												<th style="width: 135px;heigth:24px;font-size: 24px;font-family: '微软雅黑'">totalPrice</th>
-												<th style="width: 135px;heigth:24px;font-size: 24px;font-family: '微软雅黑'">desc</th>
-												<th style="width: 135px;heigth:24px;font-size: 24px;font-family: '微软雅黑'">date</th>
-											</tr>
-										</thead>
-									</table></span>
-							</div>
-
-							<!-- 表体 -->
-							<div>
-								<div style="position: relative;">
-									<table>
-										<tbody>
-											<c:forEach items="${paging.list}" var="item"
-												varStatus="status">
-												<tr onclick="location.href='/order/findOrderById/${item.id}'">
-													<td style="width: 135px;heigth:24px;font-size: 20px;font-family: '微软雅黑'">${item.name}</td>
-													<td style="width: 135px;heigth:24px;font-size: 20px;font-family: '微软雅黑'">${item.totalPrice}</td>
-													<td style="width: 135px;heigth:24px;font-size: 20px;font-family: '微软雅黑'">${item.desc}</td>
-													<td style="width: 135px;heigth:24px;font-size: 20px;font-family: '微软雅黑'">${item.date}</td>
-
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-
 			</div>
 		</div>
+
+
 
 		<!-- 中部内容 -->
 

@@ -13,4 +13,6 @@ public interface OrderService {
 	
 	Paging<Order> orderList(Paging paging);
 	
+	void deleteOrderById(Integer id);
+	
 }

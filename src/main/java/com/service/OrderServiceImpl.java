@@ -32,6 +32,12 @@ public class OrderServiceImpl implements OrderService {
 	public Paging<Order> orderList(Paging paging) {
 		return orderDao.orderList(paging);
 	}
+
+	@Override
+	public void deleteOrderById(Integer id) {
+		orderDao.deleteById(id);
+		
+	}
 	
 	
 }

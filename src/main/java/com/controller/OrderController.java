@@ -32,7 +32,7 @@ public class OrderController {
 	
 	@RequestMapping("/list")
 	String list(Model model,@RequestParam(required = false)String keyword,@RequestParam(defaultValue="1")Integer pageNumber) {
-		Jedis jedis = redisUtil.getJedis();
+		/*Jedis jedis = redisUtil.getJedis();
 		String username= "shengxinjun";
 		String velidate = jedis.get(username);
 		if(!StringUtils.isNullOrEmpty(velidate)){
@@ -42,7 +42,7 @@ public class OrderController {
 		}else{
 			jedis.set(username, "用redis设置1分钟内不可重复访问");
 			jedis.expire(username, 60);
-		}
+		}*/
 		Paging<Order> paging = new Paging<>();
 		paging.setKeyword(keyword);
 		paging.setPageNumber(pageNumber);
@@ -58,6 +58,13 @@ public class OrderController {
 		Order order = orderService.findOrderById(id); 
 		model.addAttribute("order", order);
 		return "jsp/orderDetail";
+	}
+	
+	@RequestMapping("/deleteOrderById/{id}")
+	String deleteOrderById(Model model,@PathVariable Integer id) {
+		
+		orderService.deleteOrderById(id); 
+		return "redirect:/order/list";
 	}
 	
 	@RequestMapping("/getValue")

@@ -1,5 +1,6 @@
 package com.service.quartz;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@ConditionalOnProperty(name = "quartzTask", havingValue = "true")
 public class QuartzService {
 	/**
 	 * 启动之后，每10s执行一次
