@@ -1,5 +1,8 @@
 package com.constrants;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public interface Constants {
 	/**
 	 * 
@@ -19,5 +22,9 @@ public interface Constants {
 		int ok = 1;
 		
 		int err = 0;
+	}
+	
+	interface EXCEL_HEAD{
+		List<String> order = new ArrayList<>();
 	}
 }

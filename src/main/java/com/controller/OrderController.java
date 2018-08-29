@@ -1,7 +1,13 @@
 package com.controller;
 
+import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +24,10 @@ import com.domain.Order;
 import com.google.gson.Gson;
 import com.model.OrderForm;
 import com.model.Result;
+import com.mysql.cj.x.protobuf.Mysqlx.Ok;
 import com.service.OrderService;
 import com.util.DateUtil;
+import com.util.ExcelUtils;
 import com.util.Paging;
 import com.util.RedisUtil;
 
@@ -136,5 +144,37 @@ public class OrderController {
 		}
 		orderService.updateOrder(order);
 		return Result.ok();
+	}
+	
+	@RequestMapping("/export")
+	@ResponseBody
+	Result exportOrder(HttpServletRequest request,HttpServletResponse response,@RequestParam(required = false)String keyword,@RequestParam(defaultValue="1")Integer pageNumber){
+		
+		Paging<Order> paging = new Paging<>();
+		paging.setKeyword(keyword);
+		paging.setPageNumber(pageNumber);
+		paging.setPageSize(Constants.pageSize.SMALL_SIZE);
+		paging = orderService.orderList(paging);
+		List<String> headers = new ArrayList<>();
+		headers.add("名称");
+		headers.add("总价");
+		headers.add("价格浮动");
+		headers.add("日期");
+		List<List<Object>> datas = new ArrayList<>();
+		for(Order order: paging.getList()){
+			List<Object> obj = new ArrayList<>();
+			obj.add(order.getName());
+			obj.add(order.getTotalPrice());
+			obj.add(order.getDesc());
+			obj.add(order.getDate());
+			datas.add(obj);
+		}
+		try {
+			ExcelUtils.generateCreateExcel(headers, datas, null, request, response);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new Result(1, "");
 	}
 }

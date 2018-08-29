@@ -52,6 +52,7 @@ public final class ExcelUtils {
 		/*// 文件名处理一下
 		fileName = (StringUtils.isEmpty(fileName) ? UUID.randomUUID().toString() : fileName) + "."
 				+ XSSFWorkbookType.XLSX.getExtension();*/
+		fileName = "xxx.XLSX";
 		String userAgent = request.getHeader("User-Agent");
         if (userAgent.toUpperCase().contains("MSIE") || userAgent.toUpperCase().contains("RV:11")) {
             fileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8.displayName());
