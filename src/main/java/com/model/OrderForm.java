@@ -1,7 +1,11 @@
 package com.model;
 
+import java.io.Serializable;
 
-public class OrderForm {
+public class OrderForm implements Serializable{
+	
+	private static final long serialVersionUID = -1801367106;
+	//使用gson时，前端传过来的数值类型的字段不可以为空，要么就不传。否则会报empty string错误。
 	private Integer id;
     private String  name;
     private String  totalPrice;

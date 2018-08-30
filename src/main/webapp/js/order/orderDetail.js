@@ -1,7 +1,7 @@
 $(function() {
 	$("#submit").click(function() {
 		var order = {};
-		order.id = $("#id").val();
+		
 		order.name = $("#name").val();
 		order.totalPrice = $("#totalPrice").val();
 		order.desc = $("#desc").val();
@@ -10,6 +10,7 @@ $(function() {
 		var urls = "/order/doAdd";
 		if($("#id").val() != ""){
 			urls = "/order/doUpdate";
+			order.id = $("#id").val();
 		}
 		$.ajax({
 			url : urls,
