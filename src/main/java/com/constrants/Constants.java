@@ -2,6 +2,9 @@ package com.constrants;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public interface Constants {
 	/**
@@ -25,6 +28,6 @@ public interface Constants {
 	}
 	
 	interface EXCEL_HEAD{
-		List<String> order = new ArrayList<>();
+		List<String> order =  Stream.of("名称","总价","价格浮动","日期").collect(Collectors.toList());
 	}
 }

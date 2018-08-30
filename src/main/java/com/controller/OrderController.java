@@ -155,11 +155,7 @@ public class OrderController {
 		paging.setPageNumber(pageNumber);
 		paging.setPageSize(Constants.pageSize.SMALL_SIZE);
 		paging = orderService.orderList(paging);
-		List<String> headers = new ArrayList<>();
-		headers.add("名称");
-		headers.add("总价");
-		headers.add("价格浮动");
-		headers.add("日期");
+		List<String> headers = Constants.EXCEL_HEAD.order;
 		List<List<Object>> datas = new ArrayList<>();
 		for(Order order: paging.getList()){
 			List<Object> obj = new ArrayList<>();
