@@ -388,6 +388,15 @@
 				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 					<table class="table">
 						<caption>订单列表</caption>
+						<div class="nav-search">
+						<form class="form-search">
+							<span class="input-icon">
+								<input placeholder="Search ..." type="text" class="nav-search-input"></input>
+								<i class="ace-icon fa fa-search nav-search-icon" id = "search"></i>
+							</span>
+						</form>
+						</div>
+						
 						<thead>
 							<tr>
 								<td><input type="checkbox" id ="selectAll"></td>
@@ -430,7 +439,11 @@
 					</button>
 					<button class = "btn" onclick="location.href='/order/export'">
 						<i class="ace-icon fa fa-share bigger-200"></i>
-					</button>	
+					</button>
+					 <div class="btn-group btn-corner" id="pages">
+                             <input type="hidden" value="${paging.totalCount }" id="totalCount"/>
+                             <input type="hidden" value="${pageNumber }" id="pageNumber"/>
+                         </div>
 					</div>
 				</div>
 			</div>

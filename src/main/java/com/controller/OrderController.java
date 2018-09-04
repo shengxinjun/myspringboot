@@ -58,9 +58,10 @@ public class OrderController {
 		Paging<Order> paging = new Paging<>();
 		paging.setKeyword(keyword);
 		paging.setPageNumber(pageNumber);
-		paging.setPageSize(Constants.pageSize.SMALL_SIZE);
+		paging.setPageSize(Constants.pageSize.MIDDLE_SIZE);
 		paging = orderService.orderList(paging);
 		model.addAttribute("paging", paging);
+		model.addAttribute("pageNumber", pageNumber);
 		return "order/orderList";
 	}
 	
