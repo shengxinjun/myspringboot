@@ -78,6 +78,28 @@ public class OrderController {
 		orderService.deleteOrderById(id); 
 		return "redirect:/order/list";
 	}
+	/**
+	 * 批量删除
+	 * @param list
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("/deleteOrderList")
+	Result deleteOrderList(String list) {
+		Result result = new Result();
+		String[] ids = null;
+		List<Integer> orderIds = new ArrayList<>();
+		ids = list.split(",");
+		if (!StringUtils.isEmpty(ids)) {
+			for(String id :ids) {
+				Integer temp = Integer.parseInt(id);
+				orderIds.add(temp);
+			}
+		}
+		orderService.deleteOrdersByIds(orderIds);
+		result.setCode(1);
+		return result;
+	}
 	
 	@RequestMapping("/getValue")
 	String getRedisValue(Model model){

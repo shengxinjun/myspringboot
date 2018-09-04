@@ -390,6 +390,7 @@
 						<caption>订单列表</caption>
 						<thead>
 							<tr>
+								<td><input type="checkbox" id ="selectAll"></td>
 								<td>名称</td>
 								<td>总价</td>
 								<td>价格浮动</td>
@@ -400,7 +401,9 @@
 						<tbody>
 							
 							<c:forEach items="${paging.list}" var="item" varStatus="status">
+								<input class="choose" type="hidden" value="${item.name}"/>
 								<tr>
+									<td><input type="checkbox" name="order" value="${item.id}"></td>
 									<td>${item.name}</td>
 									<td>${item.totalPrice}</td>
 									<td>${item.desc}</td>
@@ -419,7 +422,12 @@
 						</tbody>
 					</table>
 					<div class="ui-pg-div">
-					<a href='/order/turnToAdd'><i class="ace-icon fa fa-plus-circle bigger-120 green"></i></a>
+					<button class = "btn" onclick="location.href='/order/turnToAdd'">
+					 <i class="ace-icon fa fa-plus-circle bigger-200 green"></i>
+					</button>
+					<button class = "btn" id="delBtn">
+					 <i class="ace-icon fa fa-trash-o bigger-200"></i>
+					</button>
 						
 					</div>
 				</div>
@@ -497,7 +505,7 @@
 	<script
 		src="${pageContext.request.contextPath }/assets/js/ace-elements.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/ace.min.js"></script>
-
+	<script src="${pageContext.request.contextPath }/js/order/orderList.js"></script>
 
 </body>
 </html>

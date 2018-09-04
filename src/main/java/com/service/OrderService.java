@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.dao.OrderDao;
@@ -18,5 +20,7 @@ public interface OrderService {
 	void updateOrder(Order order);
 	
 	void insert(Order order);
+	
+	void deleteOrdersByIds(List<Integer> ids);
 	
 }
