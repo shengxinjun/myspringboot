@@ -428,7 +428,9 @@
 					<button class = "btn" id="delBtn">
 					 <i class="ace-icon fa fa-trash-o bigger-200"></i>
 					</button>
-						
+					<button class = "btn" onclick="location.href='/order/export'">
+						<i class="ace-icon fa fa-share bigger-200"></i>
+					</button>	
 					</div>
 				</div>
 			</div>

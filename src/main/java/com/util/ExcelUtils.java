@@ -49,10 +49,9 @@ public final class ExcelUtils {
 			HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Workbook workbook = generateCreateExcel(headers, datas);
 		
-		/*// 文件名处理一下
+		// 文件名处理一下
 		fileName = (StringUtils.isEmpty(fileName) ? UUID.randomUUID().toString() : fileName) + "."
-				+ XSSFWorkbookType.XLSX.getExtension();*/
-		fileName = "xxx.XLSX";
+				+"xlsx";
 		String userAgent = request.getHeader("User-Agent");
         if (userAgent.toUpperCase().contains("MSIE") || userAgent.toUpperCase().contains("RV:11")) {
             fileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8.displayName());
