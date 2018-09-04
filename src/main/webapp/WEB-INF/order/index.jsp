@@ -4,757 +4,331 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
 <head>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta charset="utf-8" />
-<title>my admin</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta charset="utf-8" />
+		<title>订单管理系统</title>
 
-<meta name="description" content="overview &amp; stats" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="description" content="User login page" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-<!-- bootstrap & fontawesome -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
-<!-- text fonts -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/css/fonts.googleapis.com.css" />
+		<!-- text fonts -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/fonts.googleapis.com.css" />
 
-<!-- ace styles -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/css/ace.min.css"
-	class="ace-main-stylesheet" id="main-ace-style" />
+		<!-- ace styles -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/ace.min.css" />
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/css/ace-skins.min.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/css/ace-rtl.min.css" />
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/ace-part2.min.css" />
+		<![endif]-->
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/ace-rtl.min.css" />
 
-<!-- inline styles related to this page -->
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/ace-ie.min.css" />
+		<![endif]-->
 
-<!-- ace settings handler -->
-<script
-	src="${pageContext.request.contextPath }/assets/js/ace-extra.min.js"></script>
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+		<!--[if lte IE 8]>
+		<script src="${pageContext.request.contextPath }/assets/js/html5shiv.min.js"></script>
+		<script src="${pageContext.request.contextPath }/assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+<body class="login-layout">
+		<div class="main-container">
+			<div class="main-content">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1">
+						<div class="login-container">
+							<div class="center">
+								<h1>
+									<i class="ace-icon fa fa-leaf green"></i>
+									<span class="red">订单</span>
+									<span class="white" id="id-text2">管理系统</span>
+								</h1>
+								<h4 class="blue" id="id-company-text">&copy; Company Name</h4>
+							</div>
 
-</head>
+							<div class="space-6"></div>
 
-<body class="no-skin">
-	<div id="navbar" class="navbar navbar-default          ace-save-state">
-		<div class="navbar-container ace-save-state" id="navbar-container">
-			<button type="button" class="navbar-toggle menu-toggler pull-left"
-				id="menu-toggler" data-target="#sidebar">
-				<span class="sr-only">Toggle sidebar</span> <span class="icon-bar"></span>
+							<div class="position-relative">
+								<div id="login-box" class="login-box visible widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header blue lighter bigger">
+												<i class="ace-icon fa fa-coffee green"></i>
+												Please Enter Your Information
+											</h4>
 
-				<span class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
+											<div class="space-6"></div>
 
-			<div class="navbar-header pull-left">
-				<a href="${pageContext.request.contextPath }/index.html"
-					class="navbar-brand"> <small> <i class="fa fa-leaf"></i>
-						my admin
-				</small>
-				</a>
-			</div>
+											<form>
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="telephone" id="telephone"/>
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>
 
-			<div class="navbar-buttons navbar-header pull-right"
-				role="navigation">
-				<ul class="nav ace-nav">
-					<li class="grey dropdown-modal"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-tasks"></i> <span class="badge badge-grey">4</span>
-					</a>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="Password" id="password"/>
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+													</label>
 
-						<ul
-							class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i class="ace-icon fa fa-check"></i>
-								4 Tasks to complete</li>
+													<div class="space"></div>
 
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar">
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Software Update</span> <span
-													class="pull-right">65%</span>
+													<div class="clearfix">
+														<label class="inline">
+															<input type="checkbox" class="ace" id="remember"/>
+															<span class="lbl"> Remember Me</span>
+														</label>
+
+														<button type="button" class="width-35 pull-right btn btn-sm btn-primary" id="login">
+															<i class="ace-icon fa fa-key"></i>
+															<span class="bigger-110">Login</span>
+														</button>
+													</div>
+
+													<div class="space-4"></div>
+												</fieldset>
+											</form>
+
+											<div class="social-or-login center">
+												<span class="bigger-110">Or Login Using</span>
 											</div>
 
-											<div class="progress progress-mini">
-												<div style="width: 65%" class="progress-bar"></div>
-											</div>
-									</a></li>
+											<div class="space-6"></div>
 
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Hardware Upgrade</span> <span
-													class="pull-right">35%</span>
-											</div>
+											<div class="social-login center">
+												<a class="btn btn-primary">
+													<i class="ace-icon fa fa-facebook"></i>
+												</a>
 
-											<div class="progress progress-mini">
-												<div style="width: 35%"
-													class="progress-bar progress-bar-danger"></div>
-											</div>
-									</a></li>
+												<a class="btn btn-info">
+													<i class="ace-icon fa fa-twitter"></i>
+												</a>
 
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Unit Testing</span> <span
-													class="pull-right">15%</span>
+												<a class="btn btn-danger">
+													<i class="ace-icon fa fa-google-plus"></i>
+												</a>
 											</div>
+										</div><!-- /.widget-main -->
 
-											<div class="progress progress-mini">
-												<div style="width: 15%"
-													class="progress-bar progress-bar-warning"></div>
-											</div>
-									</a></li>
-
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left">Bug Fixes</span> <span
-													class="pull-right">90%</span>
+										<div class="toolbar clearfix">
+											<div>
+												<a href="#" data-target="#forgot-box" class="forgot-password-link">
+													<i class="ace-icon fa fa-arrow-left"></i>
+													I forgot my password
+												</a>
 											</div>
 
-											<div class="progress progress-mini progress-striped active">
-												<div style="width: 90%"
-													class="progress-bar progress-bar-success"></div>
+											<div>
+												<a href="#" data-target="#signup-box" class="user-signup-link">
+													I want to register
+													<i class="ace-icon fa fa-arrow-right"></i>
+												</a>
 											</div>
-									</a></li>
-								</ul>
-							</li>
+										</div>
+									</div><!-- /.widget-body -->
+								</div><!-- /.login-box -->
 
-							<li class="dropdown-footer"><a href="#"> See tasks with
-									details <i class="ace-icon fa fa-arrow-right"></i>
-							</a></li>
-						</ul></li>
+								<div id="forgot-box" class="forgot-box widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header red lighter bigger">
+												<i class="ace-icon fa fa-key"></i>
+												Retrieve Password
+											</h4>
 
-					<li class="purple dropdown-modal"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-bell icon-animated-bell"></i> <span
-							class="badge badge-important">8</span>
-					</a>
+											<div class="space-6"></div>
+											<p>
+												Enter your email and to receive instructions
+											</p>
 
-						<ul
-							class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i
-								class="ace-icon fa fa-exclamation-triangle"></i> 8 Notifications
-							</li>
+											<form>
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" class="form-control" placeholder="Email" />
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+													</label>
 
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar navbar-pink">
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-pink fa fa-comment"></i> New
-													Comments
-												</span> <span class="pull-right badge badge-info">+12</span>
-											</div>
-									</a></li>
+													<div class="clearfix">
+														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+															<i class="ace-icon fa fa-lightbulb-o"></i>
+															<span class="bigger-110">Send Me!</span>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div><!-- /.widget-main -->
 
-									<li><a href="#"> <i
-											class="btn btn-xs btn-primary fa fa-user"></i> Bob just
-											signed up as an editor ...
-									</a></li>
+										<div class="toolbar center">
+											<a href="#" data-target="#login-box" class="back-to-login-link">
+												Back to login
+												<i class="ace-icon fa fa-arrow-right"></i>
+											</a>
+										</div>
+									</div><!-- /.widget-body -->
+								</div><!-- /.forgot-box -->
 
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-													New Orders
-												</span> <span class="pull-right badge badge-success">+8</span>
-											</div>
-									</a></li>
+								<div id="signup-box" class="signup-box widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header green lighter bigger">
+												<i class="ace-icon fa fa-users blue"></i>
+												New User Registration
+											</h4>
 
-									<li><a href="#">
-											<div class="clearfix">
-												<span class="pull-left"> <i
-													class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-													Followers
-												</span> <span class="pull-right badge badge-info">+11</span>
-											</div>
-									</a></li>
-								</ul>
-							</li>
+											<div class="space-6"></div>
+											<p> Enter your details to begin: </p>
 
-							<li class="dropdown-footer"><a href="#"> See all
-									notifications <i class="ace-icon fa fa-arrow-right"></i>
-							</a></li>
-						</ul></li>
+											<form>
+												<fieldset>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" class="form-control" placeholder="Email" />
+															<i class="ace-icon fa fa-envelope"></i>
+														</span>
+													</label>
 
-					<li class="green dropdown-modal"><a data-toggle="dropdown"
-						class="dropdown-toggle" href="#"> <i
-							class="ace-icon fa fa-envelope icon-animated-vertical"></i> <span
-							class="badge badge-success">5</span>
-					</a>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="Username" />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>
 
-						<ul
-							class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-							<li class="dropdown-header"><i
-								class="ace-icon fa fa-envelope-o"></i> 5 Messages</li>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="Password" />
+															<i class="ace-icon fa fa-lock"></i>
+														</span>
+													</label>
 
-							<li class="dropdown-content">
-								<ul class="dropdown-menu dropdown-navbar">
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath }/assets/images/avatars/avatar.png" class="msg-photo"
-											alt="Alex's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Alex:</span>
-													Ciao sociis natoque penatibus et auctor ...
-											</span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>a moment
-														ago</span>
-											</span>
-										</span>
-									</a></li>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" class="form-control" placeholder="Repeat password" />
+															<i class="ace-icon fa fa-retweet"></i>
+														</span>
+													</label>
 
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath }/assets/images/avatars/avatar3.png" class="msg-photo"
-											alt="Susan's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Susan:</span>
-													Vestibulum id ligula porta felis euismod ...
-											</span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>20 minutes
-														ago</span>
-											</span>
-										</span>
-									</a></li>
+													<label class="block">
+														<input type="checkbox" class="ace" />
+														<span class="lbl">
+															I accept the
+															<a href="#">User Agreement</a>
+														</span>
+													</label>
 
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath }/assets/images/avatars/avatar4.png" class="msg-photo"
-											alt="Bob's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Bob:</span>
-													Nullam quis risus eget urna mollis ornare ...
-											</span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>3:15 pm</span>
-											</span>
-										</span>
-									</a></li>
+													<div class="space-24"></div>
 
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath }/assets/images/avatars/avatar2.png" class="msg-photo"
-											alt="Kate's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Kate:</span>
-													Ciao sociis natoque eget urna mollis ornare ...
-											</span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>1:33 pm</span>
-											</span>
-										</span>
-									</a></li>
+													<div class="clearfix">
+														<button type="reset" class="width-30 pull-left btn btn-sm">
+															<i class="ace-icon fa fa-refresh"></i>
+															<span class="bigger-110">Reset</span>
+														</button>
 
-									<li><a href="#" class="clearfix"> <img
-											src="${pageContext.request.contextPath }/assets/images/avatars/avatar5.png" class="msg-photo"
-											alt="Fred's Avatar" /> <span class="msg-body"> <span
-												class="msg-title"> <span class="blue">Fred:</span>
-													Vestibulum id penatibus et auctor ...
-											</span> <span class="msg-time"> <i
-													class="ace-icon fa fa-clock-o"></i> <span>10:09 am</span>
-											</span>
-										</span>
-									</a></li>
-								</ul>
-							</li>
+														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
+															<span class="bigger-110">Register</span>
 
-							<li class="dropdown-footer"><a
-								href="#"> See
-									all messages <i class="ace-icon fa fa-arrow-right"></i>
-							</a></li>
-						</ul></li>
+															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div>
 
-					<li class="light-blue dropdown-modal"><a
-						data-toggle="dropdown" href="#" class="dropdown-toggle"> <img
-							class="nav-user-photo" src="${pageContext.request.contextPath }/assets/images/avatars/user.jpg"
-							alt="Jason's Photo" /> <span class="user-info"> <small>Welcome,</small>
-								Jason
-						</span> <i class="ace-icon fa fa-caret-down"></i>
-					</a>
+										<div class="toolbar center">
+											<a href="#" data-target="#login-box" class="back-to-login-link">
+												<i class="ace-icon fa fa-arrow-left"></i>
+												Back to login
+											</a>
+										</div>
+									</div><!-- /.widget-body -->
+								</div><!-- /.signup-box -->
+							</div><!-- /.position-relative -->
 
-						<ul
-							class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-							<li><a href="#"> <i class="ace-icon fa fa-cog"></i>
-									Settings
-							</a></li>
+							<div class="navbar-fixed-top align-right">
+								<br />
+								&nbsp;
+								<a id="btn-login-dark" href="#">Dark</a>
+								&nbsp;
+								<span class="blue">/</span>
+								&nbsp;
+								<a id="btn-login-blur" href="#">Blur</a>
+								&nbsp;
+								<span class="blue">/</span>
+								&nbsp;
+								<a id="btn-login-light" href="#">Light</a>
+								&nbsp; &nbsp; &nbsp;
+							</div>
+						</div>
+					</div><!-- /.col -->
+				</div><!-- /.row -->
+			</div><!-- /.main-content -->
+		</div><!-- /.main-container -->
 
-							<li><a href="#"> <i
-									class="ace-icon fa fa-user"></i> Profile
-							</a></li>
+		<!-- basic scripts -->
 
-							<li class="divider"></li>
+		<!--[if !IE]> -->
+		<script src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>
+		<script src="${pageContext.request.contextPath }/js/login/login.js"></script>
+		<!-- <![endif]-->
 
-							<li><a href="#"> <i class="ace-icon fa fa-power-off"></i>
-									Logout
-							</a></li>
-						</ul></li>
-				</ul>
-			</div>
-		</div>
-		<!-- /.navbar-container -->
-	</div>
-
-	<div class="main-container ace-save-state" id="main-container">
-		<script type="text/javascript">
-			try {
-				ace.settings.loadState('main-container')
-			} catch (e) {
-			}
-		</script>
-		<!-- 左边手风琴 -->
-		<div id="sidebar"
-			class="sidebar                  responsive                    ace-save-state">
-			<script type="text/javascript">
-				try {
-					ace.settings.loadState('sidebar')
-				} catch (e) {
-				}
-			</script>
-
-			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-				<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-					<button class="btn btn-success">
-						<i class="ace-icon fa fa-signal"></i>
-					</button>
-
-					<button class="btn btn-info">
-						<i class="ace-icon fa fa-pencil"></i>
-					</button>
-
-					<button class="btn btn-warning">
-						<i class="ace-icon fa fa-users"></i>
-					</button>
-
-					<button class="btn btn-danger">
-						<i class="ace-icon fa fa-cogs"></i>
-					</button>
-				</div>
-
-				<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-					<span class="btn btn-success"></span> <span class="btn btn-info"></span>
-
-					<span class="btn btn-warning"></span> <span class="btn btn-danger"></span>
-				</div>
-			</div>
-			<!-- /.sidebar-shortcuts -->
-
-			<ul class="nav nav-list">
-				<li class="active"><a href="#"> <i
-						class="menu-icon fa fa-tachometer"></i> <span class="menu-text">
-							menus </span>
-				</a> <b class="arrow"></b></li>
-
-				<li class=""><a href="#" class="dropdown-toggle"> <i
-						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
-							Order</span> <b class="arrow fa fa-angle-down"></b>
-				</a> <b class="arrow"></b>
-
-					<ul class="submenu">
-
-						<li class=""><a href="/order/list"> <i
-								class="menu-icon fa fa-caret-right"></i> order list
-						</a> <b class="arrow"></b></li>
-						<li class=""><a href="/model"> <i
-								class="menu-icon fa fa-caret-right"></i> ace模板
-						</a> <b class="arrow"></b></li>
-
-					</ul></li>
-
-			</ul>
-			<!-- /.nav-list -->
-
-			<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-				<i id="sidebar-toggle-icon"
-					class="ace-icon fa fa-angle-double-left ace-save-state"
-					data-icon1="ace-icon fa fa-angle-double-left"
-					data-icon2="ace-icon fa fa-angle-double-right"></i>
-			</div>
-		</div>
-
-		<!-- 中部内容 -->
-
-
-		<div class="main-content">
-			<div class="main-content-inner">
-				<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-					<ul class="breadcrumb">
-						<li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a>
-						</li>
-						<li class="active">Dashboard</li>
-					</ul>
-					<!-- /.breadcrumb -->
-
-					<div class="nav-search" id="nav-search">
-						<form class="form-search">
-							<span class="input-icon"> <input type="text"
-								placeholder="Search ..." class="nav-search-input"
-								id="nav-search-input" autocomplete="off" /> <i
-								class="ace-icon fa fa-search nav-search-icon"></i>
-							</span>
-						</form>
-					</div>
-					<!-- /.nav-search -->
-				</div>
-				<div class="page-content">
-					<div class="col-xs-12" id="ace-settings-container">
-						<table class="ui-jqgrid-htable ui-common-table"
-							style="width: 100%">
-							<thead>
-								<tr class="ui-jqgrid-labels" role="row">
-									<th class="ui-th-column ui-th-ltr ui-state-default" role="columnheader">name</th>
-									<th class="ui-th-column ui-th-ltr ui-state-default" role="columnheader">totalPrice</th>
-									<th class="ui-th-column ui-th-ltr ui-state-default" role="columnheader">desc</th>
-									<th class="ui-th-column ui-th-ltr ui-state-default" role="columnheader">date</th>
-								</tr>
-							</thead>
-							<c:forEach items="${paging.list}" var="item" varStatus="status">
-								<tr onclick="location.href='/order/findOrderById/${item.id}'">
-									<td class="center" role="gridcell" aria-describedby="grid-table_name"><span class="center">${item.name}</span></td>
-									<td class="center"><span class="center">${item.totalPrice}</span></td>
-									<td class="center"><span class="center">${item.desc}</span></td>
-									<td class="center"><span class="center">${item.date}</span></td>
-								</tr>
-								<br>
-							</c:forEach>
-						</table>
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-
-		<!-- 中部内容 -->
-
-
-		<!-- 底部 -->
-		<div class="footer">
-			<div class="footer-inner">
-				<div class="footer-content">
-					<span class="bigger-120"> <span class="blue bolder">my
-							admin</span> Application &copy; 2018
-					</span> &nbsp; &nbsp; <span class="action-buttons"> <a href="#">
-							<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-					</a> <a href="#"> <i
-							class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-					</a> <a href="#"> <i
-							class="ace-icon fa fa-rss-square orange bigger-150"></i>
-					</a>
-					</span>
-				</div>
-			</div>
-		</div>
-
-		<!-- 底部 -->
-
-		<a href="#" id="btn-scroll-up"
-			class="btn-scroll-up btn btn-sm btn-inverse"> <i
-			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-		</a>
-	</div>
-
-	<!--[if !IE]> -->
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>
-
-	<!-- <![endif]-->
-
-	<!--[if IE]>
+		<!--[if IE]>
 <script src="${pageContext.request.contextPath }/assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
-	<script type="text/javascript">
-		if ('ontouchstart' in document.documentElement)
-			document
-					.write("<script src='${pageContext.request.contextPath }/assets/js/jquery.mobile.custom.min.js'>"
-							+ "<"+"/script>");
-	</script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='${pageContext.request.contextPath }/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
 
-	<!--[if lte IE 8]>
-		  <script src="${pageContext.request.contextPath }/assets/js/excanvas.min.js"></script>
-		<![endif]-->
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery-ui.custom.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.ui.touch-punch.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.easypiechart.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.sparkline.index.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.flot.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.flot.pie.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.flot.resize.min.js"></script>
-
-	<!-- ace scripts -->
-	<script
-		src="${pageContext.request.contextPath }/assets/js/ace-elements.min.js"></script>
-	<script src="${pageContext.request.contextPath }/assets/js/ace.min.js"></script>
-
-	<!-- inline scripts related to this page -->
-	<script type="text/javascript">
-		jQuery(function($) {
-			$('.easy-pie-chart.percentage')
-					.each(
-							function() {
-								var $box = $(this).closest('.infobox');
-								var barColor = $(this).data('color')
-										|| (!$box.hasClass('infobox-dark') ? $box
-												.css('color')
-												: 'rgba(255,255,255,0.95)');
-								var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)'
-										: '#E2E2E2';
-								var size = parseInt($(this).data('size')) || 50;
-								$(this)
-										.easyPieChart(
-												{
-													barColor : barColor,
-													trackColor : trackColor,
-													scaleColor : false,
-													lineCap : 'butt',
-													lineWidth : parseInt(size / 10),
-													animate : ace.vars['old_ie'] ? false
-															: 1000,
-													size : size
-												});
-							})
-
-			$('.sparkline').each(
-					function() {
-						var $box = $(this).closest('.infobox');
-						var barColor = !$box.hasClass('infobox-dark') ? $box
-								.css('color') : '#FFF';
-						$(this).sparkline('html', {
-							tagValuesAttribute : 'data-values',
-							type : 'bar',
-							barColor : barColor,
-							chartRangeMin : $(this).data('min') || 0
-						});
-					});
-
-			//flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
-			//but sometimes it brings up errors with normal resize event handlers
-			$.resize.throttleWindow = false;
-
-			var placeholder = $('#piechart-placeholder').css({
-				'width' : '90%',
-				'min-height' : '150px'
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+			 $(document).on('click', '.toolbar a[data-target]', function(e) {
+				e.preventDefault();
+				var target = $(this).data('target');
+				$('.widget-box.visible').removeClass('visible');//hide others
+				$(target).addClass('visible');//show target
+			 });
 			});
-			var data = [ {
-				label : "social networks",
-				data : 38.7,
-				color : "#68BC31"
-			}, {
-				label : "search engines",
-				data : 24.5,
-				color : "#2091CF"
-			}, {
-				label : "ad campaigns",
-				data : 8.2,
-				color : "#AF4E96"
-			}, {
-				label : "direct traffic",
-				data : 18.6,
-				color : "#DA5430"
-			}, {
-				label : "other",
-				data : 10,
-				color : "#FEE074"
-			} ]
-			function drawPieChart(placeholder, data, position) {
-				$.plot(placeholder, data, {
-					series : {
-						pie : {
-							show : true,
-							tilt : 0.8,
-							highlight : {
-								opacity : 0.25
-							},
-							stroke : {
-								color : '#fff',
-								width : 2
-							},
-							startAngle : 2
-						}
-					},
-					legend : {
-						show : true,
-						position : position || "ne",
-						labelBoxBorderColor : null,
-						margin : [ -30, 15 ]
-					},
-					grid : {
-						hoverable : true,
-						clickable : true
-					}
-				})
-			}
-			drawPieChart(placeholder, data);
-
-			/**
-			we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
-			so that's not needed actually.
-			 */
-			placeholder.data('chart', data);
-			placeholder.data('draw', drawPieChart);
-
-			//pie chart tooltip example
-			var $tooltip = $(
-					"<div class='tooltip top in'><div class='tooltip-inner'></div></div>")
-					.hide().appendTo('body');
-			var previousPoint = null;
-
-			placeholder.on('plothover', function(event, pos, item) {
-				if (item) {
-					if (previousPoint != item.seriesIndex) {
-						previousPoint = item.seriesIndex;
-						var tip = item.series['label'] + " : "
-								+ item.series['percent'] + '%';
-						$tooltip.show().children(0).text(tip);
-					}
-					$tooltip.css({
-						top : pos.pageY + 10,
-						left : pos.pageX + 10
-					});
-				} else {
-					$tooltip.hide();
-					previousPoint = null;
-				}
-
+			
+			
+			
+			//you don't need this, just used for changing background
+			jQuery(function($) {
+			 $('#btn-login-dark').on('click', function(e) {
+				$('body').attr('class', 'login-layout');
+				$('#id-text2').attr('class', 'white');
+				$('#id-company-text').attr('class', 'blue');
+				
+				e.preventDefault();
+			 });
+			 $('#btn-login-light').on('click', function(e) {
+				$('body').attr('class', 'login-layout light-login');
+				$('#id-text2').attr('class', 'grey');
+				$('#id-company-text').attr('class', 'blue');
+				
+				e.preventDefault();
+			 });
+			 $('#btn-login-blur').on('click', function(e) {
+				$('body').attr('class', 'login-layout blur-login');
+				$('#id-text2').attr('class', 'white');
+				$('#id-company-text').attr('class', 'light-blue');
+				
+				e.preventDefault();
+			 });
+			 
 			});
-
-			/////////////////////////////////////
-			$(document).one('ajaxloadstart.page', function(e) {
-				$tooltip.remove();
-			});
-
-			var d1 = [];
-			for (var i = 0; i < Math.PI * 2; i += 0.5) {
-				d1.push([ i, Math.sin(i) ]);
-			}
-
-			var d2 = [];
-			for (var i = 0; i < Math.PI * 2; i += 0.5) {
-				d2.push([ i, Math.cos(i) ]);
-			}
-
-			var d3 = [];
-			for (var i = 0; i < Math.PI * 2; i += 0.2) {
-				d3.push([ i, Math.tan(i) ]);
-			}
-
-			var sales_charts = $('#sales-charts').css({
-				'width' : '100%',
-				'height' : '220px'
-			});
-			$.plot("#sales-charts", [ {
-				label : "Domains",
-				data : d1
-			}, {
-				label : "Hosting",
-				data : d2
-			}, {
-				label : "Services",
-				data : d3
-			} ], {
-				hoverable : true,
-				shadowSize : 0,
-				series : {
-					lines : {
-						show : true
-					},
-					points : {
-						show : true
-					}
-				},
-				xaxis : {
-					tickLength : 0
-				},
-				yaxis : {
-					ticks : 10,
-					min : -2,
-					max : 2,
-					tickDecimals : 3
-				},
-				grid : {
-					backgroundColor : {
-						colors : [ "#fff", "#fff" ]
-					},
-					borderWidth : 1,
-					borderColor : '#555'
-				}
-			});
-
-			$('#recent-box [data-rel="tooltip"]').tooltip({
-				placement : tooltip_placement
-			});
-			function tooltip_placement(context, source) {
-				var $source = $(source);
-				var $parent = $source.closest('.tab-content')
-				var off1 = $parent.offset();
-				var w1 = $parent.width();
-
-				var off2 = $source.offset();
-				//var w2 = $source.width();
-
-				if (parseInt(off2.left) < parseInt(off1.left)
-						+ parseInt(w1 / 2))
-					return 'right';
-				return 'left';
-			}
-
-			$('.dialogs,.comments').ace_scroll({
-				size : 300
-			});
-
-			//Android's default browser somehow is confused when tapping on label which will lead to dragging the task
-			//so disable dragging when clicking on label
-			var agent = navigator.userAgent.toLowerCase();
-			if (ace.vars['touch'] && ace.vars['android']) {
-				$('#tasks').on('touchstart', function(e) {
-					var li = $(e.target).closest('#tasks li');
-					if (li.length == 0)
-						return;
-					var label = li.find('label.inline').get(0);
-					if (label == e.target || $.contains(label, e.target))
-						e.stopImmediatePropagation();
-				});
-			}
-
-			$('#tasks').sortable({
-				opacity : 0.8,
-				revert : true,
-				forceHelperSize : true,
-				placeholder : 'draggable-placeholder',
-				forcePlaceholderSize : true,
-				tolerance : 'pointer',
-				stop : function(event, ui) {
-					//just for Chrome!!!! so that dropdowns on items don't appear below other items after being moved
-					$(ui.item).css('z-index', 'auto');
-				}
-			});
-			$('#tasks').disableSelection();
-			$('#tasks input:checkbox').removeAttr('checked').on('click',
-					function() {
-						if (this.checked)
-							$(this).closest('li').addClass('selected');
-						else
-							$(this).closest('li').removeClass('selected');
-					});
-
-			//show the dropdowns on top or bottom depending on window height and menu position
-			$('#task-tab .dropdown-hover').on('mouseenter', function(e) {
-				var offset = $(this).offset();
-
-				var $w = $(window)
-				if (offset.top > $w.scrollTop() + $w.innerHeight() - 100)
-					$(this).addClass('dropup');
-				else
-					$(this).removeClass('dropup');
-			});
-
-		})
-	</script>
-</body>
+		</script>
+	</body>
 </html>

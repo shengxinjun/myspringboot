@@ -9,6 +9,7 @@ import javax.annotation.Generated;
 import sxj.db.tables.CodeMessage;
 import sxj.db.tables.Order;
 import sxj.db.tables.Product;
+import sxj.db.tables.User;
 
 
 /**
@@ -38,4 +39,9 @@ public class Tables {
      * The table <code>test.product</code>.
      */
     public static final Product PRODUCT = sxj.db.tables.Product.PRODUCT;
+
+    /**
+     * The table <code>test.user</code>.
+     */
+    public static final User USER = sxj.db.tables.User.USER;
 }

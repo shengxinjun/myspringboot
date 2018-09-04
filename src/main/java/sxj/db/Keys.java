@@ -13,9 +13,11 @@ import org.jooq.impl.AbstractKeys;
 import sxj.db.tables.CodeMessage;
 import sxj.db.tables.Order;
 import sxj.db.tables.Product;
+import sxj.db.tables.User;
 import sxj.db.tables.records.CodeMessageRecord;
 import sxj.db.tables.records.OrderRecord;
 import sxj.db.tables.records.ProductRecord;
+import sxj.db.tables.records.UserRecord;
 
 
 /**
@@ -38,6 +40,7 @@ public class Keys {
 
     public static final Identity<OrderRecord, Integer> IDENTITY_ORDER = Identities0.IDENTITY_ORDER;
     public static final Identity<ProductRecord, Integer> IDENTITY_PRODUCT = Identities0.IDENTITY_PRODUCT;
+    public static final Identity<UserRecord, Integer> IDENTITY_USER = Identities0.IDENTITY_USER;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
@@ -46,6 +49,7 @@ public class Keys {
     public static final UniqueKey<CodeMessageRecord> KEY_CODE_MESSAGE_PRIMARY = UniqueKeys0.KEY_CODE_MESSAGE_PRIMARY;
     public static final UniqueKey<OrderRecord> KEY_ORDER_PRIMARY = UniqueKeys0.KEY_ORDER_PRIMARY;
     public static final UniqueKey<ProductRecord> KEY_PRODUCT_PRIMARY = UniqueKeys0.KEY_PRODUCT_PRIMARY;
+    public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = UniqueKeys0.KEY_USER_PRIMARY;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -59,11 +63,13 @@ public class Keys {
     private static class Identities0 extends AbstractKeys {
         public static Identity<OrderRecord, Integer> IDENTITY_ORDER = createIdentity(Order.ORDER, Order.ORDER.ID);
         public static Identity<ProductRecord, Integer> IDENTITY_PRODUCT = createIdentity(Product.PRODUCT, Product.PRODUCT.ID);
+        public static Identity<UserRecord, Integer> IDENTITY_USER = createIdentity(User.USER, User.USER.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<CodeMessageRecord> KEY_CODE_MESSAGE_PRIMARY = createUniqueKey(CodeMessage.CODE_MESSAGE, "KEY_code_message_PRIMARY", CodeMessage.CODE_MESSAGE.CODE);
         public static final UniqueKey<OrderRecord> KEY_ORDER_PRIMARY = createUniqueKey(Order.ORDER, "KEY_order_PRIMARY", Order.ORDER.ID);
         public static final UniqueKey<ProductRecord> KEY_PRODUCT_PRIMARY = createUniqueKey(Product.PRODUCT, "KEY_product_PRIMARY", Product.PRODUCT.ID);
+        public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = createUniqueKey(User.USER, "KEY_user_PRIMARY", User.USER.ID);
     }
 }

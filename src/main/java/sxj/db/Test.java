@@ -17,6 +17,7 @@ import org.jooq.impl.SchemaImpl;
 import sxj.db.tables.CodeMessage;
 import sxj.db.tables.Order;
 import sxj.db.tables.Product;
+import sxj.db.tables.User;
 
 
 /**
@@ -32,7 +33,7 @@ import sxj.db.tables.Product;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Test extends SchemaImpl {
 
-    private static final long serialVersionUID = -584629762;
+    private static final long serialVersionUID = -619162899;
 
     /**
      * The reference instance of <code>test</code>
@@ -53,6 +54,11 @@ public class Test extends SchemaImpl {
      * The table <code>test.product</code>.
      */
     public final Product PRODUCT = sxj.db.tables.Product.PRODUCT;
+
+    /**
+     * The table <code>test.user</code>.
+     */
+    public final User USER = sxj.db.tables.User.USER;
 
     /**
      * No further instances allowed
@@ -81,6 +87,7 @@ public class Test extends SchemaImpl {
         return Arrays.<Table<?>>asList(
             CodeMessage.CODE_MESSAGE,
             Order.ORDER,
-            Product.PRODUCT);
+            Product.PRODUCT,
+            User.USER);
     }
 }
