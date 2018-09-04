@@ -401,7 +401,7 @@
 							<div class="widget-main padding-4 scrollable ace-scroll"
 								data-size="125" style="position: relative;">
 								<div class="scroll-content" style="height: 500px;">
-									<input type="hidden" id="id" value="${order.id }"/>
+									<input type="hidden" id="id" value="${order.id }" />
 									<div class="col-sm-8 col-md-7">
 										名称：<input type="text" id="name"
 											class="form-control ui-autocomplete-input"
@@ -413,14 +413,14 @@
 											value="${order.totalPrice}"></input>
 									</div>
 									<div class="col-sm-8 col-md-7">
-										浮动：<input type="text" id="userId"
+										用户编号：<input type="text" id="userId"
 											class="form-control ui-autocomplete-input"
 											value="${order.userId}"></input>
 									</div>
 									<div class="col-sm-8 col-md-7">
 										日期：
 										<div class="input-group input-group-sm">
-											<input type="text" id="date" class="form-control"
+											<input type="text" id="date" class="form-control" 
 												value="${order.date }" /> <span class="input-group-addon">
 												<i class="ace-icon fa fa-calendar"></i>
 											</span>
@@ -512,7 +512,8 @@
 		src="${pageContext.request.contextPath }/assets/js/ace-elements.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/ace.min.js"></script>
 	<script src="${pageContext.request.contextPath }/js/order/json.js"></script>
-	<script src="${pageContext.request.contextPath }/js/order/orderDetail.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/order/orderDetail.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
 		jQuery(function($) {
@@ -541,18 +542,27 @@
 			}
 			 */
 			});
-			var spinner = $( "#totalPrice" ).spinner({
-				create: function( event, ui ) {
-					//add custom classes and icons
-					$(this)
-					.next().addClass('btn btn-success').html('<i class="ace-icon fa fa-plus"></i>')
-					.next().addClass('btn btn-danger').html('<i class="ace-icon fa fa-minus"></i>')
-					
-					//larger buttons on touch devices
-					if('touchstart' in document.documentElement) 
-						$(this).closest('.ui-spinner').addClass('ui-spinner-touch');
-				}
-			});
+			var spinner = $("#totalPrice")
+					.spinner(
+							{
+								create : function(event, ui) {
+									//add custom classes and icons
+									$(this)
+											.next()
+											.addClass('btn btn-success')
+											.html(
+													'<i class="ace-icon fa fa-plus"></i>')
+											.next()
+											.addClass('btn btn-danger')
+											.html(
+													'<i class="ace-icon fa fa-minus"></i>')
+
+									//larger buttons on touch devices
+									if ('touchstart' in document.documentElement)
+										$(this).closest('.ui-spinner')
+												.addClass('ui-spinner-touch');
+								}
+							});
 		})
 	</script>
 </body>

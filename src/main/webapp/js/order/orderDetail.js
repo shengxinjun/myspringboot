@@ -1,4 +1,25 @@
 $(function() {
+	/**
+	 * 表单校验
+	 */
+	$("#totalPrice").blur(function(){
+		var totalPrice=$("#totalPrice").val();
+		var reg=/^[-+]?\d*$/;
+		if(!reg.test(totalPrice)){ 
+			$("#totalPrice").val("");
+		}
+	});
+	$("#userId").blur(function(){
+		var userId=$("#userId").val();
+		var reg=/^[-+]?\d*$/;
+		if(!reg.test(userId)){ 
+			$("#userId").val("");
+		}
+	});
+	
+	/**
+	 * 新增和更新
+	 */
 	$("#submit").click(function() {
 		var order = {};
 		
