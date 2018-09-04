@@ -28,6 +28,6 @@ public interface Constants {
 	}
 	
 	interface EXCEL_HEAD{
-		List<String> order =  Stream.of("名称","总价","价格浮动","日期").collect(Collectors.toList());
+		List<String> order =  Stream.of("名称","总价","客户编号","日期").collect(Collectors.toList());
 	}
 }

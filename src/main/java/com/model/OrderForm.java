@@ -9,7 +9,7 @@ public class OrderForm implements Serializable{
 	private Integer id;
     private String  name;
     private String  totalPrice;
-    private String  desc;
+    private Integer userId;
     private String  date;
 	public Integer getId() {
 		return id;
@@ -23,18 +23,17 @@ public class OrderForm implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 	public String getTotalPrice() {
 		return totalPrice;
 	}
 	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	public String getDesc() {
-		return desc;
+	public Integer getUserId() {
+		return userId;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	public String getDate() {
 		return date;
@@ -42,11 +41,14 @@ public class OrderForm implements Serializable{
 	public void setDate(String date) {
 		this.date = date;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	@Override
 	public String toString() {
-		return "OrderForm [id=" + id + ", name=" + name + ", totalPrice=" + totalPrice + ", desc=" + desc + ", date="
-				+ date + "]";
+		return "OrderForm [id=" + id + ", name=" + name + ", totalPrice=" + totalPrice + ", userId=" + userId
+				+ ", date=" + date + "]";
 	}
-    
+	
     
 }

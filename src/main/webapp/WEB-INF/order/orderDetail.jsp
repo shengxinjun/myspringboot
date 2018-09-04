@@ -413,9 +413,9 @@
 											value="${order.totalPrice}"></input>
 									</div>
 									<div class="col-sm-8 col-md-7">
-										浮动：<input type="text" id="desc"
+										浮动：<input type="text" id="userId"
 											class="form-control ui-autocomplete-input"
-											value="${order.desc}"></input>
+											value="${order.userId}"></input>
 									</div>
 									<div class="col-sm-8 col-md-7">
 										日期：

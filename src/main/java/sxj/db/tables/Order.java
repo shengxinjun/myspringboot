@@ -36,7 +36,7 @@ import sxj.db.tables.records.OrderRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Order extends TableImpl<OrderRecord> {
 
-    private static final long serialVersionUID = -1302420554;
+    private static final long serialVersionUID = 1538540483;
 
     /**
      * The reference instance of <code>test.order</code>
@@ -67,9 +67,9 @@ public class Order extends TableImpl<OrderRecord> {
     public final TableField<OrderRecord, Double> TOTAL_PRICE = createField("total_price", org.jooq.impl.SQLDataType.FLOAT, this, "");
 
     /**
-     * The column <code>test.order.desc</code>.
+     * The column <code>test.order.user_id</code>.
      */
-    public final TableField<OrderRecord, String> DESC = createField("desc", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+    public final TableField<OrderRecord, Integer> USER_ID = createField("user_id", org.jooq.impl.SQLDataType.INTEGER, this, "");
 
     /**
      * The column <code>test.order.date</code>.

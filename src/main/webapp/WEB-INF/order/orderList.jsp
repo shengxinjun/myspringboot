@@ -402,7 +402,7 @@
 								<td><input type="checkbox" id ="selectAll"></td>
 								<td>名称</td>
 								<td>总价</td>
-								<td>价格浮动</td>
+								<td>用户编号</td>
 								<td>日期</td>
 								<td>操作</td>
 							</tr>
@@ -415,7 +415,7 @@
 									<td><input type="checkbox" name="order" value="${item.id}"></td>
 									<td>${item.name}</td>
 									<td>${item.totalPrice}</td>
-									<td>${item.desc}</td>
+									<td>${item.userId}</td>
 									<td>${item.date}</td>
 									<td>
 										<button class = "btn btn-xs btn-info"  onclick="location.href='/order/findOrderById/${item.id}'">

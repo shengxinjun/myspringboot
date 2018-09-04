@@ -84,10 +84,10 @@ public class OrderDao extends DAOImpl<OrderRecord, sxj.db.tables.pojos.Order, In
     }
 
     /**
-     * Fetch records that have <code>desc IN (values)</code>
+     * Fetch records that have <code>user_id IN (values)</code>
      */
-    public List<sxj.db.tables.pojos.Order> fetchByDesc(String... values) {
-        return fetch(Order.ORDER.DESC, values);
+    public List<sxj.db.tables.pojos.Order> fetchByUserId(Integer... values) {
+        return fetch(Order.ORDER.USER_ID, values);
     }
 
     /**

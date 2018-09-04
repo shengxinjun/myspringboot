@@ -4,14 +4,14 @@ $(function() {
 		
 		order.name = $("#name").val();
 		order.totalPrice = $("#totalPrice").val();
-		order.desc = $("#desc").val();
+		order.userId = $("#userId").val();
 		order.date = $("#date").val();
-		var str = JSON.stringify(order);
 		var urls = "/order/doAdd";
 		if($("#id").val() != ""){
 			urls = "/order/doUpdate";
 			order.id = $("#id").val();
 		}
+		var str = JSON.stringify(order);
 		$.ajax({
 			url : urls,
 			type : 'POST',
