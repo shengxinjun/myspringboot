@@ -25,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public Order findOrderById(Integer id) {
 		if (id == null ) {
-			throw new MyException(codeMessageDao.findById(1));
+			throw new MyException(codeMessageDao.findById(100));
 		}
 		return orderDao.findById(id);
 	}

@@ -36,7 +36,7 @@ import sxj.db.tables.records.UserRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = 2017196793;
+    private static final long serialVersionUID = -423221951;
 
     /**
      * The reference instance of <code>test.user</code>
@@ -60,6 +60,11 @@ public class User extends TableImpl<UserRecord> {
      * The column <code>test.user.name</code>.
      */
     public final TableField<UserRecord, String> NAME = createField("name", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>test.user.password</code>.
+     */
+    public final TableField<UserRecord, String> PASSWORD = createField("password", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * The column <code>test.user.telephone</code>.

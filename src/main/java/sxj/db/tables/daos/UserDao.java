@@ -77,6 +77,13 @@ public class UserDao extends DAOImpl<UserRecord, sxj.db.tables.pojos.User, Integ
     }
 
     /**
+     * Fetch records that have <code>password IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.User> fetchByPassword(String... values) {
+        return fetch(User.USER.PASSWORD, values);
+    }
+
+    /**
      * Fetch records that have <code>telephone IN (values)</code>
      */
     public List<sxj.db.tables.pojos.User> fetchByTelephone(String... values) {

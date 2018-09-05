@@ -23,10 +23,11 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1306155797;
+    private static final long serialVersionUID = 1510470032;
 
     private Integer id;
     private String  name;
+    private String  password;
     private String  telephone;
     private String  imgs;
     private Date    lastLoginDate;
@@ -39,6 +40,7 @@ public class User implements Serializable {
     public User(User value) {
         this.id = value.id;
         this.name = value.name;
+        this.password = value.password;
         this.telephone = value.telephone;
         this.imgs = value.imgs;
         this.lastLoginDate = value.lastLoginDate;
@@ -50,6 +52,7 @@ public class User implements Serializable {
     public User(
         Integer id,
         String  name,
+        String  password,
         String  telephone,
         String  imgs,
         Date    lastLoginDate,
@@ -59,6 +62,7 @@ public class User implements Serializable {
     ) {
         this.id = id;
         this.name = name;
+        this.password = password;
         this.telephone = telephone;
         this.imgs = imgs;
         this.lastLoginDate = lastLoginDate;
@@ -82,6 +86,15 @@ public class User implements Serializable {
 
     public User setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public User setPassword(String password) {
+        this.password = password;
         return this;
     }
 
@@ -160,6 +173,12 @@ public class User implements Serializable {
         }
         else if (!name.equals(other.name))
             return false;
+        if (password == null) {
+            if (other.password != null)
+                return false;
+        }
+        else if (!password.equals(other.password))
+            return false;
         if (telephone == null) {
             if (other.telephone != null)
                 return false;
@@ -205,6 +224,7 @@ public class User implements Serializable {
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
         result = prime * result + ((telephone == null) ? 0 : telephone.hashCode());
         result = prime * result + ((imgs == null) ? 0 : imgs.hashCode());
         result = prime * result + ((lastLoginDate == null) ? 0 : lastLoginDate.hashCode());
@@ -220,6 +240,7 @@ public class User implements Serializable {
 
         sb.append(id);
         sb.append(", ").append(name);
+        sb.append(", ").append(password);
         sb.append(", ").append(telephone);
         sb.append(", ").append(imgs);
         sb.append(", ").append(lastLoginDate);
