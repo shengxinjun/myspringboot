@@ -7,6 +7,7 @@ package sxj.db;
 import javax.annotation.Generated;
 
 import sxj.db.tables.CodeMessage;
+import sxj.db.tables.EmailInfo;
 import sxj.db.tables.Order;
 import sxj.db.tables.Product;
 import sxj.db.tables.User;
@@ -29,6 +30,11 @@ public class Tables {
      * The table <code>test.code_message</code>.
      */
     public static final CodeMessage CODE_MESSAGE = sxj.db.tables.CodeMessage.CODE_MESSAGE;
+
+    /**
+     * The table <code>test.email_info</code>.
+     */
+    public static final EmailInfo EMAIL_INFO = sxj.db.tables.EmailInfo.EMAIL_INFO;
 
     /**
      * The table <code>test.order</code>.

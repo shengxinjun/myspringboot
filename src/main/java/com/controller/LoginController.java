@@ -15,6 +15,7 @@ import com.domain.User;
 import com.google.gson.Gson;
 import com.model.Result;
 import com.model.UserForm;
+import com.service.EmailfInfoService;
 import com.service.UserService;
 import com.util.MyException;
 import com.util.WebUtils;
@@ -25,6 +26,9 @@ public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private EmailfInfoService emailInfoService;
 	
 	@ResponseBody
 	@RequestMapping("/login")
@@ -67,6 +71,19 @@ public class LoginController {
 		obj.setPassword(userForm.getPassword());
 		try {
 			userService.insert(obj);
+			result.setCode(1);
+		} catch (MyException e) {
+			result.setCode(e.getCode());
+			result.setMessage(e.getMessage());
+		}
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping("/sendCheckCode")
+	Result sendCheckCode(String email) {
+		Result result = new Result();
+		try {
+			emailInfoService.forGetPassWord(email);
 			result.setCode(1);
 		} catch (MyException e) {
 			result.setCode(e.getCode());

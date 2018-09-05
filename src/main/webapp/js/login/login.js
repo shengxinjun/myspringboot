@@ -96,6 +96,27 @@ $(function() {
 		}).fail(function(e) {
 		});
 	});
+	/**
+	 * 获取验证码
+	 */
+	$("#getCheckCode").click(function() {
+		var email = $("#forg_email").val();
+		$.ajax({
+			url : "/sendCheckCode",
+			type : 'POST',
+			dataType : 'json',
+			data : {
+				email:email
+			},
+		}).done(function(e) {
+			if (e.code == 1) {
+				location.href = '/';
+			} else {
+				alert(e.message);
+			}
+		}).fail(function(e) {
+		});
+	});
 	
 	/**
 	 * 获取cookie方法

@@ -156,6 +156,12 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
+															<input type="email" class="form-control  col-lg-7" placeholder="Email" id="forg_email"/>
+															<i id="getCheckCode" class="ace-icon fa fa-envelope col-lg-5">获取验证码</i>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
 															<input type="email" class="form-control" placeholder="Email" />
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
@@ -164,7 +170,7 @@
 													<div class="clearfix">
 														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
 															<i class="ace-icon fa fa-lightbulb-o"></i>
-															<span class="bigger-110">Send Me!</span>
+															<span class="bigger-110">生成新密码</span>
 														</button>
 													</div>
 												</fieldset>

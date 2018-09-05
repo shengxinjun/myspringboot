@@ -15,6 +15,7 @@ import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
 import sxj.db.tables.CodeMessage;
+import sxj.db.tables.EmailInfo;
 import sxj.db.tables.Order;
 import sxj.db.tables.Product;
 import sxj.db.tables.User;
@@ -33,7 +34,7 @@ import sxj.db.tables.User;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Test extends SchemaImpl {
 
-    private static final long serialVersionUID = -619162899;
+    private static final long serialVersionUID = 58153110;
 
     /**
      * The reference instance of <code>test</code>
@@ -44,6 +45,11 @@ public class Test extends SchemaImpl {
      * The table <code>test.code_message</code>.
      */
     public final CodeMessage CODE_MESSAGE = sxj.db.tables.CodeMessage.CODE_MESSAGE;
+
+    /**
+     * The table <code>test.email_info</code>.
+     */
+    public final EmailInfo EMAIL_INFO = sxj.db.tables.EmailInfo.EMAIL_INFO;
 
     /**
      * The table <code>test.order</code>.
@@ -86,6 +92,7 @@ public class Test extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             CodeMessage.CODE_MESSAGE,
+            EmailInfo.EMAIL_INFO,
             Order.ORDER,
             Product.PRODUCT,
             User.USER);
