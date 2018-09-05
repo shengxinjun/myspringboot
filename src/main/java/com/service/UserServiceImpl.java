@@ -31,4 +31,14 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public void insert(User user) {
+		
+		User dbUser = userDao.findUserByTelephone(user.getTelephone());
+		if (!ObjectUtils.isEmpty(dbUser)) {
+			throw new MyException(codeMessageDao.findById(103));
+		}
+		userDao.insert(user);
+	}
+
 }

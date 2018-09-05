@@ -130,7 +130,7 @@
 											</div>
 
 											<div>
-												<a href="#" data-target="#signup-box" class="user-signup-link">
+												<a data-target="#signup-box" class="user-signup-link">
 													I want to register
 													<i class="ace-icon fa fa-arrow-right"></i>
 												</a>
@@ -195,28 +195,35 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
+															<input type="text" class="form-control" placeholder="Telephone" id="reg_telephone"/>
+															<i class="ace-icon fa fa-key"></i>
+														</span>
+													</label>
+													
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" class="form-control" placeholder="Email" id="reg_email"/>
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Username" />
+															<input type="text" class="form-control" placeholder="Username" id="reg_username"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
+															<input type="password" class="form-control" placeholder="Password" id="reg_password"/>
 															<i class="ace-icon fa fa-lock"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Repeat password" />
+															<input type="password" class="form-control" placeholder="Repeat password" id="reg_rpassword"/>
 															<i class="ace-icon fa fa-retweet"></i>
 														</span>
 													</label>
@@ -237,7 +244,7 @@
 															<span class="bigger-110">Reset</span>
 														</button>
 
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
+														<button type="button" class="width-65 pull-right btn btn-sm btn-success" id="register">
 															<span class="bigger-110">Register</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -283,7 +290,8 @@
 		<script src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>
 		<script src="${pageContext.request.contextPath }/js/login/login.js"></script>
 		<!-- <![endif]-->
-
+		<script src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath }/assets/js/bootbox.js"></script>
 		<!--[if IE]>
 <script src="${pageContext.request.contextPath }/assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->

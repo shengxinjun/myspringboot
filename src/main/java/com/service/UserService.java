@@ -6,4 +6,5 @@ public interface UserService {
 	
 	User checkUser(String telephone,String password);
 	
+	void insert(User user);
 }

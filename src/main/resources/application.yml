@@ -18,6 +18,10 @@ spring:
       prefix: /WEB-INF/
       suffix: .jsp
 
+
 quartzTask: false  
     
-
+email: 
+  account : hxsf1@sina.com
+  password : QWErty
+  mailhost : smtp.sina.com
