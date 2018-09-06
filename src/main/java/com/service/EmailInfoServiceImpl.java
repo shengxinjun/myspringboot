@@ -13,6 +13,7 @@ import com.dao.UserDao;
 import com.domain.EmailInfo;
 import com.domain.User;
 import com.util.EmailUtil;
+import com.util.MD5Util;
 import com.util.MyException;
 
 @Service
@@ -56,15 +57,21 @@ public class EmailInfoServiceImpl implements EmailInfoService {
 		}
 		if (emailInfo.getCode().equals(code)) {
 			result = true;
+			//找到该用户并更新其密码
 			User dbUser = userDao.findUserByEmail(email);
+			Integer random = (int)((Math.random()*9+1)*100000);
+			String password = String.valueOf(random);
+			dbUser.setPassword(MD5Util.MD5(password));
+			userDao.update(dbUser);
+			//将新密码发送给该用户
 			EmailInfo sendPassword = new EmailInfo();
-			sendPassword.setContext("你的密码为："+dbUser.getPassword());
+			sendPassword.setContext("你的新密码为："+password);
 			sendPassword.setReceiver(email);
 			sendPassword.setSubject("topest level---ace system");
 			sendPassword.setSendDate(new Date());
 			emailInfoDao.insert(sendPassword);
 			EmailUtil emailUtil = new EmailUtil(true);
-			emailUtil.doSendHtmlEmail("topest level---ace system", "你的密码为："+dbUser.getPassword(), email);
+			emailUtil.doSendHtmlEmail("topest level---ace system", "你的新密码为："+password, email);
 		}
 		return result;
 	}

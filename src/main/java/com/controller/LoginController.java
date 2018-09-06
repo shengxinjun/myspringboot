@@ -17,6 +17,7 @@ import com.model.Result;
 import com.model.UserForm;
 import com.service.EmailInfoService;
 import com.service.UserService;
+import com.util.MD5Util;
 import com.util.MyException;
 import com.util.WebUtils;
 
@@ -52,6 +53,14 @@ public class LoginController {
 		return result;
 	}
 	
+	@RequestMapping("/logout")
+	String logout(HttpServletRequest request,HttpServletResponse response) {
+		WebUtils.clearCookie(request, response, "uid");
+		WebUtils.clearCookie(request, response, "telephone");
+		WebUtils.clearCookie(request, response, "password");
+		return "login/index";
+	}
+	
 	/**
 	 * 注册事件
 	 * @param user
@@ -68,7 +77,7 @@ public class LoginController {
 		obj.setName(userForm.getName());
 		obj.setEmail(userForm.getEmail());
 		obj.setRegisterDate(new Date());
-		obj.setPassword(userForm.getPassword());
+		obj.setPassword(MD5Util.MD5(userForm.getPassword()));
 		try {
 			userService.insert(obj);
 			result.setCode(1);
@@ -96,6 +105,12 @@ public class LoginController {
 		}
 		return result;
 	}
+	/**
+	 * 校验验证码
+	 * @param email
+	 * @param code
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/checkCode")
 	Result checkCode(String email,String code) {

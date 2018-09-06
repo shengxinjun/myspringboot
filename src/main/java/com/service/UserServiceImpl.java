@@ -8,6 +8,7 @@ import org.springframework.util.StringUtils;
 import com.dao.CodeMessageDao;
 import com.dao.UserDao;
 import com.domain.User;
+import com.util.MD5Util;
 import com.util.MyException;
 
 @Service
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
 		if (ObjectUtils.isEmpty(user)) {
 			throw new MyException(codeMessageDao.findById(101));
 		}
-		if (!password.equals(user.getPassword())) {
+		if (!user.getPassword().equals(MD5Util.MD5(password))) {
 			throw new MyException(codeMessageDao.findById(102));
 		}
 		return user;

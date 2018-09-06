@@ -91,7 +91,7 @@ $(function() {
 			if (e.code == 1) {
 				location.href = '/';
 			} else {
-				alert(e.message);
+				message(e.message);
 			}
 		}).fail(function(e) {
 		});
@@ -162,9 +162,10 @@ $(function() {
 		return value;
 	}
 	
-	function message(message){
+	function message(text){
+		if(text!=null)
 		bootbox.dialog({
-			message: "<span class='bigger-110'>"+message+"</span>",
+			message: "<span class='bigger-110'>"+text+"</span>",
 			buttons:
 			{
 				/*"success" :

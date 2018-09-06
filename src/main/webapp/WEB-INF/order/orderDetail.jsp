@@ -295,7 +295,7 @@
 
 							<li class="divider"></li>
 
-							<li><a href="#"> <i class="ace-icon fa fa-power-off"></i>
+							<li><a href="/logout"> <i class="ace-icon fa fa-power-off"></i>
 									Logout
 							</a></li>
 						</ul></li>
@@ -355,7 +355,7 @@
 							menus </span>
 				</a> <b class="arrow"></b></li>
 
-				<li class=""><a href="#" class="dropdown-toggle"> <i
+				<li class="open"><a href="#" class="dropdown-toggle"> <i
 						class="menu-icon fa fa-desktop"></i> <span class="menu-text">
 							Order</span> <b class="arrow fa fa-angle-down"></b>
 				</a> <b class="arrow"></b>

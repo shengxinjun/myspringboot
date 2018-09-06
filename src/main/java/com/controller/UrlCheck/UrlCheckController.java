@@ -14,8 +14,7 @@ import org.springframework.web.util.WebUtils;
 
 @ControllerAdvice
 public class UrlCheckController {
-	
-	
+
 	@ModelAttribute
 	void modelAttribute(Model model, HttpServletRequest request) throws ServletRequestBindingException {
 		Cookie cookie = WebUtils.getCookie(request, "uid");
@@ -24,7 +23,8 @@ public class UrlCheckController {
 
 		// 是否为登录首页
 		boolean isNotLoginOrOut = false;
-		if (servletPath.equals("/") || servletPath.equals("/login")) {
+		if (servletPath.equals("/") || servletPath.equals("/login") || servletPath.equals("/register")
+				|| servletPath.equals("/sendCheckCode") || servletPath.equals("/checkCode")) {
 			isNotLoginOrOut = true;
 		}
 
@@ -39,7 +39,7 @@ public class UrlCheckController {
 		// 返回成功页面
 		ModelAndView view = new ModelAndView();
 		view.setView(new RedirectView("/", true, false));
-	return view;
+		return view;
 	}
-	
-}	
+
+}
