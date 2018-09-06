@@ -15,7 +15,7 @@ import com.domain.User;
 import com.google.gson.Gson;
 import com.model.Result;
 import com.model.UserForm;
-import com.service.EmailfInfoService;
+import com.service.EmailInfoService;
 import com.service.UserService;
 import com.util.MyException;
 import com.util.WebUtils;
@@ -28,7 +28,7 @@ public class LoginController {
 	private UserService userService;
 	
 	@Autowired
-	private EmailfInfoService emailInfoService;
+	private EmailInfoService emailInfoService;
 	
 	@ResponseBody
 	@RequestMapping("/login")
@@ -78,6 +78,11 @@ public class LoginController {
 		}
 		return result;
 	}
+	/**
+	 * 获取验证码
+	 * @param email
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/sendCheckCode")
 	Result sendCheckCode(String email) {
@@ -89,6 +94,20 @@ public class LoginController {
 			result.setCode(e.getCode());
 			result.setMessage(e.getMessage());
 		}
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping("/checkCode")
+	Result checkCode(String email,String code) {
+		Result result = new Result();
+		boolean trueOrFalse = emailInfoService.checkEmailCode(email, code);
+		if (trueOrFalse) {
+			result.setCode(1);
+			result.setMessage("密码已发送到您邮箱");
+		}else {
+			result.setCode(2);
+		}
+		
 		return result;
 	}
 }

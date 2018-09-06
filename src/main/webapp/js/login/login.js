@@ -110,13 +110,38 @@ $(function() {
 			},
 		}).done(function(e) {
 			if (e.code == 1) {
-				location.href = '/';
+				message("验证码已发送，请注意查收！");
 			} else {
-				alert(e.message);
+				message(e.message);
 			}
 		}).fail(function(e) {
 		});
 	});
+	/**
+	 * 找回密码
+	 */
+	$("#getPassword").click(function() {
+		var email = $("#forg_email").val();
+		var checkCode = $("#forg_checkCode").val();
+		
+		$.ajax({
+			url : "/checkCode",
+			type : 'POST',
+			dataType : 'json',
+			data : {
+				email:email,
+				code:checkCode
+			},
+		}).done(function(e) {
+			if (e.code == 1) {
+				message("密码已发送到您的邮箱，请注意查收！");
+			} else {
+				message(e.message);
+			}
+		}).fail(function(e) {
+		});
+	});
+	
 	
 	/**
 	 * 获取cookie方法

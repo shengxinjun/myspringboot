@@ -38,6 +38,10 @@ public class UserServiceImpl implements UserService {
 		if (!ObjectUtils.isEmpty(dbUser)) {
 			throw new MyException(codeMessageDao.findById(103));
 		}
+		dbUser = userDao.findUserByEmail(user.getEmail());
+		if (!ObjectUtils.isEmpty(dbUser)) {
+			throw new MyException(codeMessageDao.findById(103));
+		}
 		userDao.insert(user);
 	}
 

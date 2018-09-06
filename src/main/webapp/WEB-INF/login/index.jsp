@@ -162,15 +162,14 @@
 													</label>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
-															<i class="ace-icon fa fa-envelope"></i>
+															<input type="email" class="form-control" placeholder="验证码" id="forg_checkCode"/>
 														</span>
 													</label>
 
 													<div class="clearfix">
-														<button type="button" class="width-35 pull-right btn btn-sm btn-danger">
+														<button type="button" class="width-35 pull-right btn btn-sm btn-danger" id= "getPassword">
 															<i class="ace-icon fa fa-lightbulb-o"></i>
-															<span class="bigger-110">生成新密码</span>
+															<span class="bigger-110">找回密码</span>
 														</button>
 													</div>
 												</fieldset>

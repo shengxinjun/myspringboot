@@ -54,4 +54,18 @@ public class UserDao extends DAOImpl<UserRecord, User, Integer> {
 		return user;
 	}
 	
+	/**
+	 * 根据邮箱查询user
+	 * @param email
+	 * @return
+	 */
+	public User findUserByEmail(String email) {
+		Condition condition = null;
+		if (!StringUtils.isEmpty(email)) {
+			condition =USER.EMAIL.eq(email);
+		}
+		User user = dslContext.select().from(USER).where(condition).fetchOneInto(User.class);
+		return user;
+	}
+	
 }

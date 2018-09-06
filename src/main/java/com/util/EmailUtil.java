@@ -15,7 +15,6 @@ import java.util.Properties;
 /**
  * Description 封装Email相关的操作
  */
-@Service
 public class EmailUtil {
 
 	private Properties properties = new Properties();
@@ -30,25 +29,17 @@ public class EmailUtil {
 	private Session session;
 
 	private Transport transport;
-	
-	
+
+	private String mailHost = "smtp.sina.com";
 	private int port = 25;
 	private boolean auth = true;
-	
-	@Value("${email.mailhost}")
-	private String mailHost;
-	
-	@Value("${email.account}")
-	private String sender_username;
-	
-	@Value("${email.password}")
-	private String sender_password;
-	
+	private String sender_username = "hxsf1@sina.com";
+	private String sender_password = "QWErty";
+
 	/*
 	 * 初始化方法
 	 */
 	public EmailUtil(boolean debug) {
-
 		properties.put("mail.smtp.host", mailHost);
 		properties.put("mail.smtp.auth", auth);
 		properties.put("mail.smtp.port", String.valueOf(25));
@@ -191,7 +182,7 @@ public class EmailUtil {
 		EmailUtil se = new EmailUtil(true);
 		// String path = TestUtil.path + "ali.gif";
 		se.doSendHtmlEmail("邮件主题", "邮件内容", "498740190@qq.com");
-		 File affix = new File("C:\\Users\\sheng\\Desktop\\ace\\login.html");
-		 //se.doSendHtmlEmail("邮件主题", "邮件内容", "498740190@qq.com", affix);//
+		File affix = new File("C:\\Users\\sheng\\Desktop\\ace\\login.html");
+		// se.doSendHtmlEmail("邮件主题", "邮件内容", "498740190@qq.com", affix);//
 	}
 }
