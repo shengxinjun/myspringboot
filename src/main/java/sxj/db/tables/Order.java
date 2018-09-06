@@ -4,8 +4,10 @@
 package sxj.db.tables;
 
 
-import java.sql.Date;
+import com.util.Timestamp2DateConverter;
+
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -36,7 +38,7 @@ import sxj.db.tables.records.OrderRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Order extends TableImpl<OrderRecord> {
 
-    private static final long serialVersionUID = 1538540483;
+    private static final long serialVersionUID = -1421689135;
 
     /**
      * The reference instance of <code>test.order</code>
@@ -74,7 +76,7 @@ public class Order extends TableImpl<OrderRecord> {
     /**
      * The column <code>test.order.date</code>.
      */
-    public final TableField<OrderRecord, Date> DATE = createField("date", org.jooq.impl.SQLDataType.DATE, this, "");
+    public final TableField<OrderRecord, Date> DATE = createField("date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new Timestamp2DateConverter());
 
     /**
      * Create a <code>test.order</code> table reference

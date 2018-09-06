@@ -248,12 +248,12 @@
 								<customType>
 									<name>timestamp2DateConverter</name>
 									<type>java.util.Date</type>
-									<converter>util.Timestamp2DateConverter</converter>
+									<converter>com.util.Timestamp2DateConverter</converter>
 								</customType>
 								<customType>
 									<name>byte2IntegerConverter</name>
 									<type>java.lang.Integer</type>
-									<converter>util.Byte2IntegerConverter</converter>
+									<converter>com.util.Byte2IntegerConverter</converter>
 								</customType>
 							</customTypes>
 							<forcedTypes>

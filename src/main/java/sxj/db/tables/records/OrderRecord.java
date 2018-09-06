@@ -4,7 +4,7 @@
 package sxj.db.tables.records;
 
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.annotation.Generated;
 
@@ -30,7 +30,7 @@ import sxj.db.tables.Order;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class OrderRecord extends UpdatableRecordImpl<OrderRecord> implements Record5<Integer, String, Double, Integer, Date> {
 
-    private static final long serialVersionUID = -1311637475;
+    private static final long serialVersionUID = -1861778581;
 
     /**
      * Setter for <code>test.order.id</code>.

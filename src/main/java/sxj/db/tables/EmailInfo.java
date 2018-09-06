@@ -4,8 +4,10 @@
 package sxj.db.tables;
 
 
-import java.sql.Date;
+import com.util.Timestamp2DateConverter;
+
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -36,7 +38,7 @@ import sxj.db.tables.records.EmailInfoRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class EmailInfo extends TableImpl<EmailInfoRecord> {
 
-    private static final long serialVersionUID = -856701409;
+    private static final long serialVersionUID = 1636193703;
 
     /**
      * The reference instance of <code>test.email_info</code>
@@ -84,7 +86,7 @@ public class EmailInfo extends TableImpl<EmailInfoRecord> {
     /**
      * The column <code>test.email_info.send_date</code>.
      */
-    public final TableField<EmailInfoRecord, Date> SEND_DATE = createField("send_date", org.jooq.impl.SQLDataType.DATE, this, "");
+    public final TableField<EmailInfoRecord, Date> SEND_DATE = createField("send_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new Timestamp2DateConverter());
 
     /**
      * Create a <code>test.email_info</code> table reference

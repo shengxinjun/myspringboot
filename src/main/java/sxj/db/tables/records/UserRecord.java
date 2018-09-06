@@ -4,7 +4,7 @@
 package sxj.db.tables.records;
 
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.annotation.Generated;
 
@@ -30,7 +30,7 @@ import sxj.db.tables.User;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class UserRecord extends UpdatableRecordImpl<UserRecord> implements Record9<Integer, String, String, String, String, Date, Date, String, String> {
 
-    private static final long serialVersionUID = 133107460;
+    private static final long serialVersionUID = -954334986;
 
     /**
      * Setter for <code>test.user.id</code>.

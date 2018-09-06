@@ -4,7 +4,7 @@
 package sxj.db.tables.records;
 
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.annotation.Generated;
 
@@ -30,7 +30,7 @@ import sxj.db.tables.EmailInfo;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class EmailInfoRecord extends UpdatableRecordImpl<EmailInfoRecord> implements Record7<Integer, String, String, String, String, String, Date> {
 
-    private static final long serialVersionUID = 1580495035;
+    private static final long serialVersionUID = -588349907;
 
     /**
      * Setter for <code>test.email_info.id</code>.

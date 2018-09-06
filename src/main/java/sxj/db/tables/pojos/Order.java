@@ -5,7 +5,7 @@ package sxj.db.tables.pojos;
 
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.annotation.Generated;
 
@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Order implements Serializable {
 
-    private static final long serialVersionUID = 1015649225;
+    private static final long serialVersionUID = 638347743;
 
     private Integer id;
     private String  name;

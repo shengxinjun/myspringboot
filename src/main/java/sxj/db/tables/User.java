@@ -4,8 +4,10 @@
 package sxj.db.tables;
 
 
-import java.sql.Date;
+import com.util.Timestamp2DateConverter;
+
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -36,7 +38,7 @@ import sxj.db.tables.records.UserRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = -423221951;
+    private static final long serialVersionUID = -2141030180;
 
     /**
      * The reference instance of <code>test.user</code>
@@ -79,12 +81,12 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>test.user.last_login_date</code>.
      */
-    public final TableField<UserRecord, Date> LAST_LOGIN_DATE = createField("last_login_date", org.jooq.impl.SQLDataType.DATE, this, "");
+    public final TableField<UserRecord, Date> LAST_LOGIN_DATE = createField("last_login_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new Timestamp2DateConverter());
 
     /**
      * The column <code>test.user.register_date</code>.
      */
-    public final TableField<UserRecord, Date> REGISTER_DATE = createField("register_date", org.jooq.impl.SQLDataType.DATE, this, "");
+    public final TableField<UserRecord, Date> REGISTER_DATE = createField("register_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new Timestamp2DateConverter());
 
     /**
      * The column <code>test.user.email</code>.
