@@ -2,6 +2,7 @@ package com.dao;
 
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class EmailInfoDao extends DAOImpl<EmailInfoRecord,EmailInfo, Integer> {
      * @throws ParseException 
      */
     public Integer countEmailInfoByIpAndDate(String ip,Date date)  {
-    	List<Condition> conditions = Lists.newArrayList();
+    	List<Condition> conditions = new ArrayList<>();
     	if (!StringUtils.isEmpty(ip)) {
 			conditions.add(EMAIL_INFO.IP.eq(ip));
 		}

@@ -4,6 +4,7 @@
 package com.dao;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jooq.Condition;
@@ -51,14 +52,15 @@ public class OrderDao extends DAOImpl<OrderRecord, Order, Integer> {
 	 * @return
 	 */
 	public Paging<Order> orderList(Paging<Order> paging) {
-		Condition condition = null;
+		List<Condition> conditions = new ArrayList<>();
 		String orderField;
 		if (StringUtils.hasText(paging.getKeyword())) {
-			condition = ORDER.NAME.like("%"+paging.getKeyword()+"%");
+			conditions.add(ORDER.NAME.like("%"+paging.getKeyword()+"%"));
 		}
-		List<Order> list = dslContext.select().from(ORDER).where(condition).orderBy(ORDER.DATE.desc())
+		conditions.add(ORDER.DELETED.eq(0));
+		List<Order> list = dslContext.select().from(ORDER).where(conditions).orderBy(ORDER.DATE.desc())
 				.limit(paging.offset(), paging.getPageSize()).fetchInto(Order.class);
-		int totalCount = dslContext.fetchCount(dslContext.select().from(ORDER).where(condition));
+		int totalCount = dslContext.fetchCount(dslContext.select().from(ORDER).where(conditions));
 		
 		paging.setTotalCount(totalCount);
 		paging.setList(list);

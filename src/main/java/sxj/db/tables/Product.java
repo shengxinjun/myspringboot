@@ -38,7 +38,7 @@ import sxj.db.tables.records.ProductRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product extends TableImpl<ProductRecord> {
 
-    private static final long serialVersionUID = -1242486374;
+    private static final long serialVersionUID = -999461699;
 
     /**
      * The reference instance of <code>test.product</code>
@@ -67,6 +67,11 @@ public class Product extends TableImpl<ProductRecord> {
      * The column <code>test.product.price</code>.
      */
     public final TableField<ProductRecord, Double> PRICE = createField("price", org.jooq.impl.SQLDataType.FLOAT, this, "");
+
+    /**
+     * The column <code>test.product.update_date</code>.
+     */
+    public final TableField<ProductRecord, Date> UPDATE_DATE = createField("update_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new Timestamp2DateConverter());
 
     /**
      * The column <code>test.product.create_date</code>.

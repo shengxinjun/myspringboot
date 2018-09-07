@@ -23,11 +23,12 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product implements Serializable {
 
-    private static final long serialVersionUID = -716656156;
+    private static final long serialVersionUID = -980160425;
 
     private Integer id;
     private String  name;
     private Double  price;
+    private Date    updateDate;
     private Date    createDate;
     private Integer deleted;
     private String  type;
@@ -39,6 +40,7 @@ public class Product implements Serializable {
         this.id = value.id;
         this.name = value.name;
         this.price = value.price;
+        this.updateDate = value.updateDate;
         this.createDate = value.createDate;
         this.deleted = value.deleted;
         this.type = value.type;
@@ -49,6 +51,7 @@ public class Product implements Serializable {
         Integer id,
         String  name,
         Double  price,
+        Date    updateDate,
         Date    createDate,
         Integer deleted,
         String  type,
@@ -57,6 +60,7 @@ public class Product implements Serializable {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.updateDate = updateDate;
         this.createDate = createDate;
         this.deleted = deleted;
         this.type = type;
@@ -87,6 +91,15 @@ public class Product implements Serializable {
 
     public Product setPrice(Double price) {
         this.price = price;
+        return this;
+    }
+
+    public Date getUpdateDate() {
+        return this.updateDate;
+    }
+
+    public Product setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
         return this;
     }
 
@@ -153,6 +166,12 @@ public class Product implements Serializable {
         }
         else if (!price.equals(other.price))
             return false;
+        if (updateDate == null) {
+            if (other.updateDate != null)
+                return false;
+        }
+        else if (!updateDate.equals(other.updateDate))
+            return false;
         if (createDate == null) {
             if (other.createDate != null)
                 return false;
@@ -187,6 +206,7 @@ public class Product implements Serializable {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((price == null) ? 0 : price.hashCode());
+        result = prime * result + ((updateDate == null) ? 0 : updateDate.hashCode());
         result = prime * result + ((createDate == null) ? 0 : createDate.hashCode());
         result = prime * result + ((deleted == null) ? 0 : deleted.hashCode());
         result = prime * result + ((type == null) ? 0 : type.hashCode());
@@ -201,6 +221,7 @@ public class Product implements Serializable {
         sb.append(id);
         sb.append(", ").append(name);
         sb.append(", ").append(price);
+        sb.append(", ").append(updateDate);
         sb.append(", ").append(createDate);
         sb.append(", ").append(deleted);
         sb.append(", ").append(type);

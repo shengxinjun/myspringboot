@@ -13,6 +13,7 @@ public class Product implements Serializable {
     private Integer id;
     private String  name;
     private Double  price;
+    private Date    updateDate;
     private Date    createDate;
     private Integer deleted;
     private String  type;
@@ -34,6 +35,12 @@ public class Product implements Serializable {
 	}
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 	public Date getCreateDate() {
 		return createDate;
@@ -64,19 +71,26 @@ public class Product implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", createDate=" + createDate + ", deleted="
-				+ deleted + ", type=" + type + ", orderId=" + orderId + "]";
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", updateDate=" + updateDate
+				+ ", createDate=" + createDate + ", deleted=" + deleted + ", type=" + type + ", orderId=" + orderId
+				+ "]";
 	}
-	public Product(Integer id, String name, Double price, Date createDate, Integer deleted, String type,
-			Integer orderId) {
+	public Product(Integer id, String name, Double price, Date updateDate, Date createDate, Integer deleted,
+			String type, Integer orderId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.updateDate = updateDate;
 		this.createDate = createDate;
 		this.deleted = deleted;
 		this.type = type;
 		this.orderId = orderId;
 	}
+	public Product() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
     
 }

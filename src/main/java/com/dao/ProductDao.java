@@ -16,6 +16,7 @@ import com.util.Paging;
 import sxj.db.tables.records.ProductRecord;
 import static sxj.db.Tables.PRODUCT;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -36,14 +37,18 @@ public class ProductDao extends DAOImpl<ProductRecord,Product, Integer> {
 	 * 下面是自定义方法
 	 ***************************************************************/
 	
-	List<Product> productList(Paging<Product> paging){
+	public Paging<Product> productList(Paging<Product> paging){
 		List<Product> list = null;
-		Condition condition = null;
+		List<Condition> conditions = new ArrayList<>();
 		if (!StringUtils.isEmpty(paging.getKeyword())) {
-			condition = PRODUCT.NAME.like(paging.getKeyword());
+			conditions.add(PRODUCT.NAME.like(paging.getKeyword()));
 		}
-		list = dslContext.select().from(PRODUCT).where(condition).orderBy(PRODUCT.ID).fetchInto(Product.class);
-		return list;
+		conditions.add(PRODUCT.DELETED.eq(0));
+		list = dslContext.select().from(PRODUCT).where(conditions).orderBy(PRODUCT.UPDATE_DATE.desc()).limit(paging.offset(), paging.getPageSize()).fetchInto(Product.class);
+		int totalCount = dslContext.fetchCount(dslContext.select().from(PRODUCT).where(conditions));
+		paging.setList(list);
+		paging.setTotalCount(totalCount);
+		return paging;
 	}
 	
 }

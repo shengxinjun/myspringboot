@@ -84,6 +84,13 @@ public class ProductDao extends DAOImpl<ProductRecord, sxj.db.tables.pojos.Produ
     }
 
     /**
+     * Fetch records that have <code>update_date IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.Product> fetchByUpdateDate(Date... values) {
+        return fetch(Product.PRODUCT.UPDATE_DATE, values);
+    }
+
+    /**
      * Fetch records that have <code>create_date IN (values)</code>
      */
     public List<sxj.db.tables.pojos.Product> fetchByCreateDate(Date... values) {

@@ -28,6 +28,7 @@ import com.mysql.cj.x.protobuf.Mysqlx.Ok;
 import com.service.OrderService;
 import com.util.DateUtil;
 import com.util.ExcelUtils;
+import com.util.MyException;
 import com.util.Paging;
 import com.util.RedisUtil;
 
@@ -43,7 +44,7 @@ public class OrderController {
 	private RedisUtil redisUtil;
 	
 	@RequestMapping("/list")
-	String list(Model model,@RequestParam(required = false)String keyword,@RequestParam(defaultValue="1")Integer pageNumber) {
+	String list(Model model,@RequestParam(required = false,defaultValue="")String keyword,@RequestParam(defaultValue="1")Integer pageNumber) {
 		/*Jedis jedis = redisUtil.getJedis();
 		String username= "shengxinjun";
 		String velidate = jedis.get(username);
@@ -97,8 +98,13 @@ public class OrderController {
 				orderIds.add(temp);
 			}
 		}
-		orderService.deleteOrdersByIds(orderIds);
-		result.setCode(1);
+		try {
+			orderService.deleteOrdersByIds(orderIds);
+			result.setCode(1);
+		} catch (MyException e) {
+			result.setCode(e.getCode());
+			result.setMessage(e.getMessage());
+		}
 		return result;
 	}
 	

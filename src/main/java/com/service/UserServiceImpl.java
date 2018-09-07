@@ -29,6 +29,9 @@ public class UserServiceImpl implements UserService {
 		if (!user.getPassword().equals(MD5Util.MD5(password))) {
 			throw new MyException(codeMessageDao.findById(102));
 		}
+		if (user.getDeleted()!=null && user.getDeleted()==1) {
+			throw new MyException(codeMessageDao.findById(107));
+		}
 		return user;
 	}
 
