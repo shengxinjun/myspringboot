@@ -290,7 +290,8 @@
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
-
+		<!-- ip -->
+		<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
 		<!--[if !IE]> -->
 		<script src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>
 		<script src="${pageContext.request.contextPath }/js/login/login.js"></script>

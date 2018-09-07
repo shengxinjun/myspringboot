@@ -38,7 +38,7 @@ import sxj.db.tables.records.EmailInfoRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class EmailInfo extends TableImpl<EmailInfoRecord> {
 
-    private static final long serialVersionUID = 1636193703;
+    private static final long serialVersionUID = 1845635318;
 
     /**
      * The reference instance of <code>test.email_info</code>
@@ -87,6 +87,11 @@ public class EmailInfo extends TableImpl<EmailInfoRecord> {
      * The column <code>test.email_info.send_date</code>.
      */
     public final TableField<EmailInfoRecord, Date> SEND_DATE = createField("send_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new Timestamp2DateConverter());
+
+    /**
+     * The column <code>test.email_info.ip</code>.
+     */
+    public final TableField<EmailInfoRecord, String> IP = createField("ip", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * Create a <code>test.email_info</code> table reference

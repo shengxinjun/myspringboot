@@ -1,6 +1,8 @@
 package com.dao;
 
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import com.domain.EmailInfo;
+import com.google.common.collect.Lists;
+import com.util.DateUtil;
 
 import sxj.db.tables.records.EmailInfoRecord;
 
@@ -51,4 +55,28 @@ public class EmailInfoDao extends DAOImpl<EmailInfoRecord,EmailInfo, Integer> {
 		}
     	return dslContext.select().from(EMAIL_INFO).where(condition).orderBy(EMAIL_INFO.SEND_DATE.desc()).limit(1).fetchOneInto(EmailInfo.class);
     }
+    /**
+     * 计算date这一天这个ip共发送了多少邮件
+     * @param ip
+     * @return
+     * @throws ParseException 
+     */
+    public Integer countEmailInfoByIpAndDate(String ip,Date date)  {
+    	List<Condition> conditions = Lists.newArrayList();
+    	if (!StringUtils.isEmpty(ip)) {
+			conditions.add(EMAIL_INFO.IP.eq(ip));
+		}
+    	if (date==null) {
+    		date = new Date();
+		}
+		try {
+			conditions.add(EMAIL_INFO.SEND_DATE.ge(DateUtil.date(DateUtil.date(date))));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	return dslContext.fetchCount(dslContext.select().from(EMAIL_INFO).where(conditions));
+    }
+    
+    
 }

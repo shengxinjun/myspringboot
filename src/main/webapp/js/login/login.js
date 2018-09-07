@@ -101,12 +101,14 @@ $(function() {
 	 */
 	$("#getCheckCode").click(function() {
 		var email = $("#forg_email").val();
+		var adip=returnCitySN["cip"];
 		$.ajax({
 			url : "/sendCheckCode",
 			type : 'POST',
 			dataType : 'json',
 			data : {
-				email:email
+				email:email,
+				ip:adip
 			},
 		}).done(function(e) {
 			if (e.code == 1) {

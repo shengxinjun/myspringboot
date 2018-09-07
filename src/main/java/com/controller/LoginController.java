@@ -94,10 +94,10 @@ public class LoginController {
 	 */
 	@ResponseBody
 	@RequestMapping("/sendCheckCode")
-	Result sendCheckCode(String email) {
+	Result sendCheckCode(String email,String ip) {
 		Result result = new Result();
 		try {
-			emailInfoService.forGetPassWord(email);
+			emailInfoService.forGetPassWord(email,ip);
 			result.setCode(1);
 		} catch (MyException e) {
 			result.setCode(e.getCode());

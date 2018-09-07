@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class EmailInfo implements Serializable {
 
-    private static final long serialVersionUID = 999271125;
+    private static final long serialVersionUID = 1235608357;
 
     private Integer id;
     private String  sender;
@@ -32,6 +32,7 @@ public class EmailInfo implements Serializable {
     private String  code;
     private String  subject;
     private Date    sendDate;
+    private String  ip;
 
     public EmailInfo() {}
 
@@ -43,6 +44,7 @@ public class EmailInfo implements Serializable {
         this.code = value.code;
         this.subject = value.subject;
         this.sendDate = value.sendDate;
+        this.ip = value.ip;
     }
 
     public EmailInfo(
@@ -52,7 +54,8 @@ public class EmailInfo implements Serializable {
         String  context,
         String  code,
         String  subject,
-        Date    sendDate
+        Date    sendDate,
+        String  ip
     ) {
         this.id = id;
         this.sender = sender;
@@ -61,6 +64,7 @@ public class EmailInfo implements Serializable {
         this.code = code;
         this.subject = subject;
         this.sendDate = sendDate;
+        this.ip = ip;
     }
 
     public Integer getId() {
@@ -126,6 +130,15 @@ public class EmailInfo implements Serializable {
         return this;
     }
 
+    public String getIp() {
+        return this.ip;
+    }
+
+    public EmailInfo setIp(String ip) {
+        this.ip = ip;
+        return this;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -177,6 +190,12 @@ public class EmailInfo implements Serializable {
         }
         else if (!sendDate.equals(other.sendDate))
             return false;
+        if (ip == null) {
+            if (other.ip != null)
+                return false;
+        }
+        else if (!ip.equals(other.ip))
+            return false;
         return true;
     }
 
@@ -191,6 +210,7 @@ public class EmailInfo implements Serializable {
         result = prime * result + ((code == null) ? 0 : code.hashCode());
         result = prime * result + ((subject == null) ? 0 : subject.hashCode());
         result = prime * result + ((sendDate == null) ? 0 : sendDate.hashCode());
+        result = prime * result + ((ip == null) ? 0 : ip.hashCode());
         return result;
     }
 
@@ -205,6 +225,7 @@ public class EmailInfo implements Serializable {
         sb.append(", ").append(code);
         sb.append(", ").append(subject);
         sb.append(", ").append(sendDate);
+        sb.append(", ").append(ip);
 
         sb.append(")");
         return sb.toString();

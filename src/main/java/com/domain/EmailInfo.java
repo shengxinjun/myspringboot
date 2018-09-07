@@ -28,181 +28,63 @@ public class EmailInfo implements Serializable {
     private String  code;
     private String  subject;
     private Date    sendDate;
+    private String  ip;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getSender() {
+		return sender;
+	}
+	public void setSender(String sender) {
+		this.sender = sender;
+	}
+	public String getReceiver() {
+		return receiver;
+	}
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
+	}
+	public String getContext() {
+		return context;
+	}
+	public void setContext(String context) {
+		this.context = context;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+	public Date getSendDate() {
+		return sendDate;
+	}
+	public void setSendDate(Date sendDate) {
+		this.sendDate = sendDate;
+	}
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	@Override
+	public String toString() {
+		return "EmailInfo [id=" + id + ", sender=" + sender + ", receiver=" + receiver + ", context=" + context
+				+ ", code=" + code + ", subject=" + subject + ", sendDate=" + sendDate + ", ip=" + ip + "]";
+	}
 
-    public EmailInfo() {}
-
-    public EmailInfo(EmailInfo value) {
-        this.id = value.id;
-        this.sender = value.sender;
-        this.receiver = value.receiver;
-        this.context = value.context;
-        this.code = value.code;
-        this.subject = value.subject;
-        this.sendDate = value.sendDate;
-    }
-
-    public EmailInfo(
-        Integer id,
-        String  sender,
-        String  receiver,
-        String  context,
-        String  code,
-        String  subject,
-        Date    sendDate
-    ) {
-        this.id = id;
-        this.sender = sender;
-        this.receiver = receiver;
-        this.context = context;
-        this.code = code;
-        this.subject = subject;
-        this.sendDate = sendDate;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
-
-    public EmailInfo setId(Integer id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getSender() {
-        return this.sender;
-    }
-
-    public EmailInfo setSender(String sender) {
-        this.sender = sender;
-        return this;
-    }
-
-    public String getReceiver() {
-        return this.receiver;
-    }
-
-    public EmailInfo setReceiver(String receiver) {
-        this.receiver = receiver;
-        return this;
-    }
-
-    public String getContext() {
-        return this.context;
-    }
-
-    public EmailInfo setContext(String context) {
-        this.context = context;
-        return this;
-    }
-
-    public String getCode() {
-        return this.code;
-    }
-
-    public EmailInfo setCode(String code) {
-        this.code = code;
-        return this;
-    }
-
-    public String getSubject() {
-        return this.subject;
-    }
-
-    public EmailInfo setSubject(String subject) {
-        this.subject = subject;
-        return this;
-    }
-
-    public Date getSendDate() {
-        return this.sendDate;
-    }
-
-    public EmailInfo setSendDate(Date sendDate) {
-        this.sendDate = sendDate;
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        final EmailInfo other = (EmailInfo) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        }
-        else if (!id.equals(other.id))
-            return false;
-        if (sender == null) {
-            if (other.sender != null)
-                return false;
-        }
-        else if (!sender.equals(other.sender))
-            return false;
-        if (receiver == null) {
-            if (other.receiver != null)
-                return false;
-        }
-        else if (!receiver.equals(other.receiver))
-            return false;
-        if (context == null) {
-            if (other.context != null)
-                return false;
-        }
-        else if (!context.equals(other.context))
-            return false;
-        if (code == null) {
-            if (other.code != null)
-                return false;
-        }
-        else if (!code.equals(other.code))
-            return false;
-        if (subject == null) {
-            if (other.subject != null)
-                return false;
-        }
-        else if (!subject.equals(other.subject))
-            return false;
-        if (sendDate == null) {
-            if (other.sendDate != null)
-                return false;
-        }
-        else if (!sendDate.equals(other.sendDate))
-            return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((sender == null) ? 0 : sender.hashCode());
-        result = prime * result + ((receiver == null) ? 0 : receiver.hashCode());
-        result = prime * result + ((context == null) ? 0 : context.hashCode());
-        result = prime * result + ((code == null) ? 0 : code.hashCode());
-        result = prime * result + ((subject == null) ? 0 : subject.hashCode());
-        result = prime * result + ((sendDate == null) ? 0 : sendDate.hashCode());
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder("EmailInfo (");
-
-        sb.append(id);
-        sb.append(", ").append(sender);
-        sb.append(", ").append(receiver);
-        sb.append(", ").append(context);
-        sb.append(", ").append(code);
-        sb.append(", ").append(subject);
-        sb.append(", ").append(sendDate);
-
-        sb.append(")");
-        return sb.toString();
-    }
+   
 }

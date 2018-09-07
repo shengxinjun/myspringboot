@@ -29,10 +29,14 @@ public class EmailInfoServiceImpl implements EmailInfoService {
 	private CodeMessageDao codeMessageDao;
 	
 	@Override
-	public void forGetPassWord(String email) {
+	public void forGetPassWord(String email,String ip) {
 		User dbUser = userDao.findUserByEmail(email);
 		if (ObjectUtils.isEmpty(dbUser)) {
 			throw new MyException(codeMessageDao.findById(104));
+		}
+		int count = emailInfoDao.countEmailInfoByIpAndDate(ip, new Date());
+		if (count>=10) {
+			throw new MyException(codeMessageDao.findById(106));
 		}
 		EmailInfo emailInfo = new EmailInfo();
 		int code = (int) ((Math.random()*9+1)*100000);
@@ -42,6 +46,7 @@ public class EmailInfoServiceImpl implements EmailInfoService {
 		emailInfo.setReceiver(email);
 		emailInfo.setSubject("找回密码");
 		emailInfo.setSendDate(new Date());
+		emailInfo.setIp(ip);
 		emailInfoDao.insert(emailInfo);
 		EmailUtil emailUtil = new EmailUtil(true);
 		emailUtil.doSendHtmlEmail("ace system for your password", context, email);

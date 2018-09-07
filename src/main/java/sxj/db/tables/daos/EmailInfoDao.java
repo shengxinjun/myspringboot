@@ -110,4 +110,11 @@ public class EmailInfoDao extends DAOImpl<EmailInfoRecord, sxj.db.tables.pojos.E
     public List<sxj.db.tables.pojos.EmailInfo> fetchBySendDate(Date... values) {
         return fetch(EmailInfo.EMAIL_INFO.SEND_DATE, values);
     }
+
+    /**
+     * Fetch records that have <code>ip IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.EmailInfo> fetchByIp(String... values) {
+        return fetch(EmailInfo.EMAIL_INFO.IP, values);
+    }
 }
