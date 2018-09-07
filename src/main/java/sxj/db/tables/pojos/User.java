@@ -23,7 +23,7 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1632760358;
+    private static final long serialVersionUID = 1925144131;
 
     private Integer id;
     private String  name;
@@ -33,6 +33,7 @@ public class User implements Serializable {
     private Date    lastLoginDate;
     private Date    registerDate;
     private String  email;
+    private Integer deleted;
     private String  role;
 
     public User() {}
@@ -46,6 +47,7 @@ public class User implements Serializable {
         this.lastLoginDate = value.lastLoginDate;
         this.registerDate = value.registerDate;
         this.email = value.email;
+        this.deleted = value.deleted;
         this.role = value.role;
     }
 
@@ -58,6 +60,7 @@ public class User implements Serializable {
         Date    lastLoginDate,
         Date    registerDate,
         String  email,
+        Integer deleted,
         String  role
     ) {
         this.id = id;
@@ -68,6 +71,7 @@ public class User implements Serializable {
         this.lastLoginDate = lastLoginDate;
         this.registerDate = registerDate;
         this.email = email;
+        this.deleted = deleted;
         this.role = role;
     }
 
@@ -143,6 +147,15 @@ public class User implements Serializable {
         return this;
     }
 
+    public Integer getDeleted() {
+        return this.deleted;
+    }
+
+    public User setDeleted(Integer deleted) {
+        this.deleted = deleted;
+        return this;
+    }
+
     public String getRole() {
         return this.role;
     }
@@ -209,6 +222,12 @@ public class User implements Serializable {
         }
         else if (!email.equals(other.email))
             return false;
+        if (deleted == null) {
+            if (other.deleted != null)
+                return false;
+        }
+        else if (!deleted.equals(other.deleted))
+            return false;
         if (role == null) {
             if (other.role != null)
                 return false;
@@ -230,6 +249,7 @@ public class User implements Serializable {
         result = prime * result + ((lastLoginDate == null) ? 0 : lastLoginDate.hashCode());
         result = prime * result + ((registerDate == null) ? 0 : registerDate.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + ((deleted == null) ? 0 : deleted.hashCode());
         result = prime * result + ((role == null) ? 0 : role.hashCode());
         return result;
     }
@@ -246,6 +266,7 @@ public class User implements Serializable {
         sb.append(", ").append(lastLoginDate);
         sb.append(", ").append(registerDate);
         sb.append(", ").append(email);
+        sb.append(", ").append(deleted);
         sb.append(", ").append(role);
 
         sb.append(")");

@@ -119,6 +119,13 @@ public class UserDao extends DAOImpl<UserRecord, sxj.db.tables.pojos.User, Integ
     }
 
     /**
+     * Fetch records that have <code>deleted IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.User> fetchByDeleted(Integer... values) {
+        return fetch(User.USER.DELETED, values);
+    }
+
+    /**
      * Fetch records that have <code>role IN (values)</code>
      */
     public List<sxj.db.tables.pojos.User> fetchByRole(String... values) {

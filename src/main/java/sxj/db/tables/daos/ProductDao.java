@@ -4,6 +4,7 @@
 package sxj.db.tables.daos;
 
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -83,10 +84,24 @@ public class ProductDao extends DAOImpl<ProductRecord, sxj.db.tables.pojos.Produ
     }
 
     /**
-     * Fetch records that have <code>desc IN (values)</code>
+     * Fetch records that have <code>create_date IN (values)</code>
      */
-    public List<sxj.db.tables.pojos.Product> fetchByDesc(String... values) {
-        return fetch(Product.PRODUCT.DESC, values);
+    public List<sxj.db.tables.pojos.Product> fetchByCreateDate(Date... values) {
+        return fetch(Product.PRODUCT.CREATE_DATE, values);
+    }
+
+    /**
+     * Fetch records that have <code>deleted IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.Product> fetchByDeleted(Integer... values) {
+        return fetch(Product.PRODUCT.DELETED, values);
+    }
+
+    /**
+     * Fetch records that have <code>type IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.Product> fetchByType(String... values) {
+        return fetch(Product.PRODUCT.TYPE, values);
     }
 
     /**

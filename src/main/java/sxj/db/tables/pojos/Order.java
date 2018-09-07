@@ -23,12 +23,13 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Order implements Serializable {
 
-    private static final long serialVersionUID = 638347743;
+    private static final long serialVersionUID = -253023475;
 
     private Integer id;
     private String  name;
     private Double  totalPrice;
     private Integer userId;
+    private Integer deleted;
     private Date    date;
 
     public Order() {}
@@ -38,6 +39,7 @@ public class Order implements Serializable {
         this.name = value.name;
         this.totalPrice = value.totalPrice;
         this.userId = value.userId;
+        this.deleted = value.deleted;
         this.date = value.date;
     }
 
@@ -46,12 +48,14 @@ public class Order implements Serializable {
         String  name,
         Double  totalPrice,
         Integer userId,
+        Integer deleted,
         Date    date
     ) {
         this.id = id;
         this.name = name;
         this.totalPrice = totalPrice;
         this.userId = userId;
+        this.deleted = deleted;
         this.date = date;
     }
 
@@ -88,6 +92,15 @@ public class Order implements Serializable {
 
     public Order setUserId(Integer userId) {
         this.userId = userId;
+        return this;
+    }
+
+    public Integer getDeleted() {
+        return this.deleted;
+    }
+
+    public Order setDeleted(Integer deleted) {
+        this.deleted = deleted;
         return this;
     }
 
@@ -133,6 +146,12 @@ public class Order implements Serializable {
         }
         else if (!userId.equals(other.userId))
             return false;
+        if (deleted == null) {
+            if (other.deleted != null)
+                return false;
+        }
+        else if (!deleted.equals(other.deleted))
+            return false;
         if (date == null) {
             if (other.date != null)
                 return false;
@@ -150,6 +169,7 @@ public class Order implements Serializable {
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((totalPrice == null) ? 0 : totalPrice.hashCode());
         result = prime * result + ((userId == null) ? 0 : userId.hashCode());
+        result = prime * result + ((deleted == null) ? 0 : deleted.hashCode());
         result = prime * result + ((date == null) ? 0 : date.hashCode());
         return result;
     }
@@ -162,6 +182,7 @@ public class Order implements Serializable {
         sb.append(", ").append(name);
         sb.append(", ").append(totalPrice);
         sb.append(", ").append(userId);
+        sb.append(", ").append(deleted);
         sb.append(", ").append(date);
 
         sb.append(")");

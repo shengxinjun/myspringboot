@@ -4,7 +4,10 @@
 package sxj.db.tables;
 
 
+import com.util.Timestamp2DateConverter;
+
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -35,7 +38,7 @@ import sxj.db.tables.records.ProductRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product extends TableImpl<ProductRecord> {
 
-    private static final long serialVersionUID = -1032821145;
+    private static final long serialVersionUID = -1242486374;
 
     /**
      * The reference instance of <code>test.product</code>
@@ -66,9 +69,19 @@ public class Product extends TableImpl<ProductRecord> {
     public final TableField<ProductRecord, Double> PRICE = createField("price", org.jooq.impl.SQLDataType.FLOAT, this, "");
 
     /**
-     * The column <code>test.product.desc</code>.
+     * The column <code>test.product.create_date</code>.
      */
-    public final TableField<ProductRecord, String> DESC = createField("desc", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+    public final TableField<ProductRecord, Date> CREATE_DATE = createField("create_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "", new Timestamp2DateConverter());
+
+    /**
+     * The column <code>test.product.deleted</code>.
+     */
+    public final TableField<ProductRecord, Integer> DELETED = createField("deleted", org.jooq.impl.SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>test.product.type</code>.
+     */
+    public final TableField<ProductRecord, String> TYPE = createField("type", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * The column <code>test.product.order_id</code>.

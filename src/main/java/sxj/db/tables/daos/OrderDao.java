@@ -91,6 +91,13 @@ public class OrderDao extends DAOImpl<OrderRecord, sxj.db.tables.pojos.Order, In
     }
 
     /**
+     * Fetch records that have <code>deleted IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.Order> fetchByDeleted(Integer... values) {
+        return fetch(Order.ORDER.DELETED, values);
+    }
+
+    /**
      * Fetch records that have <code>date IN (values)</code>
      */
     public List<sxj.db.tables.pojos.Order> fetchByDate(Date... values) {

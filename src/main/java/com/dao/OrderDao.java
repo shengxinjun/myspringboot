@@ -19,7 +19,7 @@ import com.util.Paging;
 
 import sxj.db.tables.records.OrderRecord;
 import static sxj.db.Tables.ORDER;
-import static sxj.db.Tables.PRODUCT;
+
 
 @Repository
 public class OrderDao extends DAOImpl<OrderRecord, Order, Integer> {

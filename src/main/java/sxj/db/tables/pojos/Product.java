@@ -5,6 +5,7 @@ package sxj.db.tables.pojos;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.annotation.Generated;
 
@@ -22,12 +23,14 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product implements Serializable {
 
-    private static final long serialVersionUID = 1726968814;
+    private static final long serialVersionUID = -716656156;
 
     private Integer id;
     private String  name;
     private Double  price;
-    private String  desc;
+    private Date    createDate;
+    private Integer deleted;
+    private String  type;
     private Integer orderId;
 
     public Product() {}
@@ -36,7 +39,9 @@ public class Product implements Serializable {
         this.id = value.id;
         this.name = value.name;
         this.price = value.price;
-        this.desc = value.desc;
+        this.createDate = value.createDate;
+        this.deleted = value.deleted;
+        this.type = value.type;
         this.orderId = value.orderId;
     }
 
@@ -44,13 +49,17 @@ public class Product implements Serializable {
         Integer id,
         String  name,
         Double  price,
-        String  desc,
+        Date    createDate,
+        Integer deleted,
+        String  type,
         Integer orderId
     ) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.desc = desc;
+        this.createDate = createDate;
+        this.deleted = deleted;
+        this.type = type;
         this.orderId = orderId;
     }
 
@@ -81,12 +90,30 @@ public class Product implements Serializable {
         return this;
     }
 
-    public String getDesc() {
-        return this.desc;
+    public Date getCreateDate() {
+        return this.createDate;
     }
 
-    public Product setDesc(String desc) {
-        this.desc = desc;
+    public Product setCreateDate(Date createDate) {
+        this.createDate = createDate;
+        return this;
+    }
+
+    public Integer getDeleted() {
+        return this.deleted;
+    }
+
+    public Product setDeleted(Integer deleted) {
+        this.deleted = deleted;
+        return this;
+    }
+
+    public String getType() {
+        return this.type;
+    }
+
+    public Product setType(String type) {
+        this.type = type;
         return this;
     }
 
@@ -126,11 +153,23 @@ public class Product implements Serializable {
         }
         else if (!price.equals(other.price))
             return false;
-        if (desc == null) {
-            if (other.desc != null)
+        if (createDate == null) {
+            if (other.createDate != null)
                 return false;
         }
-        else if (!desc.equals(other.desc))
+        else if (!createDate.equals(other.createDate))
+            return false;
+        if (deleted == null) {
+            if (other.deleted != null)
+                return false;
+        }
+        else if (!deleted.equals(other.deleted))
+            return false;
+        if (type == null) {
+            if (other.type != null)
+                return false;
+        }
+        else if (!type.equals(other.type))
             return false;
         if (orderId == null) {
             if (other.orderId != null)
@@ -148,7 +187,9 @@ public class Product implements Serializable {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((price == null) ? 0 : price.hashCode());
-        result = prime * result + ((desc == null) ? 0 : desc.hashCode());
+        result = prime * result + ((createDate == null) ? 0 : createDate.hashCode());
+        result = prime * result + ((deleted == null) ? 0 : deleted.hashCode());
+        result = prime * result + ((type == null) ? 0 : type.hashCode());
         result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
         return result;
     }
@@ -160,7 +201,9 @@ public class Product implements Serializable {
         sb.append(id);
         sb.append(", ").append(name);
         sb.append(", ").append(price);
-        sb.append(", ").append(desc);
+        sb.append(", ").append(createDate);
+        sb.append(", ").append(deleted);
+        sb.append(", ").append(type);
         sb.append(", ").append(orderId);
 
         sb.append(")");
