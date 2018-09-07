@@ -70,6 +70,20 @@ public class ProductDao extends DAOImpl<ProductRecord, sxj.db.tables.pojos.Produ
     }
 
     /**
+     * Fetch records that have <code>imgs IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.Product> fetchByImgs(String... values) {
+        return fetch(Product.PRODUCT.IMGS, values);
+    }
+
+    /**
+     * Fetch records that have <code>description IN (values)</code>
+     */
+    public List<sxj.db.tables.pojos.Product> fetchByDescription(String... values) {
+        return fetch(Product.PRODUCT.DESCRIPTION, values);
+    }
+
+    /**
      * Fetch records that have <code>name IN (values)</code>
      */
     public List<sxj.db.tables.pojos.Product> fetchByName(String... values) {

@@ -23,9 +23,11 @@ import javax.annotation.Generated;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product implements Serializable {
 
-    private static final long serialVersionUID = -980160425;
+    private static final long serialVersionUID = 1018066237;
 
     private Integer id;
+    private String  imgs;
+    private String  description;
     private String  name;
     private Double  price;
     private Date    updateDate;
@@ -38,6 +40,8 @@ public class Product implements Serializable {
 
     public Product(Product value) {
         this.id = value.id;
+        this.imgs = value.imgs;
+        this.description = value.description;
         this.name = value.name;
         this.price = value.price;
         this.updateDate = value.updateDate;
@@ -49,6 +53,8 @@ public class Product implements Serializable {
 
     public Product(
         Integer id,
+        String  imgs,
+        String  description,
         String  name,
         Double  price,
         Date    updateDate,
@@ -58,6 +64,8 @@ public class Product implements Serializable {
         Integer orderId
     ) {
         this.id = id;
+        this.imgs = imgs;
+        this.description = description;
         this.name = name;
         this.price = price;
         this.updateDate = updateDate;
@@ -73,6 +81,24 @@ public class Product implements Serializable {
 
     public Product setId(Integer id) {
         this.id = id;
+        return this;
+    }
+
+    public String getImgs() {
+        return this.imgs;
+    }
+
+    public Product setImgs(String imgs) {
+        this.imgs = imgs;
+        return this;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public Product setDescription(String description) {
+        this.description = description;
         return this;
     }
 
@@ -154,6 +180,18 @@ public class Product implements Serializable {
         }
         else if (!id.equals(other.id))
             return false;
+        if (imgs == null) {
+            if (other.imgs != null)
+                return false;
+        }
+        else if (!imgs.equals(other.imgs))
+            return false;
+        if (description == null) {
+            if (other.description != null)
+                return false;
+        }
+        else if (!description.equals(other.description))
+            return false;
         if (name == null) {
             if (other.name != null)
                 return false;
@@ -204,6 +242,8 @@ public class Product implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((imgs == null) ? 0 : imgs.hashCode());
+        result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((price == null) ? 0 : price.hashCode());
         result = prime * result + ((updateDate == null) ? 0 : updateDate.hashCode());
@@ -219,6 +259,8 @@ public class Product implements Serializable {
         StringBuilder sb = new StringBuilder("Product (");
 
         sb.append(id);
+        sb.append(", ").append(imgs);
+        sb.append(", ").append(description);
         sb.append(", ").append(name);
         sb.append(", ").append(price);
         sb.append(", ").append(updateDate);

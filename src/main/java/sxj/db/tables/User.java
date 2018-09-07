@@ -38,7 +38,7 @@ import sxj.db.tables.records.UserRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class User extends TableImpl<UserRecord> {
 
-    private static final long serialVersionUID = 1569658085;
+    private static final long serialVersionUID = 1729837211;
 
     /**
      * The reference instance of <code>test.user</code>
@@ -96,7 +96,7 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>test.user.deleted</code>.
      */
-    public final TableField<UserRecord, Integer> DELETED = createField("deleted", org.jooq.impl.SQLDataType.INTEGER, this, "");
+    public final TableField<UserRecord, Integer> DELETED = createField("deleted", org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>test.user.role</code>.

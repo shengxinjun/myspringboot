@@ -38,7 +38,7 @@ import sxj.db.tables.records.ProductRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Product extends TableImpl<ProductRecord> {
 
-    private static final long serialVersionUID = -999461699;
+    private static final long serialVersionUID = 1218443625;
 
     /**
      * The reference instance of <code>test.product</code>
@@ -57,6 +57,16 @@ public class Product extends TableImpl<ProductRecord> {
      * The column <code>test.product.id</code>.
      */
     public final TableField<ProductRecord, Integer> ID = createField("id", org.jooq.impl.SQLDataType.INTEGER.nullable(false), this, "");
+
+    /**
+     * The column <code>test.product.imgs</code>.
+     */
+    public final TableField<ProductRecord, String> IMGS = createField("imgs", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>test.product.description</code>.
+     */
+    public final TableField<ProductRecord, String> DESCRIPTION = createField("description", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * The column <code>test.product.name</code>.
@@ -81,7 +91,7 @@ public class Product extends TableImpl<ProductRecord> {
     /**
      * The column <code>test.product.deleted</code>.
      */
-    public final TableField<ProductRecord, Integer> DELETED = createField("deleted", org.jooq.impl.SQLDataType.INTEGER, this, "");
+    public final TableField<ProductRecord, Integer> DELETED = createField("deleted", org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>test.product.type</code>.

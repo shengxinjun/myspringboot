@@ -38,7 +38,7 @@ import sxj.db.tables.records.OrderRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Order extends TableImpl<OrderRecord> {
 
-    private static final long serialVersionUID = 1577783578;
+    private static final long serialVersionUID = 715350758;
 
     /**
      * The reference instance of <code>test.order</code>
@@ -76,7 +76,7 @@ public class Order extends TableImpl<OrderRecord> {
     /**
      * The column <code>test.order.deleted</code>.
      */
-    public final TableField<OrderRecord, Integer> DELETED = createField("deleted", org.jooq.impl.SQLDataType.INTEGER, this, "");
+    public final TableField<OrderRecord, Integer> DELETED = createField("deleted", org.jooq.impl.SQLDataType.INTEGER.defaultValue(org.jooq.impl.DSL.inline("0", org.jooq.impl.SQLDataType.INTEGER)), this, "");
 
     /**
      * The column <code>test.order.date</code>.
