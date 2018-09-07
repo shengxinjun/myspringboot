@@ -17,32 +17,38 @@
 			<div class="breadcrumbs ace-save-state col-md-9" id="breadcrumbs">
 				<div class="widget-box widget-color-dark ui-sortable-handle"
 					id="widget-box-11">
+					<div class="nav-search">
+						<form class="form-search">
+							<span class="input-icon"> <input placeholder="Search ..."
+								type="text" class="nav-search-input"></input> <i
+								class="ace-icon fa fa-search nav-search-icon" id="search"></i>
+							</span>
+						</form>
+					</div>
 					<ul class="ace-thumbnails clearfix">
 					
 					<c:forEach items="${paging.list}" var="item" varStatus="status">
 						
-						<div class="detail">
-							${item.name}
-							<li>
+							<li class="detail">
 											<a title="Photo Title" data-rel="colorbox">
 												<img width="150" height="150" alt="150x150" src="${pageContext.request.contextPath }/assets/images/gallery/thumb-1.jpg" />
 											</a>
 
 											<div class="tags">
 												<span class="label-holder">
-													<span class="label label-info">breakfast</span>
+													<span class="label label-info">名称：${item.name}</span>
 												</span>
 
 												<span class="label-holder">
-													<span class="label label-danger">fruits</span>
+													<span class="label label-danger">价格：${item.price}</span>
 												</span>
 
 												<span class="label-holder">
-													<span class="label label-success">toast</span>
+													<span class="label label-success">类别：${item.type}</span>
 												</span>
 
 												<span class="label-holder">
-													<span class="label label-warning arrowed-in">diet</span>
+													<span class="label label-warning arrowed-in">描述：${item.description}</span>
 												</span>
 											</div>
 
@@ -59,12 +65,11 @@
 													<i class="ace-icon fa fa-pencil"></i>
 												</a>
 
-												<a href="#">
+												<a href="/product/delete/${item.id}">
 													<i class="ace-icon fa fa-times red"></i>
 												</a>
 											</div>
 										</li>
-						</div>
 					</c:forEach>
 					
 					
@@ -79,6 +84,7 @@
 						<button class="btn" onclick="location.href='/product/export'">
 							<i class="ace-icon fa fa-share bigger-200"></i>
 						</button>
+						
 						<div class="btn-group btn-corner" id="pages">
 							<input type="hidden" value="${paging.totalCount }"
 								id="totalCount" /> <input type="hidden" value="${paging.pageNumber }"

@@ -41,7 +41,7 @@ public class ProductDao extends DAOImpl<ProductRecord,Product, Integer> {
 		List<Product> list = null;
 		List<Condition> conditions = new ArrayList<>();
 		if (!StringUtils.isEmpty(paging.getKeyword())) {
-			conditions.add(PRODUCT.NAME.like(paging.getKeyword()));
+			conditions.add(PRODUCT.NAME.like("%"+paging.getKeyword()+"%"));
 		}
 		conditions.add(PRODUCT.DELETED.eq(0));
 		list = dslContext.select().from(PRODUCT).where(conditions).orderBy(PRODUCT.UPDATE_DATE.desc()).limit(paging.offset(), paging.getPageSize()).fetchInto(Product.class);

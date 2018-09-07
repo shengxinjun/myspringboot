@@ -6,6 +6,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.assertj.core.util.Lists;
+
 public interface Constants {
 	/**
 	 * 
@@ -28,6 +30,6 @@ public interface Constants {
 	}
 	
 	interface EXCEL_HEAD{
-		List<String> order =  Stream.of("名称","总价","客户编号","日期").collect(Collectors.toList());
+		List<String> order =  Lists.newArrayList("名称","总价","客户编号","日期");
 	}
 }

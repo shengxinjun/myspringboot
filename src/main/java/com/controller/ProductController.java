@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,7 +30,7 @@ public class ProductController {
 	String list(Model model,@RequestParam(required = false,defaultValue="")String keyword,@RequestParam(defaultValue="1")Integer pageNumber) {
 		Paging<Product> paging = new Paging<>();
 		paging.setKeyword(keyword);
-		paging.setPageSize(Constants.pageSize.MIDDLE_SIZE);
+		paging.setPageSize(Constants.pageSize.LARGE_SIZE);
 		paging = productService.productList(paging);
 		model.addAttribute("paging", paging);
 		return "product/productList";
@@ -42,9 +43,8 @@ public class ProductController {
 		return "";
 	}
 	
-	@RequestMapping("/delete")
-	@ResponseBody
-	Result deleteById(Integer id) {
+	@RequestMapping("/delete/{id}")
+	String deleteById(@PathVariable Integer id) {
 		Result result = new Result();
 		try {
 			productService.deleteProductById(id);
@@ -54,7 +54,7 @@ public class ProductController {
 			result.setMessage(e.getMessage());
 		}
 		
-		return result;
+		return "redirect:/product/list";
 	}
 	
 	@RequestMapping("/deleteProduts")
