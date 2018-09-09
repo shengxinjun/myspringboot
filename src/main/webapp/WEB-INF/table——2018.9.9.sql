@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 80012
+Source Server         : estore
+Source Server Version : 50717
 Source Host           : localhost:3306
 Source Database       : test
 
 Target Server Type    : MYSQL
-Target Server Version : 80012
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2018-09-07 17:30:57
+Date: 2018-09-09 19:41:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,7 +51,7 @@ CREATE TABLE `email_info` (
   `send_date` datetime DEFAULT NULL,
   `ip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of email_info
@@ -77,6 +77,8 @@ INSERT INTO `email_info` VALUES ('33', null, '164883349@qq.com', '验证码为�
 INSERT INTO `email_info` VALUES ('34', null, '498740190@qq.com', '验证码为：541668', '541668', '找回密码', '2018-09-07 10:43:50', '49.77.179.176');
 INSERT INTO `email_info` VALUES ('35', null, '498740190@qq.com', '验证码为：786840', '786840', '找回密码', '2018-09-07 10:46:22', '49.77.179.176');
 INSERT INTO `email_info` VALUES ('36', null, '498740190@qq.com', '你的新密码为：421729', null, 'topest level---ace system', '2018-09-07 10:46:40', null);
+INSERT INTO `email_info` VALUES ('37', null, '498740190@qq.com', '验证码为：190840', '190840', '找回密码', '2018-09-07 20:58:02', '220.115.124.213');
+INSERT INTO `email_info` VALUES ('38', null, '498740190@qq.com', '你的新密码为：730450', null, 'topest level---ace system', '2018-09-07 20:58:56', null);
 
 -- ----------------------------
 -- Table structure for `order`
@@ -143,35 +145,99 @@ CREATE TABLE `product` (
   `update_date` datetime DEFAULT NULL,
   `create_date` datetime DEFAULT NULL,
   `deleted` int(11) unsigned DEFAULT '0',
-  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
   `order_id` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('6', null, null, 'ds', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('7', null, null, 'ds', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('8', null, null, 'ds', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('9', null, null, 'ds', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('10', null, null, 'sd', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('11', null, null, 'g', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('12', null, null, 'gf', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('13', null, null, 'gvfd', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('14', null, null, 'gvfd', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('15', null, null, 'bg', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('16', null, null, 'ds', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('17', null, null, 'sda', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('18', null, null, 'sd', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('19', null, null, 'f', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('20', null, null, 'dsf', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('21', null, null, 'a', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('22', null, null, 'fs', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('23', null, null, 'dasd', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('24', null, null, 'sd', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('25', null, null, 'fsd', null, null, null, '0', null, null);
-INSERT INTO `product` VALUES ('26', null, null, null, null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('7', null, 'dsa', 'ds', '3', null, null, '0', '22', null);
+INSERT INTO `product` VALUES ('8', null, 'sdd', 'ds', '3', null, null, '0', 'dfgds', null);
+INSERT INTO `product` VALUES ('9', null, 'ff', 'ds', '3', null, null, '0', 'asdf', null);
+INSERT INTO `product` VALUES ('10', null, 'das', 'sd', '3', null, null, '0', 'fdsf', null);
+INSERT INTO `product` VALUES ('13', null, 'sdf', 'gvfd', '33', null, null, '0', 'fasdf', null);
+INSERT INTO `product` VALUES ('14', null, 'dsa', 'gvfd', '33', null, null, '0', 'adsfa', null);
+INSERT INTO `product` VALUES ('15', null, 'fafsa', 'bg', '3', null, null, '0', 'adsf', null);
+INSERT INTO `product` VALUES ('16', null, 'fdsfsd', 'ds', '3', null, null, '0', 'asf', null);
+INSERT INTO `product` VALUES ('17', null, 'asdf', 'sda', '3', null, null, '0', 'ad', null);
+INSERT INTO `product` VALUES ('18', null, 'ds', 'sd', '3', null, null, '0', 'ads', null);
+INSERT INTO `product` VALUES ('21', null, 'ds', 'a', '33', null, null, '0', 'dsf', null);
+INSERT INTO `product` VALUES ('22', null, 'asfads', 'fs', '3', null, null, '0', 'sa', null);
+INSERT INTO `product` VALUES ('23', null, 'afd', 'dasd', '3', null, null, '0', 'dsa', null);
+INSERT INTO `product` VALUES ('24', null, 'afd', 'sd', '3', null, null, '0', 'fasdf', null);
+INSERT INTO `product` VALUES ('25', null, null, 'fsd', '3', null, null, '0', 'asd', null);
+INSERT INTO `product` VALUES ('27', null, null, 'd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('28', null, null, 'df', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('30', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('31', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('32', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('33', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('34', null, null, 'fd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('35', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('36', null, null, 'dsfdf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('37', null, null, 'd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('38', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('39', null, null, 'd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('40', null, null, 'sffd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('41', null, null, 'fd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('42', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('43', null, null, 'fd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('44', null, null, 'fd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('45', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('46', null, null, 'fds', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('47', null, null, 'fsd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('48', null, null, 'fd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('49', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('50', null, null, 'fs', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('51', null, null, 's', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('52', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('53', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('54', null, null, 'fd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('55', null, null, 'fd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('56', null, null, 'fsd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('57', null, null, 'sdf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('58', null, null, 'fds', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('59', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('60', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('61', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('62', null, null, 'dsf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('63', null, null, 'fd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('64', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('65', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('66', null, null, 'fsf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('67', null, null, 'sd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('68', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('69', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('70', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('71', null, null, 'fs', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('72', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('73', null, null, 'fs', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('74', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('75', null, null, 'fs', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('76', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('77', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('78', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('79', null, null, 'fsd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('80', null, null, 'fs', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('81', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('82', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('83', null, null, 'fsd', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('84', null, null, 'fs', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('85', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('86', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('87', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('88', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('89', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('90', null, null, 'sf', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('91', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('92', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('94', null, null, 'f', null, null, null, '0', null, null);
+INSERT INTO `product` VALUES ('99', null, null, '我问问', '11111', null, '2018-09-19 00:00:00', '0', '11111', null);
+INSERT INTO `product` VALUES ('100', null, '很甜', '苹果', '3', null, '2018-09-09 00:00:00', '0', '水果', null);
+INSERT INTO `product` VALUES ('101', null, '很酸', '桔子', '2', null, null, '0', '水果', null);
+INSERT INTO `product` VALUES ('102', null, '333', '333', '333', null, '2018-09-25 00:00:00', '0', '333', null);
 
 -- ----------------------------
 -- Table structure for `user`
@@ -194,6 +260,6 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '盛新军', '091787B7502B310FB20959FA10C5E117', '18360916461', null, null, null, '498740190@qq.com', null, null);
+INSERT INTO `user` VALUES ('1', '盛新军', 'FBCF54EF63626E185E6565FC7C391126', '18360916461', null, null, null, '498740190@qq.com', null, null);
 INSERT INTO `user` VALUES ('4', 'sxj', '98544FC40293F2C9148832BA8FF045B3', '17895216461', null, null, '2018-09-06 00:00:00', '164883349@qq.com', null, null);
 INSERT INTO `user` VALUES ('9', '18111111111', '1B938654C49BE5D739FCE14B3F4F4DEF', '18111111111', null, null, '2018-09-06 18:17:54', '18111111111', null, null);
