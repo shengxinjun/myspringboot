@@ -1,21 +1,34 @@
 package com.controller;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.constrants.Constants;
+import com.domain.Order;
 import com.domain.Product;
+import com.google.gson.Gson;
+import com.model.OrderForm;
+import com.model.ProductForm;
 import com.model.Result;
 import com.service.ProductService;
+import com.util.DateUtil;
+import com.util.ExcelUtils;
 import com.util.MyException;
 import com.util.Paging;
 
@@ -31,11 +44,18 @@ public class ProductController {
 		Paging<Product> paging = new Paging<>();
 		paging.setKeyword(keyword);
 		paging.setPageSize(Constants.pageSize.LARGE_SIZE);
+		paging.setPageNumber(pageNumber);
 		paging = productService.productList(paging);
 		model.addAttribute("paging", paging);
 		return "product/productList";
 	}
-	
+	@RequestMapping("/findOrderById/{id}")
+	String findOrderById(Model model,@PathVariable Integer id) {
+		
+		Product product = productService.findProductById(id);
+		model.addAttribute("product", product);
+		return "product/productDetail";
+	}
 	@RequestMapping("/detail")
 	String findProductById(Model model,Integer id) {
 		Product product = productService.findProductById(id);
@@ -85,5 +105,60 @@ public class ProductController {
 	String turnToAdd(){
 		
 		return "product/productDetail";
+	}
+	
+	@ResponseBody
+	@PostMapping("/doAdd")
+	Result doAdd(@RequestParam(required=false) String obj) {
+		//将json转化为object
+		Gson gson = new Gson();
+		ProductForm productForm = gson.fromJson(obj, ProductForm.class);
+		Product product = new Product();
+		product.setName(productForm.getName());
+		product.setType(productForm.getType());
+		product.setDescription(productForm.getDescription());
+		if(!StringUtils.isEmpty(productForm.getPrice())){
+			product.setPrice(Double.parseDouble(productForm.getPrice()));
+		}
+		if (!StringUtils.isEmpty(productForm.getCreateDate())) {
+			Date date = null;
+			try {
+				date = DateUtil.date(productForm.getCreateDate());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			product.setCreateDate(date);
+		}
+		productService.insert(product);
+		return Result.ok();
+	}
+	@RequestMapping("/export")
+	@ResponseBody
+	Result exportProduct(HttpServletRequest request,HttpServletResponse response,@RequestParam(required = false)String keyword,@RequestParam(defaultValue="1")Integer pageNumber){
+		
+		Paging<Product> paging = new Paging<>();
+		paging.setKeyword(keyword);
+		paging.setPageNumber(pageNumber);
+		paging.setPageSize(Constants.pageSize.LARGE_SIZE);
+		paging = productService.productList(paging);
+		List<String> headers = Constants.EXCEL_HEAD.product;
+		List<List<Object>> datas = new ArrayList<>();
+		for(Product product: paging.getList()){
+			List<Object> obj = new ArrayList<>();
+			obj.add(product.getName());
+			obj.add(product.getPrice());
+			obj.add(product.getType());
+			obj.add(product.getDescription());
+			obj.add(product.getCreateDate());
+			datas.add(obj);
+		}
+		try {
+			ExcelUtils.generateCreateExcel(headers, datas, null, request, response);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new Result(1, "");
 	}
 }

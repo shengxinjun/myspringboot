@@ -30,7 +30,7 @@
 					<c:forEach items="${paging.list}" var="item" varStatus="status">
 						
 							<li class="detail">
-											<a title="Photo Title" data-rel="colorbox">
+											<a title="Photo Title" data-rel="colorbox" class="cboxElement">
 												<img width="150" height="150" alt="150x150" src="${pageContext.request.contextPath }/assets/images/gallery/thumb-1.jpg" />
 											</a>
 
@@ -81,7 +81,7 @@
 						<button class="btn" id="delBtn">
 							<i class="ace-icon fa fa-trash-o bigger-200"></i>
 						</button>
-						<button class="btn" onclick="location.href='/product/export'">
+						<button class="btn" onclick="location.href='/product/export?keyword=${paging.keyword}&pageNumber=${paging.pageNumber}'">
 							<i class="ace-icon fa fa-share bigger-200"></i>
 						</button>
 						

@@ -15,7 +15,7 @@ public class Product implements Serializable {
 	private Double price;
 	private Date updateDate;
 	private Date createDate;
-	private Integer deleted;
+	private Integer deleted = 0;
 	private String type;
 	private Integer orderId;
 

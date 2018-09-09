@@ -12,7 +12,7 @@ public class Order implements Serializable {
     private String  name;
     private Double  totalPrice;
     private Integer userId;
-    private Integer deleted;
+    private Integer deleted = 0;
     private Date    date;
 	public Integer getId() {
 		return id;

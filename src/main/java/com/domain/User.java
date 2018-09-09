@@ -20,7 +20,7 @@ public class User implements Serializable {
 	    private Date    lastLoginDate;
 	    private Date    registerDate;
 	    private String  email;
-	    private Integer deleted;
+	    private Integer deleted = 0;
 	    private String  role;
 		public Integer getId() {
 			return id;

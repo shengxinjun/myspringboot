@@ -31,5 +31,7 @@ public interface Constants {
 	
 	interface EXCEL_HEAD{
 		List<String> order =  Lists.newArrayList("名称","总价","客户编号","日期");
+		
+		List<String> product =  Lists.newArrayList("名称","单价","类别","描述","创建日期");
 	}
 }
