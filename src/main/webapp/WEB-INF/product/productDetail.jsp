@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../model/header.jsp"%>
+<title>ace admin</title>
+<%@ include file="../model/css.jsp"%>
 
 </head>
 <body class="no-skin">
@@ -25,24 +27,24 @@
 					<div class="widget-body">
 						<div class="widget-main padding-4 scrollable ace-scroll"
 							data-size="125" style="position: relative;">
-							<div class="scroll-content" style="height: 500px;">
+							<div class="scroll-content" style="min-height: 500px;">
 								<input type="hidden" id="id" value="${product.id }" />
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-7 col-md-7">
 									名称：<input type="text" id="name"
 										class="form-control ui-autocomplete-input"
 										value="${product.name}"></input>
 								</div>
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-7 col-md-7">
 									单价：<input type="text" id="price" name="value"
 										class="form-control ui-autocomplete-input"
 										value="${product.price}"></input>
 								</div>
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-7 col-md-7">
 									产品类别：<input type="text" id="type"
 										class="form-control ui-autocomplete-input"
 										value="${product.type}"></input>
 								</div>
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-7 col-md-7">
 									描述：<input type="text" id=description
 										class="form-control ui-autocomplete-input"
 										value="${product.description}"></input>
@@ -57,8 +59,15 @@
 										</span>
 									</div>
 								</div> --%>
-
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-7 col-md-7">
+									<div class="bg-white padd-t30">
+										<a class="upload-btn" href="javascript:;">上传文件 <input
+											type="file" name="file" id="newEditPUpload"></input>
+										</a>
+										<input type="hidden" id="fileName"></input>
+									</div>
+								</div>
+								<div class="col-sm-7 col-md-7">
 									<a class="btn btn-info btn-sm" id="submit">提交</a>
 								</div>
 							</div>
@@ -69,47 +78,47 @@
 		</div>
 	</div>
 
-	
+
 
 	<!-- 中部内容 -->
-	
+
 	<%@ include file="../model/buttom.jsp"%>
-	<script src="${pageContext.request.contextPath }/assets/js/jquery-ui.min.js"></script>
-	
-	<script src="${pageContext.request.contextPath }/js/product/productDetail.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/assets/js/jquery-ui.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/product/ajaxfileupload.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/product/productDetail.js"></script>
 	<script type="text/javascript">
-			jQuery(function($) {
+		jQuery(function($) {
+
+			$("#date").datepicker({
+				showOtherMonths : true,
+				selectOtherMonths : false,
+				dateFormat : "yy-mm-dd"
+			//isRTL:true,
+
+			/*
+			changeMonth: true,
+			changeYear: true,
 			
-				$( "#date").datepicker({
-					showOtherMonths: true,
-					selectOtherMonths: false,
-					dateFormat:"yy-mm-dd"
-					//isRTL:true,
-			
-					
-					/*
-					changeMonth: true,
-					changeYear: true,
-					
-					showButtonPanel: true,
-					beforeShow: function() {
-						//change button colors
-						var datepicker = $(this).datepicker( "widget" );
-						setTimeout(function(){
-							var buttons = datepicker.find('.ui-datepicker-buttonpane')
-							.find('button');
-							buttons.eq(0).addClass('btn btn-xs');
-							buttons.eq(1).addClass('btn btn-xs btn-success');
-							buttons.wrapInner('<span class="bigger-110" />');
-						}, 0);
-					}
-			*/
-				});
-			
-			
-					
+			showButtonPanel: true,
+			beforeShow: function() {
+				//change button colors
+				var datepicker = $(this).datepicker( "widget" );
+				setTimeout(function(){
+					var buttons = datepicker.find('.ui-datepicker-buttonpane')
+					.find('button');
+					buttons.eq(0).addClass('btn btn-xs');
+					buttons.eq(1).addClass('btn btn-xs btn-success');
+					buttons.wrapInner('<span class="bigger-110" />');
+				}, 0);
+			}
+			 */
 			});
-		</script>
-	
+
+		});
+	</script>
+
 </body>
 </html>

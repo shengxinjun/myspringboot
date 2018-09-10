@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../model/header.jsp"%>
+<title>ace admin</title>
+<%@ include file="../model/css.jsp"%>
 
 
 </head>
