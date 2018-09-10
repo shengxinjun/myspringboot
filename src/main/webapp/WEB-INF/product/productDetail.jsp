@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../model/header.jsp"%>
 
-
 </head>
 <body class="no-skin">
 	<%@ include file="../model/menu.jsp"%>
@@ -48,7 +47,7 @@
 										class="form-control ui-autocomplete-input"
 										value="${product.description}"></input>
 								</div>
-								<div class="col-sm-8 col-md-7">
+								<%-- <div class="col-sm-8 col-md-7">
 									创建日期：
 									<div class="input-group input-group-sm">
 										<input type="text" id="date" class="form-control"
@@ -57,7 +56,7 @@
 											class="ace-icon fa fa-calendar"></i>
 										</span>
 									</div>
-								</div>
+								</div> --%>
 
 								<div class="col-sm-8 col-md-7">
 									<a class="btn btn-info btn-sm" id="submit">提交</a>

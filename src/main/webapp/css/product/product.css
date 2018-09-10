@@ -7,3 +7,6 @@
 	float:right;
 	z-index:999;
 }
+#cboxOverlay{
+	background:#000;
+}

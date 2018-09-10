@@ -10,18 +10,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta charset="utf-8" />
 <title>my admin</title>
+<!-- 
 
 <meta name="description" content="overview &amp; stats" />
 <meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-<!-- page specific plugin styles -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/css/jquery-ui.min.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/css/bootstrap-datepicker3.min.css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/assets/css/ui.jqgrid.min.css" />
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0" /> -->
 
 <!-- bootstrap & fontawesome -->
 <link rel="stylesheet"
@@ -43,10 +36,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/assets/css/ace-rtl.min.css" />
 
-<!-- inline styles related to this page -->
-
-
-
-<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-
+	<!-- ace settings handler -->
+<script
+	src="${pageContext.request.contextPath }/assets/js/ace-extra.min.js"></script>

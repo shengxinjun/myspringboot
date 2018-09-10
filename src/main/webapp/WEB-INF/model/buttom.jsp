@@ -42,10 +42,7 @@
 							+ "<"+"/script>");
 	</script>
 	<script
-		src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
-	<!-- ace settings handler -->
-<script
-	src="${pageContext.request.contextPath }/assets/js/ace-extra.min.js"></script>
+		src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script><%-- 
 	<script
 		src="${pageContext.request.contextPath }/assets/js/jquery-ui.custom.min.js"></script>
 	<script
@@ -60,7 +57,7 @@
 		src="${pageContext.request.contextPath }/assets/js/jquery.flot.pie.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/assets/js/jquery.flot.resize.min.js"></script>
-
+ --%>
 	<!-- ace scripts -->
 	<script
 		src="${pageContext.request.contextPath }/assets/js/ace-elements.min.js"></script>

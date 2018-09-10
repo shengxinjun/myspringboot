@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../model/header.jsp"%>
 <!-- page specific plugin styles -->
-		<link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/colorbox.min.css" />
+		
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/product/product.css" />
 
@@ -30,7 +30,7 @@
 					<c:forEach items="${paging.list}" var="item" varStatus="status">
 						
 							<li class="detail">
-											<a title="Photo Title" data-rel="colorbox" class="cboxElement">
+											<a href="${pageContext.request.contextPath }/assets/images/gallery/thumb-1.jpg" title="${item.name}" data-rel="colorbox">
 												<img width="150" height="150" alt="150x150" src="${pageContext.request.contextPath }/assets/images/gallery/thumb-1.jpg" />
 											</a>
 
@@ -57,11 +57,11 @@
 													<i class="ace-icon fa fa-link"></i>
 												</a>
 
-												<a href="#">
+												<a>
 													<i class="ace-icon fa fa-paperclip"></i>
 												</a>
 
-												<a href="#">
+												<a href="/product/detail?id=${item.id}">
 													<i class="ace-icon fa fa-pencil"></i>
 												</a>
 
@@ -101,7 +101,8 @@
 	
 		<!-- page specific plugin scripts -->
 		<script src="${pageContext.request.contextPath }/assets/js/jquery.colorbox.min.js"></script>
-	<script type="text/javascript">
+	<!-- inline scripts related to this page -->
+		<script type="text/javascript">
 			jQuery(function($) {
 	var $overflow = '';
 	var colorbox_params = {
@@ -127,7 +128,7 @@
 		}
 	};
 
-	$('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+	$('[data-rel="colorbox"]').colorbox(colorbox_params);
 	$("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
 	
 	

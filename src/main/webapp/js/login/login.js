@@ -23,11 +23,11 @@ $(function() {
 			remember = 0;
 		}
 		if (!telephone) {
-			alert("请输入手机号码");
+			message("请输入手机号码");
 			return;
 		}
 		if (!password) {
-			alert("请输入密码");
+			message("请输入密码");
 			return;
 		}
 		$.ajax({
@@ -43,7 +43,7 @@ $(function() {
 			if (e.code == 1) {
 				location.href = '/order/list';
 			} else {
-				alert(e.message);
+				message(e.message);
 			}
 		}).fail(function(e) {
 		});

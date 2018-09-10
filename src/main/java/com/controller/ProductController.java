@@ -49,18 +49,11 @@ public class ProductController {
 		model.addAttribute("paging", paging);
 		return "product/productList";
 	}
-	@RequestMapping("/findOrderById/{id}")
-	String findOrderById(Model model,@PathVariable Integer id) {
-		
-		Product product = productService.findProductById(id);
-		model.addAttribute("product", product);
-		return "product/productDetail";
-	}
 	@RequestMapping("/detail")
 	String findProductById(Model model,Integer id) {
 		Product product = productService.findProductById(id);
 		model.addAttribute("product", product);
-		return "";
+		return "product/productDetail";
 	}
 	
 	@RequestMapping("/delete/{id}")
@@ -120,17 +113,25 @@ public class ProductController {
 		if(!StringUtils.isEmpty(productForm.getPrice())){
 			product.setPrice(Double.parseDouble(productForm.getPrice()));
 		}
-		if (!StringUtils.isEmpty(productForm.getCreateDate())) {
-			Date date = null;
-			try {
-				date = DateUtil.date(productForm.getCreateDate());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			product.setCreateDate(date);
-		}
+		product.setCreateDate(new Date());
 		productService.insert(product);
+		return Result.ok();
+	}
+	@ResponseBody
+	@PostMapping("/doUpdate")
+	Result doUpdate(@RequestParam(required=false) String obj) {
+		//将json转化为object
+		Gson gson = new Gson();
+		ProductForm productForm = gson.fromJson(obj, ProductForm.class);
+		Product product = productService.findProductById(productForm.getId());
+		product.setName(productForm.getName());
+		product.setType(productForm.getType());
+		product.setDescription(productForm.getDescription());
+		if(!StringUtils.isEmpty(productForm.getPrice())){
+			product.setPrice(Double.parseDouble(productForm.getPrice()));
+		}
+		product.setUpdateDate(new Date());
+		productService.updateProduct(product);
 		return Result.ok();
 	}
 	@RequestMapping("/export")
