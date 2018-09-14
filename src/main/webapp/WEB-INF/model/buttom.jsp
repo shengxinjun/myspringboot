@@ -25,7 +25,29 @@
 			class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 		</a>
 	</div>
-
+	<!-- 封装一个bootstrap的弹框   start
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">tip</h4>
+				</div>
+				<div id="alert">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		js	$("#alert").text("alert的内容");
+			$('#myModal').modal();
+	
+	 封装一个bootstrap的弹框    end-->
 	<!--[if !IE]> -->
 	<script
 		src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>
