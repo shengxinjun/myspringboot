@@ -162,7 +162,7 @@
 													</label>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="验证码" id="forg_checkCode"/>
+															<input type="text" class="form-control" placeholder="验证码" id="forg_checkCode"/>
 														</span>
 													</label>
 
