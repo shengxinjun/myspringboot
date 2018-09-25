@@ -11,6 +11,7 @@ $(function(){
 		product.type = $("#type").val();
 		product.description = $("#description").val();
 		product.createDate = $("#date").val();
+		product.imgs = $("#fileName").val();
 		var urls = "/product/doAdd";
 		if($("#id").val() != ""){
 			urls = "/product/doUpdate";
@@ -46,6 +47,10 @@ $(function(){
             success: function (result) {
                 if (result.code == 1) {
                 	$("#fileName").val(result.data);
+                	var start = result.data.lastIndexOf("/");
+                	var name = result.data.substring(start+1);
+                	$('#box').append('<span>'+ name +'<a href="javascript:;"></a></span>');
+                	$("#newEditPUpload").hide();
                 	alert("上传成功");
                   } else {
                     alert("上传文件出错");

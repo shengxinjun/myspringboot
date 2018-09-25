@@ -4,6 +4,8 @@
 <title>ace admin</title>
 <%@ include file="../model/css.jsp"%>
 
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/product/product.css" />
 </head>
 <body class="no-skin">
 	<%@ include file="../model/menu.jsp"%>
@@ -49,24 +51,16 @@
 										class="form-control ui-autocomplete-input"
 										value="${product.description}"></input>
 								</div>
-								<%-- <div class="col-sm-8 col-md-7">
-									创建日期：
-									<div class="input-group input-group-sm">
-										<input type="text" id="date" class="form-control"
-											value="<fmt:formatDate value='${product.createDate}' type='date' pattern='yyyy-MM-dd'/>" />
-										<span class="input-group-addon"> <i
-											class="ace-icon fa fa-calendar"></i>
-										</span>
-									</div>
-								</div> --%>
+								
 								<div class="col-sm-7 col-md-7">
-									<div class="bg-white padd-t30">
-										<a class="upload-btn" href="javascript:;">上传文件 <input
-											type="file" name="file" id="newEditPUpload"></input>
-										</a>
-										<input type="hidden" id="fileName"></input>
+
+									<div class="col-sm-7 col-md-7">
+										图片：<a class="upload-btn">上传文件 <input
+										type="file" name="file" id="newEditPUpload"></input>
+									</a> <input type="hidden" id="fileName"></input>
 									</div>
-								</div>
+									<div class="put-evidence col-sm-5 col-md-5" id="box">
+									</div>
 								<div class="col-sm-7 col-md-7">
 									<a class="btn btn-info btn-sm" id="submit">提交</a>
 								</div>
