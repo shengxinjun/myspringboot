@@ -6,6 +6,7 @@ public class ProductForm {
 	private String price;
 	private String description;
 	private String type;
+	private String imgs;
 	
 	private String createDate;
 	public Integer getId() {
@@ -43,5 +44,11 @@ public class ProductForm {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getImgs() {
+		return imgs;
+	}
+	public void setImgs(String imgs) {
+		this.imgs = imgs;
 	}
 }

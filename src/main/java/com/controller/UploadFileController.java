@@ -80,6 +80,52 @@ public class UploadFileController {
 
 	}
 	
+	@RequestMapping("/upload2")
+	@ResponseBody
+	String upload2(HttpServletRequest request, HttpServletResponse response) {
+		String url = "";
+		String finalName="";
+		if (request instanceof MultipartHttpServletRequest) {
+			MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
+
+			// 获取他文件上传的对象
+			String fileName = mreq.getFileNames().next();
+			MultipartFile multipartFile = mreq.getFile(fileName);
+
+			if (multipartFile.getSize() > 1024 * 1024 * 500)
+				return "文件过大";
+
+			// 获取文件真实名称
+			String originName = multipartFile.getOriginalFilename();
+
+			// 重新设置文件名称
+			/*String suffix = originName.substring(originName.lastIndexOf(".") + 1);*/
+			finalName = "/"+UUID.randomUUID() +"/" + originName;
+
+			// 判断文件夹和文件是否存在
+			String folder = filePath + "/" + UUID.randomUUID() +"/" ;
+			//文件传输到目标位置
+			File file = new File(folder);
+			if (!file.exists())
+				file.mkdirs();
+
+			url = folder + originName;
+
+			file = new File(url);
+			if (file.exists())
+				file.delete();
+
+			try {
+				multipartFile.transferTo(file);
+			} catch (Exception e) {
+				
+			}
+
+		}
+		return finalName;
+
+	}
+	
 	@ResponseBody
 	@RequestMapping("/download")
 	Result download(HttpServletRequest request, HttpServletResponse response,String file) throws IOException{

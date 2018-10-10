@@ -127,6 +127,7 @@ public class ProductController {
 		product.setName(productForm.getName());
 		product.setType(productForm.getType());
 		product.setDescription(productForm.getDescription());
+		product.setImgs(productForm.getImgs());
 		if(!StringUtils.isEmpty(productForm.getPrice())){
 			product.setPrice(Double.parseDouble(productForm.getPrice()));
 		}
