@@ -1,15 +1,21 @@
 package com.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -18,6 +24,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.constrants.Constants;
 import com.domain.Order;
@@ -35,6 +45,9 @@ import com.util.Paging;
 @Controller
 @RequestMapping("/product")
 public class ProductController {
+	
+	@Value("${filePath}")
+	private String filePath;
 	
 	@Autowired
 	private ProductService productService;
@@ -163,4 +176,71 @@ public class ProductController {
 		}
 		return new Result(1, "");
 	}
-}
+	
+	@RequestMapping("/batchImportProduct")
+	@ResponseBody
+	ModelAndView batchImportProduct(HttpServletRequest request, HttpServletResponse response) {
+		String url = "";
+		if (request instanceof MultipartHttpServletRequest) {
+			MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
+
+			// 获取他文件上传的对象
+			String fileName = mreq.getFileNames().next();
+			MultipartFile multipartFile = mreq.getFile(fileName);
+
+			// 获取文件真实名称
+			String originName = multipartFile.getOriginalFilename();
+
+			// 重新设置文件名称
+			/*String suffix = originName.substring(originName.lastIndexOf(".") + 1);*/
+			String finalName = "/"+UUID.randomUUID() +"/" + originName;
+
+			// 判断文件夹和文件是否存在
+			String folder = filePath + "/" + UUID.randomUUID() +"/" ;
+			//文件传输到目标位置
+			File file = new File(folder);
+			if (!file.exists())
+				file.mkdirs();
+
+			url = folder + originName;
+
+			file = new File(url);
+			if (file.exists())
+				file.delete();
+
+			try {
+				multipartFile.transferTo(file);
+			} catch (Exception e) {
+			}
+
+		}
+			FileInputStream inputStream = null;
+			List<Map<String, String>> excelList = new ArrayList<>();
+			try {
+				inputStream = new FileInputStream(new File(url));
+				try {
+					excelList=ExcelUtils.readExcel(inputStream);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			List<Product> products = new ArrayList<>();
+			for(Map<String, String> map:excelList) {
+				Product product = new Product();
+				String name = map.get("col1");
+				product.setName(name);
+				String desc = map.get("col2");
+				product.setDescription(desc);
+				products.add(product);
+			}
+			productService.batchImport(products);
+
+		
+		ModelAndView view = new ModelAndView();
+		view.setView(new RedirectView("/product/list", true, false));
+		return view;
+	}}

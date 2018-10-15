@@ -47,4 +47,10 @@ public class ProductServiceImpl implements ProductService{
 		productDao.deleteById(ids);
 	}
 
+	@Override
+	public void batchImport(List<Product> list) {
+		productDao.insert(list);
+		
+	}
+
 }

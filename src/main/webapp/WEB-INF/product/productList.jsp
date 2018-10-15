@@ -84,7 +84,16 @@
 								value="${paging.pageNumber }" id="pageNumber" />
 						</div>
 					</div>
-				</div>
+					<div class="col-sm-7 col-md-7">
+
+									<div class="col-sm-7 col-md-7">
+										图片：<a class="upload-btn">上传文件<input
+										type="file" name="file" id="newEditPUpload"></input>
+									</a> <input type="hidden" id="fileName"></input>
+									</div>
+									<div class="put-evidence col-sm-5 col-md-5" id="box">
+									</div>
+								</div>
 			</div>
 		</div>
 	</div>
@@ -131,6 +140,9 @@
 			});
 		})
 	</script>
+	
+	<script
+		src="${pageContext.request.contextPath }/js/product/ajaxfileupload.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/js/product/productList.js"></script>
 </body>

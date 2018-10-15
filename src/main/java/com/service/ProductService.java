@@ -18,6 +18,8 @@ public interface ProductService {
 	void deleteProductById(Integer id);
 	
 	void insert(Product product);
+	
+	void batchImport(List<Product> list);
 
 	void deleteProductsByIds(List<Integer> ids);
 }

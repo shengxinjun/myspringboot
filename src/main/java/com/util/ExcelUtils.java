@@ -1,12 +1,19 @@
 package com.util;
  
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
  
@@ -14,8 +21,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -158,7 +170,41 @@ public final class ExcelUtils {
 		
 		return book;
 	}
-	
+	public static String getCellValue(Cell cell){  
+        String cellValue = "";  
+        if(cell == null){  
+            return cellValue;  
+        }  
+        //把数字当成String来读，避免出现1读成1.0的情况  
+        if(cell.getCellType() == Cell.CELL_TYPE_NUMERIC){  
+            cell.setCellType(Cell.CELL_TYPE_STRING);  
+        }  
+        //判断数据的类型  
+        switch (cell.getCellType()){  
+            case Cell.CELL_TYPE_NUMERIC: //数字  
+                cellValue = String.valueOf(cell.getNumericCellValue());  
+                break;  
+            case Cell.CELL_TYPE_STRING: //字符串  
+                cellValue = String.valueOf(cell.getStringCellValue());  
+                break;  
+            case Cell.CELL_TYPE_BOOLEAN: //Boolean  
+                cellValue = String.valueOf(cell.getBooleanCellValue());  
+                break;  
+            case Cell.CELL_TYPE_FORMULA: //公式  
+                cellValue = String.valueOf(cell.getCellFormula());  
+                break;  
+            case Cell.CELL_TYPE_BLANK: //空值   
+                cellValue = "";  
+                break;  
+            case Cell.CELL_TYPE_ERROR: //故障  
+                cellValue = "非法字符";  
+                break;  
+            default:  
+                cellValue = "未知类型";  
+                break;  
+        }  
+        return cellValue;  
+    }
 	private static void setValue(Cell cell, Object value) {
 		
 		// 如果是null 则设值为空
@@ -236,43 +282,100 @@ public final class ExcelUtils {
 		}
 		return maxCall;
 	}
+
+	 /** 
+     * 读入excel文件，解析后返回 
+     * @param inputStream 
+     * @throws IOException  
+     */  
+    public static List<Map<String, String>> readExcel(InputStream inputStream) throws IOException{  
+        //获得Workbook工作薄对象
+        Workbook workbook = null;
+		try {
+			workbook = WorkbookFactory.create(inputStream);
+		} catch (EncryptedDocumentException e) {
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		}
+        //创建返回对象，把每行中的值作为一个数组，所有行作为一个集合返回
+		List<Map<String, String>> excelList = new ArrayList<>();
+          
+        if(workbook != null){  
+            for(int sheetNum = 0;sheetNum < workbook.getNumberOfSheets();sheetNum++){
+            	List<String[]> list = new ArrayList<String[]>();
+            	if(sheetNum == 2){
+            		break;
+            	}
+                //获得当前sheet工作表  
+                Sheet sheet = workbook.getSheetAt(sheetNum);  
+                if(sheet == null){  
+                    continue;  
+                }  
+                //获得当前sheet的开始行  
+                int firstRowNum  = sheet.getFirstRowNum();  
+                //获得当前sheet的结束行  
+                int lastRowNum = sheet.getLastRowNum();  
+                
+                //获得当前行的开始列  
+                int firstCellNum = 0;
+                //获得当前行的列数  
+                int lastCellNum = 0;
+                //循环所有行  
+                for(int rowNum = firstRowNum;rowNum <= lastRowNum;rowNum++){
+                	Map<String, String> map = new HashMap<>();
+                    //获得当前行  
+                    Row row = sheet.getRow(rowNum);  
+                    if(row == null){  
+                        continue;  
+                    }  
+                    
+                    if(0 == rowNum){
+                        firstCellNum = row.getFirstCellNum();  
+                        lastCellNum = row.getLastCellNum();  
+                    }
+                    
+                    //循环当前行  
+                    for(int cellNum = firstCellNum; cellNum < lastCellNum;cellNum++){  
+                        Cell cell = row.getCell(cellNum);  
+                        
+                        if (cellNum==0) {
+							map.put("col1", getCellValue(cell));
+						} 
+                        if (cellNum==1) {
+							map.put("col2", getCellValue(cell));
+						}
+                    }  
+                    excelList.add(map);
+                }
+                
+            }  
+            workbook.close();
+        }  
+        return excelList;  
+    } 
+    public static void main(String[] args) {
+		
+		OutputStream out = null;
+		FileInputStream inputStream = null;
+		try {
+			
+			inputStream= new FileInputStream(new File("d:/1.xlsx"));
+			readExcel(inputStream);
+			
+			System.out.println("--------- over --------");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				inputStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 }
-//	public static void main(String[] args) {
-//		List<String> headers = new ArrayList<>();
-//		
-//		headers.add("姓名");
-//		headers.add("性别");
-//		headers.add("年龄");
-//		
-//		List<List<Object>> datas = new ArrayList<>();
-//		List<Object> data = new ArrayList<>();
-//		
-//		data.add("没有数据");
-//		datas.add(data);
-//		
-//		Workbook workbook = generateCreateExcel(headers, datas);
-//		OutputStream out = null;
-//		try {
-//			out = new FileOutputStream(new File("d:/data/1.xlsx"));
-//			workbook.write(out);
-//			
-//			System.out.println("--------- over --------");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				workbook.close();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			try {
-//				out.close();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//	}
+	
