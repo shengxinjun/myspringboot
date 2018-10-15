@@ -77,73 +77,67 @@
 							onclick="location.href='/product/export?keyword=${paging.keyword}&pageNumber=${paging.pageNumber}'">
 							<i class="ace-icon fa fa-share bigger-200"></i>
 						</button>
-
+							<a class="upload-btn">批量导入<input type="file" name="file"
+								id="newEditPUpload"></input>
+							</a>
 						<div class="btn-group btn-corner" id="pages">
 							<input type="hidden" value="${paging.totalCount }"
 								id="totalCount" /> <input type="hidden"
 								value="${paging.pageNumber }" id="pageNumber" />
 						</div>
 					</div>
-					<div class="col-sm-7 col-md-7">
 
-									<div class="col-sm-7 col-md-7">
-										图片：<a class="upload-btn">上传文件<input
-										type="file" name="file" id="newEditPUpload"></input>
-									</a> <input type="hidden" id="fileName"></input>
-									</div>
-									<div class="put-evidence col-sm-5 col-md-5" id="box">
-									</div>
-								</div>
+				</div>
 			</div>
 		</div>
-	</div>
-	<!-- 中部内容 -->
+		<!-- 中部内容 -->
 
-	<%@ include file="../model/buttom.jsp"%>
+		<%@ include file="../model/buttom.jsp"%>
 
-	<!-- page specific plugin scripts -->
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.colorbox.min.js"></script>
-	<!-- inline scripts related to this page -->
-	<script type="text/javascript">
-		jQuery(function($) {
-			var $overflow = '';
-			var colorbox_params = {
-				rel : 'colorbox',
-				reposition : true,
-				scalePhotos : true,
-				scrolling : false,
-				previous : '<i class="ace-icon fa fa-arrow-left"></i>',
-				next : '<i class="ace-icon fa fa-arrow-right"></i>',
-				close : '&times;',
-				current : '{current} of {total}',
-				maxWidth : '100%',
-				maxHeight : '100%',
-				onOpen : function() {
-					$overflow = document.body.style.overflow;
-					document.body.style.overflow = 'hidden';
-				},
-				onClosed : function() {
-					document.body.style.overflow = $overflow;
-				},
-				onComplete : function() {
-					$.colorbox.resize();
-				}
-			};
+		<!-- page specific plugin scripts -->
+		<script
+			src="${pageContext.request.contextPath }/assets/js/jquery.colorbox.min.js"></script>
+		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+			jQuery(function($) {
+				var $overflow = '';
+				var colorbox_params = {
+					rel : 'colorbox',
+					reposition : true,
+					scalePhotos : true,
+					scrolling : false,
+					previous : '<i class="ace-icon fa fa-arrow-left"></i>',
+					next : '<i class="ace-icon fa fa-arrow-right"></i>',
+					close : '&times;',
+					current : '{current} of {total}',
+					maxWidth : '100%',
+					maxHeight : '100%',
+					onOpen : function() {
+						$overflow = document.body.style.overflow;
+						document.body.style.overflow = 'hidden';
+					},
+					onClosed : function() {
+						document.body.style.overflow = $overflow;
+					},
+					onComplete : function() {
+						$.colorbox.resize();
+					}
+				};
 
-			$('[data-rel="colorbox"]').colorbox(colorbox_params);
-			$("#cboxLoadingGraphic").html(
-					"<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+				$('[data-rel="colorbox"]').colorbox(colorbox_params);
+				$("#cboxLoadingGraphic")
+						.html(
+								"<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
 
-			$(document).one('ajaxloadstart.page', function(e) {
-				$('#colorbox, #cboxOverlay').remove();
-			});
-		})
-	</script>
-	
-	<script
-		src="${pageContext.request.contextPath }/js/product/ajaxfileupload.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/js/product/productList.js"></script>
+				$(document).one('ajaxloadstart.page', function(e) {
+					$('#colorbox, #cboxOverlay').remove();
+				});
+			})
+		</script>
+
+		<script
+			src="${pageContext.request.contextPath }/js/product/ajaxfileupload.js"></script>
+		<script
+			src="${pageContext.request.contextPath }/js/product/productList.js"></script>
 </body>
 </html>

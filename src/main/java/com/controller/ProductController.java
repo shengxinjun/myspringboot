@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -214,17 +215,24 @@ public class ProductController {
 			}
 
 		}
-			FileInputStream inputStream = null;
+		InputStream inputStream = null;
 			List<Map<String, String>> excelList = new ArrayList<>();
 			try {
-				inputStream = new FileInputStream(new File(url));
+				try {
+					MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request; 
+					MultipartFile multipartFile  =  multipartRequest.getFile("newEditPUpload");
+					inputStream = multipartFile.getInputStream();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				try {
 					excelList=ExcelUtils.readExcel(inputStream);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} catch (FileNotFoundException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
