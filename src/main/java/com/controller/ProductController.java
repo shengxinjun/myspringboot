@@ -216,7 +216,7 @@ public class ProductController {
 
 		}
 		InputStream inputStream = null;
-			List<Map<String, String>> excelList = new ArrayList<>();
+			List<Map<Integer, String>> excelList = new ArrayList<>();
 			try {
 				try {
 					MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request; 
@@ -237,11 +237,11 @@ public class ProductController {
 				e.printStackTrace();
 			}
 			List<Product> products = new ArrayList<>();
-			for(Map<String, String> map:excelList) {
+			for(Map<Integer, String> map:excelList) {
 				Product product = new Product();
-				String name = map.get("col1");
+				String name = map.get(0);
 				product.setName(name);
-				String desc = map.get("col2");
+				String desc = map.get(1);
 				product.setDescription(desc);
 				products.add(product);
 			}

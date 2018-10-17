@@ -288,7 +288,7 @@ public final class ExcelUtils {
      * @param inputStream 
      * @throws IOException  
      */  
-    public static List<Map<String, String>> readExcel(InputStream inputStream) throws IOException{  
+    public static List<Map<Integer, String>> readExcel(InputStream inputStream) throws IOException{  
         //获得Workbook工作薄对象
         Workbook workbook = null;
 		try {
@@ -299,7 +299,7 @@ public final class ExcelUtils {
 			e.printStackTrace();
 		}
         //创建返回对象，把每行中的值作为一个数组，所有行作为一个集合返回
-		List<Map<String, String>> excelList = new ArrayList<>();
+		List<Map<Integer, String>> excelList = new ArrayList<>();
           
         if(workbook != null){  
             for(int sheetNum = 0;sheetNum < workbook.getNumberOfSheets();sheetNum++){
@@ -323,7 +323,7 @@ public final class ExcelUtils {
                 int lastCellNum = 0;
                 //循环所有行  
                 for(int rowNum = firstRowNum;rowNum <= lastRowNum;rowNum++){
-                	Map<String, String> map = new HashMap<>();
+                	Map<Integer, String> map = new HashMap<>();
                     //获得当前行  
                     Row row = sheet.getRow(rowNum);  
                     if(row == null){  
@@ -339,12 +339,7 @@ public final class ExcelUtils {
                     for(int cellNum = firstCellNum; cellNum < lastCellNum;cellNum++){  
                         Cell cell = row.getCell(cellNum);  
                         
-                        if (cellNum==0) {
-							map.put("col1", getCellValue(cell));
-						} 
-                        if (cellNum==1) {
-							map.put("col2", getCellValue(cell));
-						}
+							map.put(cellNum, getCellValue(cell));
                     }  
                     excelList.add(map);
                 }
