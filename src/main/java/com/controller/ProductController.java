@@ -192,10 +192,7 @@ public class ProductController {
 			// 获取文件真实名称
 			String originName = multipartFile.getOriginalFilename();
 
-			// 重新设置文件名称
-			/*String suffix = originName.substring(originName.lastIndexOf(".") + 1);*/
-			String finalName = "/"+UUID.randomUUID() +"/" + originName;
-
+			
 			// 判断文件夹和文件是否存在
 			String folder = filePath + "/" + UUID.randomUUID() +"/" ;
 			//文件传输到目标位置
@@ -215,27 +212,23 @@ public class ProductController {
 			}
 
 		}
-		InputStream inputStream = null;
+			FileInputStream inputStream = null;
 			List<Map<Integer, String>> excelList = new ArrayList<>();
+			
 			try {
-				try {
-					MultipartHttpServletRequest multipartRequest  =  (MultipartHttpServletRequest) request; 
-					MultipartFile multipartFile  =  multipartRequest.getFile("newEditPUpload");
-					inputStream = multipartFile.getInputStream();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				try {
-					excelList=ExcelUtils.readExcel(inputStream);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} catch (Exception e) {
+				inputStream = new FileInputStream(new File(url));
+			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			try {
+				excelList=ExcelUtils.readExcel(inputStream);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
+			
 			List<Product> products = new ArrayList<>();
 			for(Map<Integer, String> map:excelList) {
 				Product product = new Product();

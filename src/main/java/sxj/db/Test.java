@@ -14,10 +14,17 @@ import org.jooq.Catalog;
 import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
+import sxj.db.tables.Clazz;
 import sxj.db.tables.CodeMessage;
+import sxj.db.tables.Course;
 import sxj.db.tables.EmailInfo;
+import sxj.db.tables.ExamCon;
+import sxj.db.tables.File;
 import sxj.db.tables.Order;
+import sxj.db.tables.Problem;
 import sxj.db.tables.Product;
+import sxj.db.tables.Question;
+import sxj.db.tables.Student;
 import sxj.db.tables.User;
 
 
@@ -34,7 +41,7 @@ import sxj.db.tables.User;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Test extends SchemaImpl {
 
-    private static final long serialVersionUID = 58153110;
+    private static final long serialVersionUID = -23502999;
 
     /**
      * The reference instance of <code>test</code>
@@ -42,9 +49,19 @@ public class Test extends SchemaImpl {
     public static final Test TEST = new Test();
 
     /**
+     * The table <code>test.clazz</code>.
+     */
+    public final Clazz CLAZZ = sxj.db.tables.Clazz.CLAZZ;
+
+    /**
      * The table <code>test.code_message</code>.
      */
     public final CodeMessage CODE_MESSAGE = sxj.db.tables.CodeMessage.CODE_MESSAGE;
+
+    /**
+     * The table <code>test.course</code>.
+     */
+    public final Course COURSE = sxj.db.tables.Course.COURSE;
 
     /**
      * The table <code>test.email_info</code>.
@@ -52,14 +69,39 @@ public class Test extends SchemaImpl {
     public final EmailInfo EMAIL_INFO = sxj.db.tables.EmailInfo.EMAIL_INFO;
 
     /**
+     * The table <code>test.exam_con</code>.
+     */
+    public final ExamCon EXAM_CON = sxj.db.tables.ExamCon.EXAM_CON;
+
+    /**
+     * The table <code>test.file</code>.
+     */
+    public final File FILE = sxj.db.tables.File.FILE;
+
+    /**
      * The table <code>test.order</code>.
      */
     public final Order ORDER = sxj.db.tables.Order.ORDER;
 
     /**
+     * The table <code>test.problem</code>.
+     */
+    public final Problem PROBLEM = sxj.db.tables.Problem.PROBLEM;
+
+    /**
      * The table <code>test.product</code>.
      */
     public final Product PRODUCT = sxj.db.tables.Product.PRODUCT;
+
+    /**
+     * The table <code>test.question</code>.
+     */
+    public final Question QUESTION = sxj.db.tables.Question.QUESTION;
+
+    /**
+     * The table <code>test.student</code>.
+     */
+    public final Student STUDENT = sxj.db.tables.Student.STUDENT;
 
     /**
      * The table <code>test.user</code>.
@@ -91,10 +133,17 @@ public class Test extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
+            Clazz.CLAZZ,
             CodeMessage.CODE_MESSAGE,
+            Course.COURSE,
             EmailInfo.EMAIL_INFO,
+            ExamCon.EXAM_CON,
+            File.FILE,
             Order.ORDER,
+            Problem.PROBLEM,
             Product.PRODUCT,
+            Question.QUESTION,
+            Student.STUDENT,
             User.USER);
     }
 }

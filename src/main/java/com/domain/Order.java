@@ -1,6 +1,7 @@
 package com.domain;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Generated;
 
@@ -14,6 +15,18 @@ public class Order implements Serializable {
     private Integer userId;
     private Integer deleted = 0;
     private Date    date;
+    
+    /**
+     * 拓展字段
+     */
+    private List<File> files;
+    
+	public List<File> getFiles() {
+		return files;
+	}
+	public void setFiles(List<File> files) {
+		this.files = files;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -53,6 +66,7 @@ public class Order implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", name=" + name + ", totalPrice=" + totalPrice + ", userId=" + userId + ", deleted="

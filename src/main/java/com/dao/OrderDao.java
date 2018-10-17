@@ -41,6 +41,12 @@ public class OrderDao extends DAOImpl<OrderRecord, Order, Integer> {
 	 * 下面是自定义方法
 	 ***************************************************************/
 	
+	public Integer insertAndReturnId(Order order) {
+		OrderRecord record = dslContext.newRecord(ORDER, order);
+		record.insert();
+		return record.getId();
+	}
+	
 	public Order findOrderById(Integer id) {
 		Condition condition = ORDER.ID.equal(id);
 		return dslContext.select().from(ORDER).where(condition).fetchOneInto(Order.class);

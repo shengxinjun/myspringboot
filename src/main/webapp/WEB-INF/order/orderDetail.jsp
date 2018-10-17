@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../model/header.jsp"%>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/order/order.css" />
 <title>ace admin</title>
 <%@ include file="../model/css.jsp"%>
 </head>
 <body class="no-skin">
 	<%@ include file="../model/menu.jsp"%>
-
+	
 
 	<!-- 中部内容 -->
 	<div class="main-content">
@@ -53,6 +55,20 @@
 										</span>
 									</div>
 								</div>
+								<div class="col-sm-8 col-md-7">
+
+									<div class="col-sm-7 col-md-7">
+										图片：<a class="upload-btn">上传文件 <input
+										type="file" name="file" id="newEditPUpload"></input>
+									</a> <input type="hidden" id="fileName"></input>
+									</div>
+									<div class="put-evidence col-sm-5 col-md-5" id="box">
+										<c:forEach items="${order.files}" var="item" varStatus="status">
+											<a id = "${item.id }"  href="${item.fileUrl }" value="${item.fileName }">${item.fileName }</a><br>
+										</c:forEach>
+										
+									</div>
+								</div>
 
 								<div class="col-sm-8 col-md-7">
 									<a class="btn btn-info btn-sm" id="submit">提交</a>
@@ -70,7 +86,11 @@
 	<!-- 中部内容 -->
 	
 	<%@ include file="../model/buttom.jsp"%>
-	<script src="${pageContext.request.contextPath }/assets/js/jquery-ui.min.js"></script>
+	
+	<script
+		src="${pageContext.request.contextPath }/assets/js/jquery-ui.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath }/js/product/ajaxfileupload.js"></script>
 	<script src="${pageContext.request.contextPath }/js/order/json.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/js/order/orderDetail.js"></script>

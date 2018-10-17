@@ -54,16 +54,7 @@
 										class="form-control ui-autocomplete-input"
 										value="${product.description}"></input>
 								</div>
-								<div class="col-sm-7 col-md-7">
-
-									<div class="col-sm-7 col-md-7">
-										图片：<a class="upload-btn">上传文件(上传方式一，暂时不用) <input
-										type="file" name="file" id="newEditPUpload"></input>
-									</a> <input type="hidden" id="fileName"></input>
-									</div>
-									<div class="put-evidence col-sm-5 col-md-5" id="box">
-									</div>
-								</div>
+								
 								<div class="col-sm-7 col-md-7">
 									<div class="col-md-12">
 										<input class="form-control" id = "fileUrl" type="hidden" name="fileUrl" />

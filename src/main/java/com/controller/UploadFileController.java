@@ -36,7 +36,8 @@ public class UploadFileController {
 	@ResponseBody
 	Result upload(HttpServletRequest request, HttpServletResponse response) {
 		Result result = new Result();
-		String url = "";
+		String MaterialUrl = "";//服务器上的路径
+		String dbUrl = "";//数据库中的路径
 		if (request instanceof MultipartHttpServletRequest) {
 			MultipartHttpServletRequest mreq = (MultipartHttpServletRequest) request;
 
@@ -49,27 +50,27 @@ public class UploadFileController {
 
 			// 获取文件真实名称
 			String originName = multipartFile.getOriginalFilename();
-
+			String uuid = UUID.randomUUID().toString();
 			// 重新设置文件名称
 			/*String suffix = originName.substring(originName.lastIndexOf(".") + 1);*/
-			String finalName = "/"+UUID.randomUUID() +"/" + originName;
+			dbUrl = "/"+uuid +"/" + originName;
 
 			// 判断文件夹和文件是否存在
-			String folder = filePath + "/" + UUID.randomUUID() +"/" ;
+			String folder = filePath + "/" + uuid +"/" ;
 			//文件传输到目标位置
 			File file = new File(folder);
 			if (!file.exists())
 				file.mkdirs();
 
-			url = folder + originName;
+			MaterialUrl = folder + originName;
 
-			file = new File(url);
+			file = new File(MaterialUrl);
 			if (file.exists())
 				file.delete();
 
 			try {
 				multipartFile.transferTo(file);
-				result.setData(finalName);
+				result.setData(dbUrl);
 				result.setCode(1);
 			} catch (Exception e) {
 				result.setCode(2);

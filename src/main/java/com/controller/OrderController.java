@@ -131,9 +131,12 @@ public class OrderController {
 		OrderForm orderForm = gson.fromJson(obj, OrderForm.class);
 		Order order = new Order();
 		order.setName(orderForm.getName());
-		order.setUserId(orderForm.getUserId());
+		order.setFiles(orderForm.getFiles());
 		if(!StringUtils.isEmpty(orderForm.getTotalPrice())){
 			order.setTotalPrice(Double.parseDouble(orderForm.getTotalPrice()));
+		}
+		if (!StringUtils.isEmpty(orderForm.getUserId())) {
+			order.setUserId(Integer.parseInt(orderForm.getUserId()));
 		}
 		if (!StringUtils.isEmpty(orderForm.getDate())) {
 			Date date = null;
@@ -157,9 +160,13 @@ public class OrderController {
 		OrderForm orderForm = gson.fromJson(obj, OrderForm.class);
 		Order order = orderService.findOrderById(orderForm.getId());
 		order.setName(orderForm.getName());
-		order.setUserId(orderForm.getUserId());
+		
+		order.setFiles(orderForm.getFiles());
 		if(!StringUtils.isEmpty(orderForm.getTotalPrice())){
 			order.setTotalPrice(Double.parseDouble(orderForm.getTotalPrice()));
+		}
+		if (!StringUtils.isEmpty(orderForm.getUserId())) {
+			order.setUserId(Integer.parseInt(orderForm.getUserId()));
 		}
 		if (!StringUtils.isEmpty(orderForm.getDate())) {
 			Date date = null;

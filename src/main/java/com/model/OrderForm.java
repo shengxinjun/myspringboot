@@ -1,6 +1,9 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.List;
+
+import com.domain.File;
 
 public class OrderForm implements Serializable{
 	
@@ -9,8 +12,19 @@ public class OrderForm implements Serializable{
 	private Integer id;
     private String  name;
     private String  totalPrice;
-    private Integer userId;
+    private String  userId;
     private String  date;
+    /**
+     * 拓展字段
+     */
+    private List<File> files;
+    
+	public List<File> getFiles() {
+		return files;
+	}
+	public void setFiles(List<File> files) {
+		this.files = files;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -29,10 +43,10 @@ public class OrderForm implements Serializable{
 	public void setTotalPrice(String totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 	public String getDate() {
