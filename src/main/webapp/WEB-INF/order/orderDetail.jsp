@@ -64,7 +64,7 @@
 									</div>
 									<div class="put-evidence col-sm-5 col-md-5" id="box">
 										<c:forEach items="${order.files}" var="item" varStatus="status">
-											<a id = "${item.id }"  href="${item.fileUrl }" value="${item.fileName }">${item.fileName }</a><br>
+											<a id = "${item.id }"  href="${item.fileUrl }" value="${item.fileName }" target="_Blank">${item.fileName }</a><br>
 										</c:forEach>
 										
 									</div>

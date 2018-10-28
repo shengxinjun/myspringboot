@@ -69,7 +69,7 @@ $(function() {
                 if (result.code == 1) {
                 	var start = result.data.lastIndexOf("/");
                 	var name = result.data.substring(start+1);
-                	$('#box').append('<a  href="'+result.data+'" value="'+name+'">'+name+'</a><br>');
+                	$('#box').append('<a  href="'+result.data+'" value="'+name+'" target="_Blank">'+name+'</a><br>');
                 	alert("上传成功");
                   } else {
                     alert("上传文件出错");

@@ -32,6 +32,9 @@ public class UploadFileController {
 	@Value("${filePath}")
 	private String filePath;
 	
+	@Value("${materialPath}")
+	private String materialPath;
+	
 	@RequestMapping("/upload")
 	@ResponseBody
 	Result upload(HttpServletRequest request, HttpServletResponse response) {
@@ -53,7 +56,7 @@ public class UploadFileController {
 			String uuid = UUID.randomUUID().toString();
 			// 重新设置文件名称
 			/*String suffix = originName.substring(originName.lastIndexOf(".") + 1);*/
-			dbUrl = "/"+uuid +"/" + originName;
+			dbUrl = materialPath+"/"+uuid +"/" + originName;
 
 			// 判断文件夹和文件是否存在
 			String folder = filePath + "/" + uuid +"/" ;
