@@ -13,6 +13,7 @@ import sxj.db.tables.EmailInfo;
 import sxj.db.tables.ExamCon;
 import sxj.db.tables.File;
 import sxj.db.tables.Order;
+import sxj.db.tables.OrderItem;
 import sxj.db.tables.Problem;
 import sxj.db.tables.Product;
 import sxj.db.tables.Question;
@@ -67,6 +68,11 @@ public class Tables {
      * The table <code>test.order</code>.
      */
     public static final Order ORDER = sxj.db.tables.Order.ORDER;
+
+    /**
+     * The table <code>test.order_item</code>.
+     */
+    public static final OrderItem ORDER_ITEM = sxj.db.tables.OrderItem.ORDER_ITEM;
 
     /**
      * The table <code>test.problem</code>.

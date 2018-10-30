@@ -13,8 +13,10 @@ import org.springframework.util.StringUtils;
 import com.dao.CodeMessageDao;
 import com.dao.FileDao;
 import com.dao.OrderDao;
+import com.dao.OrderItemDao;
 import com.domain.File;
 import com.domain.Order;
+import com.domain.OrderItem;
 import com.util.MyException;
 import com.util.Paging;
 
@@ -31,6 +33,9 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private FileDao fileDao;
 	
+	@Autowired
+	private OrderItemDao orderItemDao;
+	
 	@Override
 	public Order findOrderById(Integer id) {
 		if (id == null ) {
@@ -40,6 +45,9 @@ public class OrderServiceImpl implements OrderService {
 		if (!ObjectUtils.isEmpty(order)) {
 			List<File> files = fileDao.findFileBySourceAndSourceId(1, order.getId());
 			order.setFiles(files);
+			
+			List<OrderItem> orderItems = orderItemDao.findItemsByOrderId(order.getId());
+			order.setItems(orderItems);
 		}
 		return order;
 	}
@@ -52,6 +60,7 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void deleteOrderById(Integer id) {
 		orderDao.deleteById(id);
+		orderItemDao.deleteByOrderId(id);
 		
 	}
 

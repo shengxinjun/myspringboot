@@ -21,6 +21,7 @@ import sxj.db.tables.EmailInfo;
 import sxj.db.tables.ExamCon;
 import sxj.db.tables.File;
 import sxj.db.tables.Order;
+import sxj.db.tables.OrderItem;
 import sxj.db.tables.Problem;
 import sxj.db.tables.Product;
 import sxj.db.tables.Question;
@@ -41,7 +42,7 @@ import sxj.db.tables.User;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Test extends SchemaImpl {
 
-    private static final long serialVersionUID = -23502999;
+    private static final long serialVersionUID = 213987172;
 
     /**
      * The reference instance of <code>test</code>
@@ -82,6 +83,11 @@ public class Test extends SchemaImpl {
      * The table <code>test.order</code>.
      */
     public final Order ORDER = sxj.db.tables.Order.ORDER;
+
+    /**
+     * The table <code>test.order_item</code>.
+     */
+    public final OrderItem ORDER_ITEM = sxj.db.tables.OrderItem.ORDER_ITEM;
 
     /**
      * The table <code>test.problem</code>.
@@ -140,6 +146,7 @@ public class Test extends SchemaImpl {
             ExamCon.EXAM_CON,
             File.FILE,
             Order.ORDER,
+            OrderItem.ORDER_ITEM,
             Problem.PROBLEM,
             Product.PRODUCT,
             Question.QUESTION,

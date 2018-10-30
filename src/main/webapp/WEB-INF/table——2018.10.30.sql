@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80012
 File Encoding         : 65001
 
-Date: 2018-10-17 16:34:27
+Date: 2018-10-30 17:29:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,6 +54,8 @@ INSERT INTO `code_message` VALUES ('105', '验证码不正确');
 INSERT INTO `code_message` VALUES ('106', '今日邮件已达上限');
 INSERT INTO `code_message` VALUES ('107', '该用户被限制登录');
 INSERT INTO `code_message` VALUES ('108', '小题总分不能大于题型总分');
+INSERT INTO `code_message` VALUES ('200', '订单状态异常');
+INSERT INTO `code_message` VALUES ('300', '商品状态异常');
 
 -- ----------------------------
 -- Table structure for `course`
@@ -89,11 +91,15 @@ CREATE TABLE `email_info` (
   `send_date` datetime DEFAULT NULL,
   `ip` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of email_info
 -- ----------------------------
+INSERT INTO `email_info` VALUES ('45', null, '498740190@qq.com', '验证码为：704627', '704627', '找回密码', '2018-10-22 17:28:38', '180.111.103.26');
+INSERT INTO `email_info` VALUES ('46', null, '498740190@qq.com', '你的新密码为：583652', null, 'topest level---ace system', '2018-10-22 17:28:58', null);
+INSERT INTO `email_info` VALUES ('47', null, '498740190@qq.com', '验证码为：437163', '437163', '找回密码', '2018-10-29 16:19:49', '153.99.44.199');
+INSERT INTO `email_info` VALUES ('48', null, '498740190@qq.com', '你的新密码为：698157', null, 'topest level---ace system', '2018-10-29 16:20:43', null);
 
 -- ----------------------------
 -- Table structure for `exam_con`
@@ -122,7 +128,7 @@ CREATE TABLE `file` (
   `source` int(1) DEFAULT NULL COMMENT '1.order，2.product',
   `source_id` int(255) DEFAULT NULL COMMENT '父id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of file
@@ -130,6 +136,8 @@ CREATE TABLE `file` (
 INSERT INTO `file` VALUES ('1', '新建文本文档 - 副本.doc', '/2907469d-104e-4667-9ef1-b9c63b0d3f32/新建文本文档 - 副本.doc', '1', '49');
 INSERT INTO `file` VALUES ('3', '新建文本文档.doc', '/f14c753e-0dcd-4c8b-a1c7-7ab6f7f4ece6/新建文本文档.doc', '1', '51');
 INSERT INTO `file` VALUES ('4', '新建文本文档 - 副本.doc', '/09e4a011-7f73-4694-92a0-10674d8d570e/新建文本文档 - 副本.doc', '1', '51');
+INSERT INTO `file` VALUES ('5', '调解书申请.png', 'http://172.16.239.107/0d670a10-7c40-4951-a5f5-76e0a635428a/调解书申请.png', '1', '19');
+INSERT INTO `file` VALUES ('6', '调解进展.png', 'http://172.16.239.107/29dfc2ba-3bec-417a-8a78-5ba4284da2b3/调解进展.png', '1', '19');
 
 -- ----------------------------
 -- Table structure for `order`
@@ -182,6 +190,36 @@ INSERT INTO `order` VALUES ('72', 'we', null, null, '0', null);
 INSERT INTO `order` VALUES ('73', 'ew', null, null, '0', null);
 
 -- ----------------------------
+-- Table structure for `order_item`
+-- ----------------------------
+DROP TABLE IF EXISTS `order_item`;
+CREATE TABLE `order_item` (
+  `id` int(255) NOT NULL AUTO_INCREMENT,
+  `imgs` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `price` float(255,0) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `order_id` int(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of order_item
+-- ----------------------------
+INSERT INTO `order_item` VALUES ('5', null, 'ff', 'ds', '3', 'asdf', '19');
+INSERT INTO `order_item` VALUES ('6', '/b6943e01-5f7b-4066-9ba4-8def4e4199a7/1.sql/;', 'dsa', 'ds', '3', '22', '19');
+INSERT INTO `order_item` VALUES ('7', null, null, null, null, null, '19');
+INSERT INTO `order_item` VALUES ('8', '/b6943e01-5f7b-4066-9ba4-8def4e4199a7/1.sql/;', 'dsa', 'ds', '3', '22', '19');
+INSERT INTO `order_item` VALUES ('9', '/4ac1c3b0-aa5e-438f-ad25-f1782fe121d7/1.sql/;', 'sdd', 'ds', '3', 'dfgds', '19');
+INSERT INTO `order_item` VALUES ('10', '/b6943e01-5f7b-4066-9ba4-8def4e4199a7/1.sql/;', 'dsa', 'ds', '3', '22', '19');
+INSERT INTO `order_item` VALUES ('11', '/b6943e01-5f7b-4066-9ba4-8def4e4199a7/1.sql/;', 'dsa', 'ds', '3', '22', '19');
+INSERT INTO `order_item` VALUES ('12', '/b6943e01-5f7b-4066-9ba4-8def4e4199a7/1.sql/;', 'dsa', 'ds', '3', '22', '19');
+INSERT INTO `order_item` VALUES ('13', '/b6943e01-5f7b-4066-9ba4-8def4e4199a7/1.sql/;', 'dsa', 'ds', '3', '22', '19');
+INSERT INTO `order_item` VALUES ('14', null, 'das', 'sd', '3', 'fdsf', '19');
+INSERT INTO `order_item` VALUES ('15', null, 'ff', 'ds', '3', 'asdf', '19');
+
+-- ----------------------------
 -- Table structure for `problem`
 -- ----------------------------
 DROP TABLE IF EXISTS `problem`;
@@ -214,32 +252,31 @@ CREATE TABLE `product` (
   `create_date` datetime DEFAULT NULL,
   `deleted` int(11) unsigned DEFAULT '0',
   `type` varchar(255) DEFAULT NULL,
-  `order_id` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('7', '/b6943e01-5f7b-4066-9ba4-8def4e4199a7/1.sql/;', 'dsa', 'ds', '3', '2018-10-10 16:03:59', null, '0', '22', null);
-INSERT INTO `product` VALUES ('8', '/4ac1c3b0-aa5e-438f-ad25-f1782fe121d7/1.sql/;', 'sdd', 'ds', '3', '2018-10-10 16:04:33', null, '0', 'dfgds', null);
-INSERT INTO `product` VALUES ('9', null, 'ff', 'ds', '3', null, null, '0', 'asdf', null);
-INSERT INTO `product` VALUES ('10', null, 'das', 'sd', '3', null, null, '0', 'fdsf', null);
-INSERT INTO `product` VALUES ('13', null, 'sdf', 'gvfd', '33', null, null, '0', 'fasdf', null);
-INSERT INTO `product` VALUES ('14', null, 'dsa', 'gvfd', '33', null, null, '0', 'adsfa', null);
-INSERT INTO `product` VALUES ('15', null, 'fafsa', 'bg', '3', null, null, '0', 'adsf', null);
-INSERT INTO `product` VALUES ('16', null, 'fdsfsd', 'ds', '3', null, null, '0', 'asf', null);
-INSERT INTO `product` VALUES ('17', null, 'asdf', 'sda', '3', null, null, '0', 'ad', null);
-INSERT INTO `product` VALUES ('18', null, 'ds', 'sd', '3', null, null, '0', 'ads', null);
-INSERT INTO `product` VALUES ('21', null, 'ds', 'a', '33', null, null, '0', 'dsf', null);
-INSERT INTO `product` VALUES ('22', null, 'asfads', 'fs', '3', null, null, '0', 'sa', null);
-INSERT INTO `product` VALUES ('23', null, 'afd', 'dasd', '3', null, null, '0', 'dsa', null);
-INSERT INTO `product` VALUES ('24', null, 'afd', 'sd', '3', null, null, '0', 'fasdf', null);
-INSERT INTO `product` VALUES ('25', null, null, 'fsd', '3', null, null, '0', 'asd', null);
-INSERT INTO `product` VALUES ('99', null, null, '我问问', '11111', null, '2018-09-19 00:00:00', '0', '11111', null);
-INSERT INTO `product` VALUES ('100', null, '很甜', '苹果', '3', null, '2018-09-09 00:00:00', '0', '水果', null);
-INSERT INTO `product` VALUES ('101', null, '很酸', '桔子', '2', null, null, '0', '水果', null);
-INSERT INTO `product` VALUES ('102', null, '333', '333', '333', null, '2018-09-25 00:00:00', '0', '333', null);
+INSERT INTO `product` VALUES ('7', '/b6943e01-5f7b-4066-9ba4-8def4e4199a7/1.sql/;', 'dsa', 'ds', '3', '2018-10-10 16:03:59', null, '0', '22');
+INSERT INTO `product` VALUES ('8', '/4ac1c3b0-aa5e-438f-ad25-f1782fe121d7/1.sql/;', 'sdd', 'ds', '3', '2018-10-10 16:04:33', null, '0', 'dfgds');
+INSERT INTO `product` VALUES ('9', null, 'ff', 'ds', '3', null, null, '0', 'asdf');
+INSERT INTO `product` VALUES ('10', null, 'das', 'sd', '3', null, null, '0', 'fdsf');
+INSERT INTO `product` VALUES ('13', null, 'sdf', 'gvfd', '33', null, null, '0', 'fasdf');
+INSERT INTO `product` VALUES ('14', null, 'dsa', 'gvfd', '33', null, null, '0', 'adsfa');
+INSERT INTO `product` VALUES ('15', null, 'fafsa', 'bg', '3', null, null, '0', 'adsf');
+INSERT INTO `product` VALUES ('16', null, 'fdsfsd', 'ds', '3', null, null, '0', 'asf');
+INSERT INTO `product` VALUES ('17', null, 'asdf', 'sda', '3', null, null, '0', 'ad');
+INSERT INTO `product` VALUES ('18', null, 'ds', 'sd', '3', null, null, '0', 'ads');
+INSERT INTO `product` VALUES ('21', null, 'ds', 'a', '33', null, null, '0', 'dsf');
+INSERT INTO `product` VALUES ('22', null, 'asfads', 'fs', '3', null, null, '0', 'sa');
+INSERT INTO `product` VALUES ('23', null, 'afd', 'dasd', '3', null, null, '0', 'dsa');
+INSERT INTO `product` VALUES ('24', null, 'afd', 'sd', '3', null, null, '0', 'fasdf');
+INSERT INTO `product` VALUES ('25', null, null, 'fsd', '3', null, null, '0', 'asd');
+INSERT INTO `product` VALUES ('99', null, null, '我问问', '11111', null, '2018-09-19 00:00:00', '0', '11111');
+INSERT INTO `product` VALUES ('100', null, '很甜', '苹果', '3', null, '2018-09-09 00:00:00', '0', '水果');
+INSERT INTO `product` VALUES ('101', null, '很酸', '桔子', '2', null, null, '0', '水果');
+INSERT INTO `product` VALUES ('102', null, '333', '333', '333', null, '2018-09-25 00:00:00', '0', '333');
 
 -- ----------------------------
 -- Table structure for `question`
@@ -305,7 +342,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '盛新军', '36FC5C5007F9B2F7EEE673B9609C64F4', '18360916461', null, null, null, '498740190@qq.com', null, null);
+INSERT INTO `user` VALUES ('1', '盛新军', 'A7673F7FDB8AC999B81D8F2BBDC1C0D7', '18360916461', null, null, null, '498740190@qq.com', null, null);
 INSERT INTO `user` VALUES ('4', 'sxj', '98544FC40293F2C9148832BA8FF045B3', '17895216461', null, null, '2018-09-06 00:00:00', '164883349@qq.com', null, null);
 INSERT INTO `user` VALUES ('9', '18111111111', '1B938654C49BE5D739FCE14B3F4F4DEF', '18111111111', null, null, '2018-09-06 18:17:54', '18111111111', null, null);
 INSERT INTO `user` VALUES ('10', '席倩', '4361C9D7296862E5E682E6F095073DBD', '18360922025', null, null, '2018-09-20 10:41:52', '229257574@qq.com', '0', null);

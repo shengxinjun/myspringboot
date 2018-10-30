@@ -124,11 +124,4 @@ public class ProductDao extends DAOImpl<ProductRecord, sxj.db.tables.pojos.Produ
     public List<sxj.db.tables.pojos.Product> fetchByType(String... values) {
         return fetch(Product.PRODUCT.TYPE, values);
     }
-
-    /**
-     * Fetch records that have <code>order_id IN (values)</code>
-     */
-    public List<sxj.db.tables.pojos.Product> fetchByOrderId(Integer... values) {
-        return fetch(Product.PRODUCT.ORDER_ID, values);
-    }
 }

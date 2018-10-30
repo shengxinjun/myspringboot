@@ -22,4 +22,6 @@ public interface ProductService {
 	void batchImport(List<Product> list);
 
 	void deleteProductsByIds(List<Integer> ids);
+	
+	void addProductToOrder(Integer productId,Integer orderId);
 }

@@ -3,8 +3,6 @@ package com.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.annotation.Generated;
-
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1726968814;
@@ -17,7 +15,6 @@ public class Product implements Serializable {
 	private Date createDate;
 	private Integer deleted = 0;
 	private String type;
-	private Integer orderId;
 
 	public String getDescription() {
 		return description;
@@ -91,13 +88,6 @@ public class Product implements Serializable {
 		this.type = type;
 	}
 
-	public Integer getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -107,7 +97,7 @@ public class Product implements Serializable {
 	public String toString() {
 		return "Product [id=" + id + ", imgs=" + imgs + ", description=" + description + ", name=" + name + ", price="
 				+ price + ", updateDate=" + updateDate + ", createDate=" + createDate + ", deleted=" + deleted
-				+ ", type=" + type + ", orderId=" + orderId + "]";
+				+ ", type=" + type + ", orderId=" + "]";
 	}
 
 	public Product() {

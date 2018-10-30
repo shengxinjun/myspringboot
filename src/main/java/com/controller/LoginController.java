@@ -45,10 +45,10 @@ public class LoginController {
 			return result;
 		}
 		if (remember.equals("1")) {
-			WebUtils.setCookie(request, response, "uid", user.getId().toString(), Integer.MAX_VALUE);
 			WebUtils.setCookie(request, response, "telephone", telephone, Integer.MAX_VALUE);
 			WebUtils.setCookie(request, response, "password", password, Integer.MAX_VALUE);
 		}
+		WebUtils.setCookie(request, response, "uid", user.getId().toString(), Integer.MAX_VALUE);
 		WebUtils.setCookie(request, response, "remember", remember, Integer.MAX_VALUE);
 		return result;
 	}

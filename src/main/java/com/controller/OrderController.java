@@ -21,11 +21,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.constrants.Constants;
 import com.domain.Order;
+import com.domain.Product;
 import com.google.gson.Gson;
 import com.model.OrderForm;
 import com.model.Result;
 import com.mysql.cj.x.protobuf.Mysqlx.Ok;
 import com.service.OrderService;
+import com.service.ProductService;
 import com.util.DateUtil;
 import com.util.ExcelUtils;
 import com.util.MyException;
@@ -42,6 +44,9 @@ public class OrderController {
 	private OrderService orderService;
 	@Autowired
 	private RedisUtil redisUtil;
+
+	@Autowired
+	private ProductService productService;
 	
 	@RequestMapping("/list")
 	String list(Model model,@RequestParam(required = false,defaultValue="")String keyword,@RequestParam(defaultValue="1")Integer pageNumber) {
@@ -208,5 +213,17 @@ public class OrderController {
 			e.printStackTrace();
 		}
 		return new Result(1, "");
+	}
+	
+	@RequestMapping("/addPro")
+	String addPro(Integer orderId,Model model) {
+		Paging<Product> paging = new Paging<>();
+		paging.setPageNumber(1);
+		paging.setPageSize(Constants.pageSize.SMALL_SIZE);
+		paging = productService.productList(paging);
+		model.addAttribute("paging", paging);
+		model.addAttribute("orderId", orderId);
+		
+		return "order/addProduct";
 	}
 }

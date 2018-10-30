@@ -149,6 +149,21 @@ public class ProductController {
 		productService.updateProduct(product);
 		return Result.ok();
 	}
+	
+	@RequestMapping("/addToOrder")
+	@ResponseBody
+	Result addToOrder(Integer orderId,Integer proId) {
+		Result result = new Result();
+		try {
+			productService.addProductToOrder(proId, orderId);
+			result.setCode(1);
+		} catch (MyException e) {
+			result.setCode(e.getCode());
+			result.setMessage(e.getMessage());
+		}
+		return result;
+	}
+	
 	@RequestMapping("/export")
 	@ResponseBody
 	Result exportProduct(HttpServletRequest request,HttpServletResponse response,@RequestParam(required = false)String keyword,@RequestParam(defaultValue="1")Integer pageNumber){
@@ -177,6 +192,7 @@ public class ProductController {
 		}
 		return new Result(1, "");
 	}
+	
 	
 	@RequestMapping("/batchImportProduct")
 	@ResponseBody

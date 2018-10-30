@@ -13,7 +13,7 @@
 	<!-- 中部内容 -->
 	<div class="main-content">
 		<div class="main-content-inner">
-			<div class="breadcrumbs ace-save-state col-md-9" id="breadcrumbs">
+			<div class="breadcrumbs ace-save-state col-md-12" id="breadcrumbs">
 				<div class="widget-box widget-color-dark ui-sortable-handle"
 					id="widget-box-11">
 					<div class="widget-header">
@@ -28,24 +28,25 @@
 					<div class="widget-body">
 						<div class="widget-main padding-4 scrollable ace-scroll"
 							data-size="125" style="position: relative;">
-							<div class="scroll-content" style="height: 500px;">
+							<div class="scroll-content col-sm-8 col-md-8" style="height: 500px;">
 								<input type="hidden" id="id" value="${order.id }" />
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-4 col-md-4">
+								<div class="col-sm-12 col-md-12">
 									名称：<input type="text" id="name"
 										class="form-control ui-autocomplete-input"
 										value="${order.name}"></input>
 								</div>
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-12 col-md-12">
 									总价：<input type="text" id="totalPrice" name="value"
 										class="form-control ui-autocomplete-input"
 										value="${order.totalPrice}"></input>
 								</div>
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-12 col-md-12">
 									用户编号：<input type="text" id="userId"
 										class="form-control ui-autocomplete-input"
 										value="${order.userId}"></input>
 								</div>
-								<div class="col-sm-8 col-md-7">
+								<div class="col-sm-12 col-md-12">
 									日期：
 									<div class="input-group input-group-sm">
 										<input type="text" id="date" class="form-control"
@@ -55,31 +56,57 @@
 										</span>
 									</div>
 								</div>
-								<div class="col-sm-8 col-md-7">
+								</div>
+								<div  class="col-sm-4 col-md-4">
 
-									<div class="col-sm-7 col-md-7">
-										图片：<a class="upload-btn">上传文件 <input
+									<div class="col-sm-12 col-md-12">
+										附件：<a class="upload-btn">上传文件 <input
 										type="file" name="file" id="newEditPUpload"></input>
 									</a> <input type="hidden" id="fileName"></input>
 									</div>
-									<div class="put-evidence col-sm-5 col-md-5" id="box">
+									<div class="put-evidence col-sm-12 col-md-12" id="box">
 										<c:forEach items="${order.files}" var="item" varStatus="status">
 											<a id = "${item.id }"  href="${item.fileUrl }" value="${item.fileName }" target="_Blank">${item.fileName }</a><br>
 										</c:forEach>
 										
 									</div>
 								</div>
-
-								<div class="col-sm-8 col-md-7">
-									<a class="btn btn-info btn-sm" id="submit">提交</a>
+								<div  class="col-sm-4 col-md-4">
+									<table class="table  table-bordered table-hover">
+										<tr>
+											<td>商品名称</td>
+											<td>商品价格</td>
+											<td>商品描述</td>
+											<td>商品类型</td>
+										</tr>
+										<c:forEach items="${order.items}" var="item" varStatus="status">
+											<tr>
+												<td>${item.name }</td>
+												<td>${item.price }</td>
+												<td>${item.description }</td>
+												<td>${item.type }</td>
+											</tr>
+										</c:forEach>
+									</table>
 								</div>
+								</div>
+								
 							</div>
+							
 						</div>
 					</div>
 				</div>
+				<div  class="col-sm-12 col-md-12">
+									<div class="col-sm-6 col-md-6">
+									<c:if test="${not empty order.id }">
+										<a class="btn btn-info btn-sm" href="/order/addPro?orderId=${order.id}">添加商品</a>
+									</c:if>
+									<a class="btn btn-info btn-sm" id="submit">提交</a>
+								</div>
+								</div>
+								
 			</div>
 		</div>
-	</div>
 
 
 

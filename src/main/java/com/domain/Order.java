@@ -21,6 +21,16 @@ public class Order implements Serializable {
      */
     private List<File> files;
     
+    private List<OrderItem> items;
+    
+    
+    
+	public List<OrderItem> getItems() {
+		return items;
+	}
+	public void setItems(List<OrderItem> items) {
+		this.items = items;
+	}
 	public List<File> getFiles() {
 		return files;
 	}

@@ -17,6 +17,7 @@ import sxj.db.tables.EmailInfo;
 import sxj.db.tables.ExamCon;
 import sxj.db.tables.File;
 import sxj.db.tables.Order;
+import sxj.db.tables.OrderItem;
 import sxj.db.tables.Problem;
 import sxj.db.tables.Product;
 import sxj.db.tables.Question;
@@ -28,6 +29,7 @@ import sxj.db.tables.records.CourseRecord;
 import sxj.db.tables.records.EmailInfoRecord;
 import sxj.db.tables.records.ExamConRecord;
 import sxj.db.tables.records.FileRecord;
+import sxj.db.tables.records.OrderItemRecord;
 import sxj.db.tables.records.OrderRecord;
 import sxj.db.tables.records.ProblemRecord;
 import sxj.db.tables.records.ProductRecord;
@@ -59,6 +61,7 @@ public class Keys {
     public static final Identity<EmailInfoRecord, Integer> IDENTITY_EMAIL_INFO = Identities0.IDENTITY_EMAIL_INFO;
     public static final Identity<FileRecord, Integer> IDENTITY_FILE = Identities0.IDENTITY_FILE;
     public static final Identity<OrderRecord, Integer> IDENTITY_ORDER = Identities0.IDENTITY_ORDER;
+    public static final Identity<OrderItemRecord, Integer> IDENTITY_ORDER_ITEM = Identities0.IDENTITY_ORDER_ITEM;
     public static final Identity<ProblemRecord, Integer> IDENTITY_PROBLEM = Identities0.IDENTITY_PROBLEM;
     public static final Identity<ProductRecord, Integer> IDENTITY_PRODUCT = Identities0.IDENTITY_PRODUCT;
     public static final Identity<QuestionRecord, Integer> IDENTITY_QUESTION = Identities0.IDENTITY_QUESTION;
@@ -76,6 +79,7 @@ public class Keys {
     public static final UniqueKey<ExamConRecord> KEY_EXAM_CON_PRIMARY = UniqueKeys0.KEY_EXAM_CON_PRIMARY;
     public static final UniqueKey<FileRecord> KEY_FILE_PRIMARY = UniqueKeys0.KEY_FILE_PRIMARY;
     public static final UniqueKey<OrderRecord> KEY_ORDER_PRIMARY = UniqueKeys0.KEY_ORDER_PRIMARY;
+    public static final UniqueKey<OrderItemRecord> KEY_ORDER_ITEM_PRIMARY = UniqueKeys0.KEY_ORDER_ITEM_PRIMARY;
     public static final UniqueKey<ProblemRecord> KEY_PROBLEM_PRIMARY = UniqueKeys0.KEY_PROBLEM_PRIMARY;
     public static final UniqueKey<ProductRecord> KEY_PRODUCT_PRIMARY = UniqueKeys0.KEY_PRODUCT_PRIMARY;
     public static final UniqueKey<QuestionRecord> KEY_QUESTION_PRIMARY = UniqueKeys0.KEY_QUESTION_PRIMARY;
@@ -97,6 +101,7 @@ public class Keys {
         public static Identity<EmailInfoRecord, Integer> IDENTITY_EMAIL_INFO = createIdentity(EmailInfo.EMAIL_INFO, EmailInfo.EMAIL_INFO.ID);
         public static Identity<FileRecord, Integer> IDENTITY_FILE = createIdentity(File.FILE, File.FILE.ID);
         public static Identity<OrderRecord, Integer> IDENTITY_ORDER = createIdentity(Order.ORDER, Order.ORDER.ID);
+        public static Identity<OrderItemRecord, Integer> IDENTITY_ORDER_ITEM = createIdentity(OrderItem.ORDER_ITEM, OrderItem.ORDER_ITEM.ID);
         public static Identity<ProblemRecord, Integer> IDENTITY_PROBLEM = createIdentity(Problem.PROBLEM, Problem.PROBLEM.ID);
         public static Identity<ProductRecord, Integer> IDENTITY_PRODUCT = createIdentity(Product.PRODUCT, Product.PRODUCT.ID);
         public static Identity<QuestionRecord, Integer> IDENTITY_QUESTION = createIdentity(Question.QUESTION, Question.QUESTION.ID);
@@ -112,6 +117,7 @@ public class Keys {
         public static final UniqueKey<ExamConRecord> KEY_EXAM_CON_PRIMARY = createUniqueKey(ExamCon.EXAM_CON, "KEY_exam_con_PRIMARY", ExamCon.EXAM_CON.EID);
         public static final UniqueKey<FileRecord> KEY_FILE_PRIMARY = createUniqueKey(File.FILE, "KEY_file_PRIMARY", File.FILE.ID);
         public static final UniqueKey<OrderRecord> KEY_ORDER_PRIMARY = createUniqueKey(Order.ORDER, "KEY_order_PRIMARY", Order.ORDER.ID);
+        public static final UniqueKey<OrderItemRecord> KEY_ORDER_ITEM_PRIMARY = createUniqueKey(OrderItem.ORDER_ITEM, "KEY_order_item_PRIMARY", OrderItem.ORDER_ITEM.ID);
         public static final UniqueKey<ProblemRecord> KEY_PROBLEM_PRIMARY = createUniqueKey(Problem.PROBLEM, "KEY_problem_PRIMARY", Problem.PROBLEM.ID);
         public static final UniqueKey<ProductRecord> KEY_PRODUCT_PRIMARY = createUniqueKey(Product.PRODUCT, "KEY_product_PRIMARY", Product.PRODUCT.ID);
         public static final UniqueKey<QuestionRecord> KEY_QUESTION_PRIMARY = createUniqueKey(Question.QUESTION, "KEY_question_PRIMARY", Question.QUESTION.ID);
