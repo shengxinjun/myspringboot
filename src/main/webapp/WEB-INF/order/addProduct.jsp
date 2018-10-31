@@ -18,14 +18,7 @@
 			<div class="breadcrumbs ace-save-state col-md-9" id="breadcrumbs">
 				<div class="widget-box widget-color-dark ui-sortable-handle"
 					id="widget-box-11">
-					<div class="nav-search">
-						<form class="form-search">
-							<span class="input-icon"> <input placeholder="Search ..."
-								type="text" class="nav-search-input"></input> <i
-								class="ace-icon fa fa-search nav-search-icon" id="search"></i>
-							</span>
-						</form>
-					</div>
+					
 					<ul class="ace-thumbnails clearfix">
 						<input type="hidden" value="${orderId }" id="orderId"/>
 						<c:forEach items="${paging.list}" var="item" varStatus="status">
@@ -72,6 +65,8 @@
 
 
 					</ul>
+					
+					<a class="btn btn-info btn-sm" href="/order/findOrderById/${orderId }">返回订单</a>
 					<div class="ui-pg-div">
 						<div class="btn-group btn-corner" id="pages">
 							<input type="hidden" value="${paging.totalCount }"

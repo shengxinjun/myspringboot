@@ -48,6 +48,13 @@ public class OrderController {
 	@Autowired
 	private ProductService productService;
 	
+	/**
+	 * 订单列表
+	 * @param model
+	 * @param keyword
+	 * @param pageNumber
+	 * @return
+	 */
 	@RequestMapping("/list")
 	String list(Model model,@RequestParam(required = false,defaultValue="")String keyword,@RequestParam(defaultValue="1")Integer pageNumber) {
 		/*Jedis jedis = redisUtil.getJedis();
@@ -71,6 +78,12 @@ public class OrderController {
 		return "order/orderList";
 	}
 	
+	/**
+	 * 订单详情页（包含文件和选购的商品）
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/findOrderById/{id}")
 	String findOrderById(Model model,@PathVariable Integer id) {
 		
@@ -79,6 +92,12 @@ public class OrderController {
 		return "order/orderDetail";
 	}
 	
+	/**
+	 * 删除订单
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/deleteOrderById/{id}")
 	String deleteOrderById(Model model,@PathVariable Integer id) {
 		
@@ -113,6 +132,11 @@ public class OrderController {
 		return result;
 	}
 	
+	/**
+	 * 之前写的获取redis连接的方法，暂时废弃
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/getValue")
 	String getRedisValue(Model model){
 
@@ -122,12 +146,21 @@ public class OrderController {
 		return "order/orderList";
 	}
 	
+	/**
+	 * 跳转到新增订单的界面
+	 * @return
+	 */
 	@RequestMapping("/turnToAdd")
 	String turnToAdd(){
 		
 		return "order/orderDetail";
 	}
 	
+	/**
+	 * 保存界面提交的订单信息
+	 * @param obj
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("/doAdd")
 	Result doAdd(@RequestParam(required=false) String obj) {
@@ -157,6 +190,11 @@ public class OrderController {
 		return Result.ok();
 	}
 	
+	/**
+	 * 保存界面提交的更新订单的信息
+	 * @param obj
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("/doUpdate")
 	Result doUpdate(@RequestParam(required=false) String obj) {
@@ -187,6 +225,14 @@ public class OrderController {
 		return Result.ok();
 	}
 	
+	/**
+	 * 导出订单到excel表格并下载
+	 * @param request
+	 * @param response
+	 * @param keyword
+	 * @param pageNumber
+	 * @return
+	 */
 	@RequestMapping("/export")
 	@ResponseBody
 	Result exportOrder(HttpServletRequest request,HttpServletResponse response,@RequestParam(required = false)String keyword,@RequestParam(defaultValue="1")Integer pageNumber){
@@ -215,6 +261,12 @@ public class OrderController {
 		return new Result(1, "");
 	}
 	
+	/**
+	 * 跳转到往订单中添加商品的界面
+	 * @param orderId
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/addPro")
 	String addPro(Integer orderId,Model model) {
 		Paging<Product> paging = new Paging<>();

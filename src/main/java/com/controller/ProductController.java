@@ -53,6 +53,14 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	
+	/**
+	 * 在编辑商品界面查询商品列表
+	 * @param model
+	 * @param keyword
+	 * @param pageNumber
+	 * @return
+	 */
 	@RequestMapping("/list")
 	String list(Model model,@RequestParam(required = false,defaultValue="")String keyword,@RequestParam(defaultValue="1")Integer pageNumber) {
 		Paging<Product> paging = new Paging<>();
@@ -63,6 +71,13 @@ public class ProductController {
 		model.addAttribute("paging", paging);
 		return "product/productList";
 	}
+	
+	/**
+	 * 在商品列表页选择一个商品并查看商品详情
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/detail")
 	String findProductById(Model model,Integer id) {
 		Product product = productService.findProductById(id);
@@ -70,6 +85,11 @@ public class ProductController {
 		return "product/productDetail";
 	}
 	
+	/**
+	 * 在商品列表页选择一个商品并删除商品
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/delete/{id}")
 	String deleteById(@PathVariable Integer id) {
 		Result result = new Result();
@@ -84,6 +104,11 @@ public class ProductController {
 		return "redirect:/product/list";
 	}
 	
+	/**
+	 * 在商品列表页批量删除商品
+	 * @param list
+	 * @return
+	 */
 	@RequestMapping("/deleteProduts")
 	@ResponseBody
 	Result deleteByIds(String list) {
@@ -108,12 +133,21 @@ public class ProductController {
 		return result;
 	}
 	
+	/**
+	 * 跳转到新增商品的页面
+	 * @return
+	 */
 	@RequestMapping("/turnToAdd")
 	String turnToAdd(){
 		
 		return "product/productDetail";
 	}
 	
+	/**
+	 * 添加商品
+	 * @param obj
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("/doAdd")
 	Result doAdd(@RequestParam(required=false) String obj) {
@@ -131,6 +165,12 @@ public class ProductController {
 		productService.insert(product);
 		return Result.ok();
 	}
+	
+	/**
+	 * 更新商品
+	 * @param obj
+	 * @return
+	 */
 	@ResponseBody
 	@PostMapping("/doUpdate")
 	Result doUpdate(@RequestParam(required=false) String obj) {
@@ -150,6 +190,12 @@ public class ProductController {
 		return Result.ok();
 	}
 	
+	/**
+	 * 在订单添加商品的界面将商品添加到订单中
+	 * @param orderId
+	 * @param proId
+	 * @return
+	 */
 	@RequestMapping("/addToOrder")
 	@ResponseBody
 	Result addToOrder(Integer orderId,Integer proId) {
@@ -164,6 +210,14 @@ public class ProductController {
 		return result;
 	}
 	
+	/**
+	 * 将商品导出到excel表并下载
+	 * @param request
+	 * @param response
+	 * @param keyword
+	 * @param pageNumber
+	 * @return
+	 */
 	@RequestMapping("/export")
 	@ResponseBody
 	Result exportProduct(HttpServletRequest request,HttpServletResponse response,@RequestParam(required = false)String keyword,@RequestParam(defaultValue="1")Integer pageNumber){
@@ -193,7 +247,12 @@ public class ProductController {
 		return new Result(1, "");
 	}
 	
-	
+	/**
+	 * 将包含商品列表的excel导入并且插入到数据库中
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping("/batchImportProduct")
 	@ResponseBody
 	ModelAndView batchImportProduct(HttpServletRequest request, HttpServletResponse response) {
