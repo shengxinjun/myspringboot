@@ -268,9 +268,9 @@ public class OrderController {
 	 * @return
 	 */
 	@RequestMapping("/addPro")
-	String addPro(Integer orderId,Model model) {
+	String addPro(Integer orderId,@RequestParam(required=false,defaultValue="1")Integer pageNumber,Model model) {
 		Paging<Product> paging = new Paging<>();
-		paging.setPageNumber(1);
+		paging.setPageNumber(pageNumber);
 		paging.setPageSize(Constants.pageSize.SMALL_SIZE);
 		paging = productService.productList(paging);
 		model.addAttribute("paging", paging);

@@ -15,11 +15,15 @@
 	<!-- 中部内容 -->
 	<div class="main-content">
 		<div class="main-content-inner">
-			<div class="breadcrumbs ace-save-state col-md-9" id="breadcrumbs">
-				<div class="widget-box widget-color-dark ui-sortable-handle"
+			<div class="breadcrumbs ace-save-state col-md-12" id="breadcrumbs">
+				<div class="widget-box widget-color-dark ui-sortable-handle col-md-12"
 					id="widget-box-11">
-					
-					<ul class="ace-thumbnails clearfix">
+					<div class="col-md-2"  style="top:167px">
+						<button class="btn btn-success btn-next" data-last="Finish" id="prev">
+							<i class="ace-icon fa fa-arrow-left"></i> prev
+						</button>
+					</div>
+					<div  class="col-md-7">
 						<input type="hidden" value="${orderId }" id="orderId"/>
 						<c:forEach items="${paging.list}" var="item" varStatus="status">
 
@@ -62,11 +66,13 @@
 								</div>
 							</div>
 						</c:forEach>
-
-
-					</ul>
+					</div>
+					<div  class="col-md-2"  style="top:167px">
+						<button class="btn btn-success btn-next" data-last="Finish" id="next">next
+							<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+						</button>
+					</div>
 					
-					<a class="btn btn-info btn-sm" href="/order/findOrderById/${orderId }">返回订单</a>
 					<div class="ui-pg-div">
 						<div class="btn-group btn-corner" id="pages">
 							<input type="hidden" value="${paging.totalCount }"
@@ -76,6 +82,7 @@
 					</div>
 
 				</div>
+				<a class="btn btn-info btn-sm" href="/order/findOrderById/${orderId }">返回订单</a>
 			</div>
 		</div>
 		<!-- 中部内容 -->
