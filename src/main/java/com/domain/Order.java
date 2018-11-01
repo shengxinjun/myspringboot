@@ -2,10 +2,6 @@ package com.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-import javax.annotation.Generated;
-
-
 public class Order implements Serializable {
 
     private static final long serialVersionUID = 1015649225;

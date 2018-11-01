@@ -5,10 +5,6 @@ import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import java.io.File;
 import java.util.Properties;
 
@@ -182,7 +178,7 @@ public class EmailUtil {
 		EmailUtil se = new EmailUtil(true);
 		// String path = TestUtil.path + "ali.gif";
 		se.doSendHtmlEmail("邮件主题", "邮件内容", "498740190@qq.com");
-		File affix = new File("C:\\Users\\sheng\\Desktop\\ace\\login.html");
+		//File affix = new File("C:\\Users\\sheng\\Desktop\\ace\\login.html");
 		// se.doSendHtmlEmail("邮件主题", "邮件内容", "498740190@qq.com", affix);//
 	}
 }

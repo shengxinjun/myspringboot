@@ -1,9 +1,5 @@
 package com.util;
-
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-
 import org.springframework.util.StringUtils;
 
 /**

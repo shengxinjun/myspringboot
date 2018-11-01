@@ -3,10 +3,8 @@
  */
 package com.dao;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.jooq.Condition;
 import org.jooq.Configuration;
 import org.jooq.DSLContext;
@@ -14,10 +12,8 @@ import org.jooq.impl.DAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
-
 import com.domain.Order;
 import com.util.Paging;
-
 import sxj.db.tables.records.OrderRecord;
 import static sxj.db.Tables.ORDER;
 
@@ -59,7 +55,6 @@ public class OrderDao extends DAOImpl<OrderRecord, Order, Integer> {
 	 */
 	public Paging<Order> orderList(Paging<Order> paging) {
 		List<Condition> conditions = new ArrayList<>();
-		String orderField;
 		if (StringUtils.hasText(paging.getKeyword())) {
 			conditions.add(ORDER.NAME.like("%"+paging.getKeyword()+"%"));
 		}

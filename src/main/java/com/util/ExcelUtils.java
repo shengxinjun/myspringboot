@@ -2,10 +2,8 @@ package com.util;
  
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -303,7 +301,6 @@ public final class ExcelUtils {
           
         if(workbook != null){  
             for(int sheetNum = 0;sheetNum < workbook.getNumberOfSheets();sheetNum++){
-            	List<String[]> list = new ArrayList<String[]>();
             	if(sheetNum == 2){
             		break;
             	}
@@ -351,7 +348,6 @@ public final class ExcelUtils {
     } 
     public static void main(String[] args) {
 		
-		OutputStream out = null;
 		FileInputStream inputStream = null;
 		try {
 			

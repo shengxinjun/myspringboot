@@ -51,12 +51,6 @@
 	<!--[if !IE]> -->
 	<script
 		src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>
-
-	<!-- <![endif]-->
-
-	<!--[if IE]>
-<script src="${pageContext.request.contextPath }/assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
 	<script type="text/javascript">
 		if ('ontouchstart' in document.documentElement)
 			document
@@ -64,23 +58,7 @@
 							+ "<"+"/script>");
 	</script>
 	<script
-		src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script><%-- 
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery-ui.custom.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.ui.touch-punch.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.easypiechart.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.sparkline.index.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.flot.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.flot.pie.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath }/assets/js/jquery.flot.resize.min.js"></script>
- --%>
-	<!-- ace scripts -->
+		src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath }/assets/js/ace-elements.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/ace.min.js"></script>

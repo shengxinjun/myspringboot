@@ -1,13 +1,6 @@
 package com.domain;
-
-
 import java.io.Serializable;
 import java.util.Date;
-
-import javax.annotation.Generated;
-
-
-
 public class User implements Serializable {
 
 	 private static final long serialVersionUID = 1510470032;

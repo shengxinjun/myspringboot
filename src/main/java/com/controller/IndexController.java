@@ -18,7 +18,7 @@ public class IndexController {
 	@RequestMapping("")
 	String index() {
 		
-		return "login/index";
+		return "login/login";
 	}
 	@RequestMapping("/model")
 	String turnToModel(){

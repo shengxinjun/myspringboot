@@ -1,13 +1,8 @@
 package com.dao;
-
-
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.annotation.Generated;
-
 import org.jooq.Condition;
 import org.jooq.Configuration;
 import org.jooq.DSLContext;
@@ -15,13 +10,9 @@ import org.jooq.impl.DAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
-
 import com.domain.EmailInfo;
-import com.google.common.collect.Lists;
 import com.util.DateUtil;
-
 import sxj.db.tables.records.EmailInfoRecord;
-
 import static sxj.db.Tables.EMAIL_INFO;;
 @Repository
 public class EmailInfoDao extends DAOImpl<EmailInfoRecord,EmailInfo, Integer> {

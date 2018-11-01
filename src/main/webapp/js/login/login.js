@@ -41,7 +41,7 @@ $(function() {
 			},
 		}).done(function(e) {
 			if (e.code == 1) {
-				location.href = '/order/list';
+				location.href = '/event/list';
 			} else {
 				message(e.message);
 			}

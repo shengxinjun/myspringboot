@@ -10,7 +10,7 @@
 		</button>
 
 		<div class="navbar-header pull-left">
-			<a href="${pageContext.request.contextPath }/index.html"
+			<a href="${pageContext.request.contextPath }/event/list"
 				class="navbar-brand"> <small> <i class="fa fa-leaf"></i> my admin
 			</small>
 			</a>

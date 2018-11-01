@@ -18,7 +18,6 @@ public class UrlCheckController {
 	@ModelAttribute
 	void modelAttribute(Model model, HttpServletRequest request) throws ServletRequestBindingException {
 		Cookie cookie = WebUtils.getCookie(request, "uid");
-		StringBuffer requestURL = request.getRequestURL();
 		String servletPath = request.getServletPath();
 
 		// 是否为登录首页
