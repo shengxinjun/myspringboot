@@ -10,6 +10,7 @@ import sxj.db.tables.Clazz;
 import sxj.db.tables.CodeMessage;
 import sxj.db.tables.Course;
 import sxj.db.tables.EmailInfo;
+import sxj.db.tables.Event;
 import sxj.db.tables.ExamCon;
 import sxj.db.tables.File;
 import sxj.db.tables.Order;
@@ -53,6 +54,11 @@ public class Tables {
      * The table <code>test.email_info</code>.
      */
     public static final EmailInfo EMAIL_INFO = sxj.db.tables.EmailInfo.EMAIL_INFO;
+
+    /**
+     * The table <code>test.event</code>.
+     */
+    public static final Event EVENT = sxj.db.tables.Event.EVENT;
 
     /**
      * The table <code>test.exam_con</code>.

@@ -9,7 +9,6 @@
 <body class="no-skin">
 	<%@ include file="../model/menu.jsp"%>
 
-
 	<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -179,9 +178,10 @@
 	<script src="${pageContext.request.contextPath }/assets/js/moment.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/fullcalendar.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/bootbox.js"></script>
+	<script src="${pageContext.request.contextPath }/js/order/json.js"></script>
 	<script type="text/javascript">
 			jQuery(function($) {
-
+				
 /* initialize the external events
 	-----------------------------------------------------------------*/
 

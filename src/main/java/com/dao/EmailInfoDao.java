@@ -13,7 +13,7 @@ import org.springframework.util.StringUtils;
 import com.domain.EmailInfo;
 import com.util.DateUtil;
 import sxj.db.tables.records.EmailInfoRecord;
-import static sxj.db.Tables.EMAIL_INFO;;
+import static sxj.db.Tables.EMAIL_INFO;
 @Repository
 public class EmailInfoDao extends DAOImpl<EmailInfoRecord,EmailInfo, Integer> {
 

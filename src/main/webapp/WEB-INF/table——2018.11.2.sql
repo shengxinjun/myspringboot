@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80012
 File Encoding         : 65001
 
-Date: 2018-10-31 17:20:03
+Date: 2018-11-02 16:28:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,6 +59,28 @@ CREATE TABLE `email_info` (
 -- ----------------------------
 -- Records of email_info
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `event`
+-- ----------------------------
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE `event` (
+  `id` int(30) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) DEFAULT NULL,
+  `start` varchar(50) DEFAULT NULL,
+  `end` varchar(50) DEFAULT NULL,
+  `class_name` varchar(50) DEFAULT NULL,
+  `user_Id` int(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of event
+-- ----------------------------
+INSERT INTO `event` VALUES ('1', '22', null, null, null, '1');
+INSERT INTO `event` VALUES ('2', '2233', null, null, null, '1');
+INSERT INTO `event` VALUES ('3', '3321', null, null, null, '1');
+INSERT INTO `event` VALUES ('4', '2112', null, null, null, '1');
 
 -- ----------------------------
 -- Table structure for `file`
@@ -114,7 +136,7 @@ CREATE TABLE `order_item` (
   `type` varchar(255) DEFAULT NULL,
   `order_id` int(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of order_item
@@ -125,6 +147,10 @@ INSERT INTO `order_item` VALUES ('20', null, '不出售给未成年人', '杜蕾
 INSERT INTO `order_item` VALUES ('21', null, '喝喝茶，晒晒太阳', '碧螺春', '300', '养生', '74');
 INSERT INTO `order_item` VALUES ('22', null, '不出售给未成年人', '杜蕾斯', '12', '计生用品', '75');
 INSERT INTO `order_item` VALUES ('23', null, '性价比较高的一辆车', '卡罗拉', '100000', '交通工具', '75');
+INSERT INTO `order_item` VALUES ('24', null, '山东红富士', '苹果', '5', '水果', '75');
+INSERT INTO `order_item` VALUES ('25', null, '酸死你', '橘子', '4', '水果', '75');
+INSERT INTO `order_item` VALUES ('26', null, '今年特别贵', '西红柿', '8', '蔬菜', '75');
+INSERT INTO `order_item` VALUES ('27', null, '不出售给未成年人', '杜蕾斯', '12', '计生用品', '75');
 
 -- ----------------------------
 -- Table structure for `product`
