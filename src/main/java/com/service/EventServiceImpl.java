@@ -19,5 +19,10 @@ public class EventServiceImpl implements EventService{
 		// TODO Auto-generated method stub
 		return eventDao.findEventByUserId(id);
 	}
+	@Override
+	public void doAdd(Event event) {
+		eventDao.insert(event);
+		
+	}
 
 }

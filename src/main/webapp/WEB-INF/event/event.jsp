@@ -172,7 +172,11 @@
 			</div>
 		</div>
 	<!-- 中部内容 -->
-	
+	<div type="hidden" id = "eventDiv">
+		<c:forEach items="${events}" var="event" >
+			<input type="hidden" name="${event.title }" id="${event.id }" src="${event.start }" value="${event.className }" placeholder="${event.end }">
+		</c:forEach>
+	</div>
 	<%@ include file="../model/buttom.jsp"%>
 	<script src="${pageContext.request.contextPath }/assets/js/jquery-ui.custom.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/moment.min.js"></script>
@@ -215,7 +219,20 @@
 	var d = date.getDate();
 	var m = date.getMonth();
 	var y = date.getFullYear();
-
+	
+	//封装event数组，用于在日历上展示
+	var eventStr=new Array();
+	$('#eventDiv input').each(function(){
+		var event={};
+		event.title=$(this).attr('name');
+		var date=$(this).attr('src');
+		var y = date.substr(0,4);
+		var m = date.substr(5,2)-1;
+		var d = date.substr(8,2);
+		event.start=new Date(y,m,d);
+		event.className=$(this).attr('value');
+		eventStr.push(event);
+	});
 
 	var calendar = $('#calendar').fullCalendar({
 		//isRTL: true,
@@ -231,26 +248,8 @@
 			center: 'title',
 			right: 'month,agendaWeek,agendaDay'
 		},
-		events: [
-		  {
-			title: 'All Day Event',
-			start: new Date(y, m, 1),
-			className: 'label-important'
-		  },
-		  {
-			title: 'Long Event',
-			start: moment().subtract(5, 'days').format('YYYY-MM-DD'),
-			end: moment().subtract(1, 'days').format('YYYY-MM-DD'),
-			className: 'label-success'
-		  },
-		  {
-			title: 'Some Event',
-			start: new Date(y, m, d-3, 16, 0),
-			allDay: false,
-			className: 'label-info'
-		  }
-		]
-		,
+		events: 
+			eventStr,
 		
 		/**eventResize: function(event, delta, revertFunc) {
 
@@ -279,6 +278,28 @@
 			copiedEventObject.allDay = false;
 			if($extraEventClass) copiedEventObject['className'] = [$extraEventClass];
 			
+			var event={};
+			event.title=originalEventObject.title;
+			event.className=$extraEventClass;
+			event.start=copiedEventObject.start._d;
+			var eventStr = JSON.stringify(event);
+			$.ajax({
+				url : "/event/doAdd",
+				type : 'POST',
+				dataType : 'json',
+				data : {
+					eventStr : eventStr
+				},
+			}).done(function(e) {
+				if(e.code==1){
+					alert("新增成功");
+				}
+				else{
+					alert("新增失败");
+				}
+			}).fail(function(e) {
+			});
+			
 			// render the event on the calendar
 			// the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
 			$('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
@@ -288,6 +309,8 @@
 				// if so, remove the element from the "Draggable Events" list
 				$(this).remove();
 			}
+			
+			
 			
 		}
 		,

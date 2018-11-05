@@ -8,4 +8,6 @@ public interface EventService {
 	
 	List<Event> findEventByUserId(Integer id);
 	
+	void doAdd(Event event);
+	
 }
