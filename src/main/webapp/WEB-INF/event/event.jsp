@@ -231,6 +231,7 @@
 		var d = date.substr(8,2);
 		event.start=new Date(y,m,d);
 		event.className=$(this).attr('value');
+		event._id=$(this).attr('id');
 		eventStr.push(event);
 	});
 
