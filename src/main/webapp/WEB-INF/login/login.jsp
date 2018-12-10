@@ -70,7 +70,7 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="telephone" id="telephone"/>
+															<input type="text" class="form-control" placeholder="email" id="email"/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>

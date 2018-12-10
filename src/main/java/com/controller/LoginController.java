@@ -32,11 +32,11 @@ public class LoginController {
 	
 	@ResponseBody
 	@RequestMapping("/login")
-	Result login(HttpServletRequest request,HttpServletResponse response,String telephone,String password,String remember) {
+	Result login(HttpServletRequest request,HttpServletResponse response,String email,String password,String remember) {
 		Result result = new Result();
 		User user = new User();
 		try {
-			user = userService.checkUser(telephone, password);
+			user = userService.checkUser(email, password);
 			result.setCode(1);
 		} catch (MyException e) {
 			result.setCode(e.getCode());
@@ -44,11 +44,12 @@ public class LoginController {
 			return result;
 		}
 		if (remember.equals("1")) {
-			WebUtils.setCookie(request, response, "telephone", telephone, Integer.MAX_VALUE);
+			WebUtils.setCookie(request, response, "email", email, Integer.MAX_VALUE);
 			WebUtils.setCookie(request, response, "password", password, Integer.MAX_VALUE);
 		}
 		WebUtils.setCookie(request, response, "uid", user.getId().toString(), Integer.MAX_VALUE);
 		WebUtils.setCookie(request, response, "remember", remember, Integer.MAX_VALUE);
+		WebUtils.setCookie(request, response, "nickname", user.getName(), Integer.MAX_VALUE);
 		return result;
 	}
 	
@@ -57,7 +58,7 @@ public class LoginController {
 		WebUtils.clearCookie(request, response, "uid");
 		WebUtils.clearCookie(request, response, "telephone");
 		WebUtils.clearCookie(request, response, "password");
-		return "login/index";
+		return "login/login";
 	}
 	
 	/**

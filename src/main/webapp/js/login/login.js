@@ -2,19 +2,19 @@ $(function() {
 	/**
 	 * 页面加载初始化
 	 */
-	var telephone=getCookie("telephone");
+	var email=getCookie("email");
 	var password=getCookie("password");
 	var remember=getCookie("remember");
 	if(remember && remember==1){
 		$('#remember').prop('checked',true);
-        $('#telephone').val(telephone);
+        $('#email').val(email);
         $('#password').val(password);
 	}
 	/**
 	 * 登录事件
 	 */
 	$("#login").click(function() {
-		var telephone = $("#telephone").val();
+		var email = $("#email").val();
 		var password = $("#password").val();
 		var remember;
 		if ($("#remember").is(':checked')) {
@@ -22,8 +22,8 @@ $(function() {
 		} else {
 			remember = 0;
 		}
-		if (!telephone) {
-			message("请输入手机号码");
+		if (!email) {
+			message("请输入邮箱地址");
 			return;
 		}
 		if (!password) {
@@ -35,7 +35,7 @@ $(function() {
 			type : 'POST',
 			dataType : 'json',
 			data : {
-				telephone : telephone,
+				email : email,
 				password : password,
 				remember : remember
 			},

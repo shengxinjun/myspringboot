@@ -62,6 +62,29 @@
 	<script
 		src="${pageContext.request.contextPath }/assets/js/ace-elements.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/ace.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var nickname=getCookie("nickname");
+			$('#nickname').html(nickname);
+		});
+		/**
+		 * 获取cookie方法
+		 */
+		function getCookie(cookieName) {
+			var allcookies = document.cookie;
+			var cookiePos = allcookies.indexOf(cookieName); // 索引的长度
+			if (cookiePos != -1) {
+				// 把cookie_pos放在值的开始，只要给值加1即可。
+				cookiePos += cookieName.length + 1;
+				var cookieEnd = allcookies.indexOf(";", cookiePos);
 
+				if (cookieEnd == -1) {
+					cookieEnd = allcookies.length;
+				}
+				var value = decodeURI(allcookies.substring(cookiePos, cookieEnd));
+			}
+			return value;
+		}
+	</script>
 
 	

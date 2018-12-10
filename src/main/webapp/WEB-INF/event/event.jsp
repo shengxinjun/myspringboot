@@ -178,6 +178,7 @@
 		</c:forEach>
 	</div>
 	<%@ include file="../model/buttom.jsp"%>
+	<script src="${pageContext.request.contextPath }/js/event/event.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/jquery-ui.custom.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/moment.min.js"></script>
 	<script src="${pageContext.request.contextPath }/assets/js/fullcalendar.min.js"></script>
@@ -293,6 +294,7 @@
 				},
 			}).done(function(e) {
 				if(e.code==1){
+					location.href="/event/list";
 					alert("新增成功");
 				}
 				else{
@@ -315,7 +317,7 @@
 			
 		}
 		,
-		selectable: true,
+		selectable: false,
 		selectHelper: true,
 		select: function(start, end, allDay) {
 			
@@ -349,8 +351,9 @@
 				   <button type="button" class="close" data-dismiss="modal" style="margin-top:-10px;">&times;</button>\
 				   <form class="no-margin">\
 					  <label>Change event name &nbsp;</label>\
-					  <input class="middle" autocomplete="off" type="text" value="' + calEvent.title + '" />\
-					 <button type="submit" class="btn btn-sm btn-success"><i class="ace-icon fa fa-check"></i> Save</button>\
+					  <input type="hidden" value="' + calEvent._id + '" id="edit_id"/>\
+					  <input id="edit_title" class="middle" autocomplete="off" type="text" value="' + calEvent.title + '" />\
+					 <button id="edit_submit" class="btn btn-sm btn-success" ><i class="ace-icon fa fa-check"></i> Save</button>\
 				   </form>\
 				 </div>\
 				 <div class="modal-footer">\
@@ -369,12 +372,49 @@
 				calEvent.title = $(this).find("input[type=text]").val();
 				calendar.fullCalendar('updateEvent', calEvent);
 				modal.modal("hide");
+				//更新数据库
+				var eventId = $("#edit_id").val();
+				var title=$("#edit_title").val();
+				$.ajax({
+					url : "/event/update",
+					type : 'POST',
+					dataType : 'json',
+					data : {
+						eventId : eventId,
+						title : title
+					},
+				}).done(function(e) {
+					if (e.code == 1) {
+						location.href="/event/list";
+					} else {
+						message(e.message);
+					}
+				}).fail(function(e) {
+				});
 			});
 			modal.find('button[data-action=delete]').on('click', function() {
 				calendar.fullCalendar('removeEvents' , function(ev){
 					return (ev._id == calEvent._id);
 				})
+				//删除数据库中的记录
+				var eventId = $("#edit_id").val();
+				$.ajax({
+					url : "/event/delete",
+					type : 'POST',
+					dataType : 'json',
+					data : {
+						eventId : eventId
+					},
+				}).done(function(e) {
+					if (e.code == 1) {
+						location.href="/event/list";
+					} else {
+						message(e.message);
+					}
+				}).fail(function(e) {
+				});
 				modal.modal("hide");
+				
 			});
 			
 			modal.modal('show').on('hidden', function(){
@@ -396,5 +436,6 @@
 
 })
 		</script>
+		
 </body>
 </html>

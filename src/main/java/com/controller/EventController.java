@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 import com.model.Result;
 import com.service.EventService;
 import com.util.DateUtil;
+import com.util.MyException;
 
 @Controller
 @RequestMapping("/event")
@@ -70,4 +71,38 @@ public class EventController {
 		}
 		return result;
 	}
+
+	
+	@RequestMapping("/update")
+	@ResponseBody
+	Result update(Integer eventId,String title) {
+		Result result = new Result();
+		
+		try {
+			Event event = eventService.findEventById(eventId);
+			event.setTitle(title);
+			eventService.updateEvent(event);
+			result.setCode(1);
+		} catch (MyException e) {
+			result.setCode(e.getCode());
+			result.setMessage(e.getMessage());
+		}
+		return result;
+	}
+	
+	@RequestMapping("/delete")
+	@ResponseBody
+	Result delete(Integer eventId) {
+		Result result = new Result();
+		
+		try {
+			eventService.deleteEventById(eventId);
+			result.setCode(1);
+		} catch (MyException e) {
+			result.setCode(e.getCode());
+			result.setMessage(e.getMessage());
+		}
+		return result;
+	}
+
 }

@@ -24,5 +24,18 @@ public class EventServiceImpl implements EventService{
 		eventDao.insert(event);
 		
 	}
+	@Override
+	public Event findEventById(Integer id) {
+		// TODO Auto-generated method stub
+		return eventDao.findById(id);
+	}
+	@Override
+	public void updateEvent(Event event) {
+		eventDao.update(event);
+	}
+	@Override
+	public void deleteEventById(Integer id) {
+		eventDao.deleteById(id);
+	}
 
 }

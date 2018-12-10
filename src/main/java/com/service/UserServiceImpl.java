@@ -18,8 +18,8 @@ public class UserServiceImpl implements UserService {
 	private CodeMessageDao codeMessageDao;
 	
 	@Override
-	public User checkUser(String telephone, String password) {
-		User user = userDao.findUserByTelephone(telephone);
+	public User checkUser(String email, String password) {
+		User user = userDao.findUserByEmail(email);
 		if (ObjectUtils.isEmpty(user)) {
 			throw new MyException(codeMessageDao.findById(101));
 		}

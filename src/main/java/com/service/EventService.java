@@ -10,4 +10,9 @@ public interface EventService {
 	
 	void doAdd(Event event);
 	
+	Event findEventById(Integer id);
+	
+	void updateEvent(Event event);
+	
+	void deleteEventById(Integer id);
 }
